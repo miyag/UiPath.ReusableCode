@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ShowProgressNotification_Test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="546,895.333333333333" sap2010:WorkflowViewState.IdRef="Test_CheckValue_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ShowProgressNotification_Test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="546,855.333333333333" sap2010:WorkflowViewState.IdRef="Test_CheckValue_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
       <x:String>System.Activities</x:String>
@@ -65,7 +65,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="メッセージをログ" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ShowProgressNotification_Test - START&quot;]" />
-    <While DisplayName="繰り返し (前判定)" sap:VirtualizedContainerService.HintSize="484,506.666666666667" sap2010:WorkflowViewState.IdRef="While_1" Condition="[idx &lt;= 100]">
+    <While DisplayName="繰り返し (前判定)" sap:VirtualizedContainerService.HintSize="484,506.666666666667" sap2010:WorkflowViewState.IdRef="While_1" Condition="[idx &lt; 100]">
       <Sequence DisplayName="シーケンス" sap:VirtualizedContainerService.HintSize="376,342.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
