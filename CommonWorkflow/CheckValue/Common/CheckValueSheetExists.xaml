@@ -95,7 +95,7 @@
         <OutArgument x:TypeArguments="x:String">[ErrorMessage_Sheet]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[String.Format("「{0}」で指定のファイル({1})がありません。", in_Name, in_Value)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[String.Format("「{0}」で指定のシート({1})がありません。", in_Name, in_Value)]</InArgument>
       </Assign.Value>
     </Assign>
     <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="942,800" sap2010:WorkflowViewState.IdRef="If_2">
