@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>960,3439</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>970.666666666667,3514</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Alert_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -69,7 +69,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="# 概要&#xA;実行結果を表示する&#xA;&#xA;# 引数&#xA;- in_Message：結果メッセージ&#xA;- in_Config：設定ファイル" DisplayName="ShowExecResult" sap:VirtualizedContainerService.HintSize="940,3379" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="# 概要&#xA;実行結果を表示する&#xA;&#xA;# 引数&#xA;- in_Message：結果メッセージ&#xA;- in_Config：設定ファイル" DisplayName="ShowExecResult" sap:VirtualizedContainerService.HintSize="950.666666666667,3454" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="st:StringBuilder" Name="StBuilder" />
       <Variable x:TypeArguments="x:String" Name="FileName" />
@@ -81,53 +81,53 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="メッセージをログ - 開始ログ" sap:VirtualizedContainerService.HintSize="898,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;ShowExecResult の開始&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="以下で起きたエラーは握りつぶす（処理の実行は終わっているため）" DisplayName="トライ キャッチ - ShowExecResult" sap:VirtualizedContainerService.HintSize="898,2923" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="メッセージをログ - 開始ログ" sap:VirtualizedContainerService.HintSize="908.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;ShowExecResult の開始&quot;]" />
+    <TryCatch sap2010:Annotation.AnnotationText="以下で起きたエラーは握りつぶす（処理の実行は終わっているため）" DisplayName="トライ キャッチ - ShowExecResult" sap:VirtualizedContainerService.HintSize="908.666666666667,2984.66666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="シーケンス - トライ キャッチ" sap:VirtualizedContainerService.HintSize="860,2422" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="シーケンス - トライ キャッチ" sap:VirtualizedContainerService.HintSize="870,2470.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[in_Config(&quot;OutputExecResultHtml&quot;).ToString = &quot;YES&quot;]" DisplayName="条件分岐 - 実行結果Htmlを出力するか？" sap:VirtualizedContainerService.HintSize="818,2330" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[in_Config(&quot;OutputResultHtml&quot;).ToString = &quot;YES&quot;]" DisplayName="条件分岐 - 実行結果Htmlを出力するか？" sap:VirtualizedContainerService.HintSize="828,2378.66666666667" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <Sequence DisplayName="シーケンス - 結果Htmlを出力" sap:VirtualizedContainerService.HintSize="647,2182" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence DisplayName="シーケンス - 結果Htmlを出力" sap:VirtualizedContainerService.HintSize="652,2224.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="実行結果メッセージ - マシン名・ユーザー名" sap:VirtualizedContainerService.HintSize="605,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign DisplayName="実行結果メッセージ - マシン名・ユーザー名" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_7">
                   <Assign.To>
-                    <OutArgument x:TypeArguments="x:Object">[in_Message("Machine\UserName")]</OutArgument>
+                    <OutArgument x:TypeArguments="x:Object">[in_Message("マシン名・ユーザー名")]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
                     <InArgument x:TypeArguments="x:Object">[Environment.MachineName &amp; "\" &amp; Environment.UserName]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="代入 - ファイル名" sap:VirtualizedContainerService.HintSize="605,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign DisplayName="代入 - ファイル名" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_8">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">["Result_" &amp; Now.ToString("yyyyMMdd-HHmms")]</InArgument>
+                    <InArgument x:TypeArguments="x:String">["Result_" &amp; Now.ToString("yyyyMMdd-HHmmss")]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="代入 - ファイルパス" sap:VirtualizedContainerService.HintSize="605,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                <Assign DisplayName="代入 - ファイルパス" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_19">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[FilePath]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[Path.GetFullPath(String.Format("{0}/{1}.html", in_Config("ExecResultHtmlDirectory").ToString, FileName))]</InArgument>
+                    <InArgument x:TypeArguments="x:String">[Path.GetFullPath(String.Format("{0}/{1}.html", in_Config("ResultHtmlDirectory").ToString, FileName))]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="代入 - StringBuilderの初期化" sap:VirtualizedContainerService.HintSize="605,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign DisplayName="代入 - StringBuilderの初期化" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_9">
                   <Assign.To>
                     <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                   </Assign.To>
@@ -135,7 +135,7 @@
                     <InArgument x:TypeArguments="st:StringBuilder">[new StringBuilder]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="代入 - 見出し・Html上部タグ" sap:VirtualizedContainerService.HintSize="605,64" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign DisplayName="代入 - 見出し・Html上部タグ" sap:VirtualizedContainerService.HintSize="610,65.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_10">
                   <Assign.To>
                     <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                   </Assign.To>
@@ -146,13 +146,13 @@
 "&lt;/head&gt;&lt;body&gt;&lt;h3&gt;実行結果&lt;/h3&gt;", FileName))]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Sequence DisplayName="シーケンス - 結果メッセージ" sap:VirtualizedContainerService.HintSize="605,486" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="シーケンス - 結果メッセージ" sap:VirtualizedContainerService.HintSize="610,496.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="代入 - h4・Table開始タグ - 結果メッセージ" sap:VirtualizedContainerService.HintSize="337,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                  <Assign DisplayName="代入 - h4・Table開始タグ - 結果メッセージ" sap:VirtualizedContainerService.HintSize="335.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_16">
                     <Assign.To>
                       <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                     </Assign.To>
@@ -160,13 +160,13 @@
                       <InArgument x:TypeArguments="st:StringBuilder">[StBuilder.AppendLine("&lt;h4&gt;メッセージ&lt;/h4&gt;&lt;table&gt;")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素) - 結果メッセージ" sap:VirtualizedContainerService.HintSize="337,194" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_Message]">
+                  <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素) - 結果メッセージ" sap:VirtualizedContainerService.HintSize="335.333333333333,200.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_Message]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Object)">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" Name="item" />
                         </ActivityAction.Argument>
-                        <Assign DisplayName="代入 - 行の追加 - 結果メッセージ" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                        <Assign DisplayName="代入 - 行の追加 - 結果メッセージ" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_17">
                           <Assign.To>
                             <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                           </Assign.To>
@@ -177,7 +177,7 @@
                       </ActivityAction>
                     </ui:ForEach.Body>
                   </ui:ForEach>
-                  <Assign DisplayName="代入 - Table終了タグ - 結果メッセージ" sap:VirtualizedContainerService.HintSize="337,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                  <Assign DisplayName="代入 - Table終了タグ - 結果メッセージ" sap:VirtualizedContainerService.HintSize="335.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_18">
                     <Assign.To>
                       <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                     </Assign.To>
@@ -186,13 +186,13 @@
                     </Assign.Value>
                   </Assign>
                 </Sequence>
-                <Sequence DisplayName="シーケンス - 設定ファイル" sap:VirtualizedContainerService.HintSize="605,486" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="シーケンス - 設定ファイル" sap:VirtualizedContainerService.HintSize="610,496.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="代入 - h4・Table開始タグ - 設定ファイル" sap:VirtualizedContainerService.HintSize="337,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                  <Assign DisplayName="代入 - h4・Table開始タグ - 設定ファイル" sap:VirtualizedContainerService.HintSize="335.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_11">
                     <Assign.To>
                       <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                     </Assign.To>
@@ -200,13 +200,13 @@
                       <InArgument x:TypeArguments="st:StringBuilder">[StBuilder.AppendLine("&lt;h4&gt;設定ファイル&lt;/h4&gt;&lt;table&gt;")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素) - 設定ファイル" sap:VirtualizedContainerService.HintSize="337,194" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_Config]">
+                  <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素) - 設定ファイル" sap:VirtualizedContainerService.HintSize="335.333333333333,200.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_Config]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Object)">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" Name="item" />
                         </ActivityAction.Argument>
-                        <Assign DisplayName="代入 - 行の追加 - 設定ファイル" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                        <Assign DisplayName="代入 - 行の追加 - 設定ファイル" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_12">
                           <Assign.To>
                             <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                           </Assign.To>
@@ -217,7 +217,7 @@
                       </ActivityAction>
                     </ui:ForEach.Body>
                   </ui:ForEach>
-                  <Assign DisplayName="代入 - Table終了タグ - 設定ファイル" sap:VirtualizedContainerService.HintSize="337,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                  <Assign DisplayName="代入 - Table終了タグ - 設定ファイル" sap:VirtualizedContainerService.HintSize="335.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_13">
                     <Assign.To>
                       <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                     </Assign.To>
@@ -226,7 +226,7 @@
                     </Assign.Value>
                   </Assign>
                 </Sequence>
-                <Assign DisplayName="代入 - 見出し・Html下部タグ" sap:VirtualizedContainerService.HintSize="605,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                <Assign DisplayName="代入 - 見出し・Html下部タグ" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_14">
                   <Assign.To>
                     <OutArgument x:TypeArguments="st:StringBuilder">[StBuilder]</OutArgument>
                   </Assign.To>
@@ -234,10 +234,10 @@
                     <InArgument x:TypeArguments="st:StringBuilder">[StBuilder.AppendLine("&lt;/head&gt;&lt;/html&gt;")]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:WriteTextFile DisplayName="テキストをファイルに書き込み - 実行結果Html" FileName="[FilePath]" sap:VirtualizedContainerService.HintSize="605,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[StBuilder.ToString()]" />
-                <If Condition="[in_Config(&quot;ShowExecResultHtml&quot;).ToString = &quot;YES&quot;]" DisplayName="条件分岐 - 実行結果Htmlを表示するか？" sap:VirtualizedContainerService.HintSize="605,262" sap2010:WorkflowViewState.IdRef="If_1">
+                <ui:WriteTextFile DisplayName="テキストをファイルに書き込み - 実行結果Html" FileName="[FilePath]" sap:VirtualizedContainerService.HintSize="610,134.666666666667" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[StBuilder.ToString()]" />
+                <If Condition="[in_Config(&quot;ShowResultHtml&quot;).ToString = &quot;YES&quot;]" DisplayName="条件分岐 - 実行結果Htmlを表示するか？" sap:VirtualizedContainerService.HintSize="610,269.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
                   <If.Then>
-                    <ui:OpenBrowser CommunicationMethod="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="ブラウザーを開く - 実行結果Html" Hidden="False" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="[String.Format(&quot;file:///{0}&quot;, Strings.Replace(FilePath, &quot;\&quot;, &quot;/&quot;))]">
+                    <ui:OpenBrowser CommunicationMethod="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="ブラウザーを開く - 実行結果Html" Hidden="False" sap:VirtualizedContainerService.HintSize="434,115.333333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="[String.Format(&quot;file:///{0}&quot;, Strings.Replace(FilePath, &quot;\&quot;, &quot;/&quot;))]">
                       <ui:OpenBrowser.Body>
                         <ActivityAction x:TypeArguments="x:Object">
                           <ActivityAction.Argument>
@@ -254,7 +254,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="864,160" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="874.666666666667,165.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -265,7 +265,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="メッセージをログ - エラーメッセージ" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[exception.ToString]" />
+            <ui:LogMessage DisplayName="メッセージをログ - エラーメッセージ" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[exception.ToString]" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
