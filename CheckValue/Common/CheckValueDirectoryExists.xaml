@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>717,735</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>722,717.333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -67,7 +67,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="値のチェック：ディレクトリが存在するか？&#xA;&#xA;# 引数&#xA;- in_Value : 入力値&#xA;- in_Name : 入力項目名" DisplayName="CheckValueDirectoryExists" sap:VirtualizedContainerService.HintSize="697,635" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="値のチェック：ディレクトリが存在するか？&#xA;&#xA;# 引数&#xA;- in_Value : 入力値&#xA;- in_Name : 入力項目名" DisplayName="CheckValueDirectoryExists" sap:VirtualizedContainerService.HintSize="702,657.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ErrorMessage" />
     </Sequence.Variables>
@@ -77,7 +77,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="代入 - エラーメッセージ" sap:VirtualizedContainerService.HintSize="655,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="代入 - エラーメッセージ" sap:VirtualizedContainerService.HintSize="660,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ErrorMessage]</OutArgument>
       </Assign.To>
@@ -85,7 +85,7 @@
         <InArgument x:TypeArguments="x:String">[String.Format("「{0}」で指定のディレクトリ({1})がありません。", in_Name, in_Value)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="655,356" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="660,368" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -93,7 +93,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Else>
-        <If Condition="[IO.Directory.Exists(in_Value)]" DisplayName="条件分岐 - デイレクトリがあるか？" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_1">
+        <If Condition="[IO.Directory.Exists(in_Value)]" DisplayName="条件分岐 - デイレクトリがあるか？" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -101,7 +101,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Else>
-            <Throw DisplayName="エラー（ディレクトリが無い）" Exception="[New Exception(ErrorMessage)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            <Throw DisplayName="エラー（ディレクトリが無い）" Exception="[New BusinessRuleException(ErrorMessage)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
           </If.Else>
         </If>
       </If.Else>

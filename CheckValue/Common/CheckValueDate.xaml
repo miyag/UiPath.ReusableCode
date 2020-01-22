@@ -16,7 +16,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>962,1013</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>968,1006.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -70,7 +70,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="値のチェック：日付型か？範囲内の日付か？&#xA;&#xA;# 引数&#xA;- in_Value : 入力値&#xA;- in_Name : 入力項目名&#xA;- in_MinValue : 最小値&#xA;- in_MaxValue : 最大値" DisplayName="CheckValueDate" sap:VirtualizedContainerService.HintSize="942,913" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="値のチェック：日付型か？範囲内の日付か？&#xA;&#xA;# 引数&#xA;- in_Value : 入力値&#xA;- in_Name : 入力項目名&#xA;- in_MinValue : 最小値&#xA;- in_MaxValue : 最大値" DisplayName="CheckValueDate" sap:VirtualizedContainerService.HintSize="948,946.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ErrorMessage_Range" />
       <Variable x:TypeArguments="x:String" Name="ErrorMessage_Parse" />
@@ -81,7 +81,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="代入 - エラーメッセージ（Parse）" sap:VirtualizedContainerService.HintSize="900,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="代入 - エラーメッセージ（Parse）" sap:VirtualizedContainerService.HintSize="906,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ErrorMessage_Parse]</OutArgument>
       </Assign.To>
@@ -89,7 +89,7 @@
         <InArgument x:TypeArguments="x:String">[String.Format("「{0}」で指定の値({1})が日付値ではありません。", in_Name, in_Value)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="代入 - エラーメッセージ（Range）" sap:VirtualizedContainerService.HintSize="900,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="代入 - エラーメッセージ（Range）" sap:VirtualizedContainerService.HintSize="906,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ErrorMessage_Range]</OutArgument>
       </Assign.To>
@@ -97,7 +97,7 @@
         <InArgument x:TypeArguments="x:String">[String.Format("「{0}」で指定の値({1})が範囲外です。（{2} から {3} まで）", in_Name, in_Value, in_MinValue, in_MaxValue)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="900,504" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="906,522" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -105,7 +105,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Else>
-        <If Condition="[Datetime.TryParse(in_Value, new DateTime)]" DisplayName="条件分岐 - DateTime型に変換できるか" sap:VirtualizedContainerService.HintSize="729,356" sap2010:WorkflowViewState.IdRef="If_1">
+        <If Condition="[Datetime.TryParse(in_Value, new DateTime)]" DisplayName="条件分岐 - DateTime型に変換できるか" sap:VirtualizedContainerService.HintSize="730,368" sap2010:WorkflowViewState.IdRef="If_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -113,14 +113,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <If Condition="[CDate(in_Value) &lt; CDate(in_MinValue) OrElse CDate(in_Value) &gt; CDate(in_MaxValue)]" DisplayName="条件分岐 - 最小最大値の範囲外か？" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[CDate(in_Value) &lt; CDate(in_MinValue) OrElse CDate(in_Value) &gt; CDate(in_MaxValue)]" DisplayName="条件分岐 - 最小最大値の範囲外か？" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Throw DisplayName="エラー (範囲外)" Exception="[New Exception(ErrorMessage_Range)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                <Throw DisplayName="エラー (範囲外)" Exception="[New BusinessRuleException(ErrorMessage_Range)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
               </If.Then>
             </If>
           </If.Then>
           <If.Else>
-            <Throw DisplayName="エラー (日付では無い)" Exception="[New Exception(ErrorMessage_Parse)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            <Throw DisplayName="エラー (日付では無い)" Exception="[New BusinessRuleException(ErrorMessage_Parse)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
           </If.Else>
         </If>
       </If.Else>

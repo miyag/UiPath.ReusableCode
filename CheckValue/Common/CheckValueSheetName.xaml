@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>759,1406</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>764,1398</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -67,7 +67,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="値のチェック：シート名が使用できるか？&#xA;&#xA;# 引数&#xA;- in_Value : 入力値&#xA;- in_Name : 入力項目名" DisplayName="CheckValueSheetName" sap:VirtualizedContainerService.HintSize="739,1306" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="値のチェック：シート名が使用できるか？&#xA;&#xA;# 引数&#xA;- in_Value : 入力値&#xA;- in_Name : 入力項目名" DisplayName="CheckValueSheetName" sap:VirtualizedContainerService.HintSize="744,1338" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IsInvalidName" />
       <Variable x:TypeArguments="x:String" Name="ErrorMessage_Char" />
@@ -79,7 +79,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="代入 - エラーメッセージ" sap:VirtualizedContainerService.HintSize="697,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="代入 - エラーメッセージ" sap:VirtualizedContainerService.HintSize="702,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ErrorMessage_Char]</OutArgument>
       </Assign.To>
@@ -87,7 +87,7 @@
         <InArgument x:TypeArguments="x:String">[String.Format("「{0}」で指定の値({1})はシート名に使用できない文字を含んでいます。", in_Name, in_Value)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="代入 - エラーメッセージ（レングス）" sap:VirtualizedContainerService.HintSize="697,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="代入 - エラーメッセージ（レングス）" sap:VirtualizedContainerService.HintSize="702,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ErrorMessage_Length]</OutArgument>
       </Assign.To>
@@ -95,7 +95,7 @@
         <InArgument x:TypeArguments="x:String">[String.Format("「{0}」で指定のファイル名({1})が文字数制限を超えています。", in_Name, in_Value)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="697,927" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="702,946.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -103,29 +103,29 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Else>
-        <Sequence DisplayName="シーケンス - 値がある場合" sap:VirtualizedContainerService.HintSize="526,779" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="シーケンス - 値がある場合" sap:VirtualizedContainerService.HintSize="526,792.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If sap2010:Annotation.AnnotationText="全角、半角に関わらず、最大31文字まで" Condition="[in_Value.Length &gt; 31]" DisplayName="文字数チェック" sap:VirtualizedContainerService.HintSize="484,235" sap2010:WorkflowViewState.IdRef="If_3">
+          <If sap2010:Annotation.AnnotationText="全角、半角に関わらず、最大31文字まで" Condition="[in_Value.Length &gt; 31]" DisplayName="文字数チェック" sap:VirtualizedContainerService.HintSize="484,242.666666666667" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Throw DisplayName="エラー（文字数制限）" Exception="[New Exception(ErrorMessage_Length)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              <Throw DisplayName="エラー（文字数制限）" Exception="[New BusinessRuleException(ErrorMessage_Length)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
             </If.Then>
           </If>
-          <ui:InvokeCode ContinueOnError="{x:Null}" Code="'// 1) エラーになる文字 '*/:?[\]’＇＊／：？［＼］￥&#xD;&#xA;'// 2) 「履歴」というマジック的な禁止文字あり&#xD;&#xA;If System.Text.RegularExpressions.Regex.IsMatch(sheetName, &quot;[:\\?\[\]/*：￥＼？［］／＊]&quot;) Then&#xD;&#xA;&#x9;isInvalidName = True&#xD;&#xA;ElseIf sheetName.Contains(&quot;履歴&quot;) Then&#xD;&#xA;&#x9;isInvalidName = True&#xD;&#xA;Else&#xD;&#xA;&#x9;isInvalidName = False&#xD;&#xA;End If" DisplayName="コードを呼び出し - 値のチェック" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="'// 1) エラーになる文字 '*/:?[\]’＇＊／：？［＼］￥&#xA;'// 2) 「履歴」というマジック的な禁止文字あり&#xA;If System.Text.RegularExpressions.Regex.IsMatch(sheetName, &quot;[:\\?\[\]/*：￥＼？［］／＊]&quot;) Then&#xA;&#x9;isInvalidName = True&#xA;ElseIf sheetName.Contains(&quot;履歴&quot;) Then&#xA;&#x9;isInvalidName = True&#xA;Else&#xA;&#x9;isInvalidName = False&#xA;End If" DisplayName="コードを呼び出し - 値のチェック" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
             <ui:InvokeCode.Arguments>
               <OutArgument x:TypeArguments="x:Boolean" x:Key="isInvalidName">[IsInvalidName]</OutArgument>
               <InArgument x:TypeArguments="x:String" x:Key="sheetName">[in_Value]</InArgument>
             </ui:InvokeCode.Arguments>
           </ui:InvokeCode>
-          <If Condition="[IsInvalidName]" DisplayName="条件分岐 - シート名が不正か" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[IsInvalidName]" DisplayName="条件分岐 - シート名が不正か" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -133,7 +133,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Throw DisplayName="エラー（シート名不可）" Exception="[New Exception(ErrorMessage_Char)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              <Throw DisplayName="エラー（シート名不可）" Exception="[New BusinessRuleException(ErrorMessage_Char)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </If.Then>
           </If>
         </Sequence>

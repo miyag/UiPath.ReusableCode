@@ -1,6 +1,6 @@
 {
-  "name": "CommonWorkflow-Debugxxx",
-  "description": "CommonWorkflow Debug xxx",
+  "name": "DebugData",
+  "description": "Debug Data",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.UIAutomation.Activities": "[18.4.5]",

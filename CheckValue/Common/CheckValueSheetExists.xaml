@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1004,1294</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1010,1286</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -70,7 +70,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="シート存在チェック&#xA;&#xA;# 引数&#xA;- in_Value : 入力値&#xA;- in_Name : 入力項目名&#xA;- in_FilePath : ファイルパス" DisplayName="CheckValueSheetExists" sap:VirtualizedContainerService.HintSize="984,1194" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="シート存在チェック&#xA;&#xA;# 引数&#xA;- in_Value : 入力値&#xA;- in_Name : 入力項目名&#xA;- in_FilePath : ファイルパス" DisplayName="CheckValueSheetExists" sap:VirtualizedContainerService.HintSize="990,1226" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="SheetExists" />
       <Variable x:TypeArguments="x:String" Name="ErrorMessage_File" />
@@ -82,7 +82,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="代入 - エラーメッセージ（File）" sap:VirtualizedContainerService.HintSize="942,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="代入 - エラーメッセージ（File）" sap:VirtualizedContainerService.HintSize="948,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ErrorMessage_File]</OutArgument>
       </Assign.To>
@@ -90,7 +90,7 @@
         <InArgument x:TypeArguments="x:String">[String.Format("「{0}」のシートがあるファイル({1})が存在しません。", in_Name, in_FilePath)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="代入 - エラーメッセージ（Sheet）" sap:VirtualizedContainerService.HintSize="942,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="代入 - エラーメッセージ（Sheet）" sap:VirtualizedContainerService.HintSize="948,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ErrorMessage_Sheet]</OutArgument>
       </Assign.To>
@@ -98,7 +98,7 @@
         <InArgument x:TypeArguments="x:String">[String.Format("「{0}」で指定のシート({1})がありません。", in_Name, in_Value)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="942,800" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[String.IsNullOrEmpty(in_Value)]" DisplayName="条件分岐 - 値なしはチェックしない" sap:VirtualizedContainerService.HintSize="948,818" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -106,7 +106,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Else>
-        <If Condition="[IO.File.Exists(in_FilePath)]" DisplayName="条件分岐 - ファイルが存在するか" sap:VirtualizedContainerService.HintSize="771,652" sap2010:WorkflowViewState.IdRef="If_4">
+        <If Condition="[IO.File.Exists(in_FilePath)]" DisplayName="条件分岐 - ファイルが存在するか" sap:VirtualizedContainerService.HintSize="772,664" sap2010:WorkflowViewState.IdRef="If_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,20 +114,20 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence DisplayName="シーケンス - ファイルがある場合" sap:VirtualizedContainerService.HintSize="526,504" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence DisplayName="シーケンス - ファイルがある場合" sap:VirtualizedContainerService.HintSize="526,510" sap2010:WorkflowViewState.IdRef="Sequence_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim app As Application = New Application()&#xD;&#xA;Dim book As Workbook = app.Workbooks.Open(Path.GetFullPath(filePath))&#xD;&#xA;sheetExists = False&#xD;&#xA;For Each sheet As Worksheet In book.Worksheets&#xD;&#xA;&#x9;If sheet.Name = sheetName Then&#xD;&#xA;&#x9;&#x9;sheetExists = True&#xD;&#xA;&#x9;&#x9;Exit For&#xD;&#xA;&#x9;End If&#xD;&#xA;Next&#xD;&#xA;book.Close()&#xD;&#xA;app.Quit()" DisplayName="コードを呼び出し - シートの存在チェック" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+              <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim app As Application = New Application()&#xA;Dim book As Workbook = app.Workbooks.Open(Path.GetFullPath(filePath))&#xA;sheetExists = False&#xA;For Each sheet As Worksheet In book.Worksheets&#xA;&#x9;If sheet.Name = sheetName Then&#xA;&#x9;&#x9;sheetExists = True&#xA;&#x9;&#x9;Exit For&#xA;&#x9;End If&#xA;Next&#xA;book.Close()&#xA;app.Quit()" DisplayName="コードを呼び出し - シートの存在チェック" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                 <ui:InvokeCode.Arguments>
                   <InArgument x:TypeArguments="x:String" x:Key="filePath">[in_FilePath]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="sheetName">[in_Value]</InArgument>
                   <OutArgument x:TypeArguments="x:Boolean" x:Key="sheetExists">[SheetExists]</OutArgument>
                 </ui:InvokeCode.Arguments>
               </ui:InvokeCode>
-              <If Condition="[SheetExists]" DisplayName="条件分岐 - シートがあるか" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_3">
+              <If Condition="[SheetExists]" DisplayName="条件分岐 - シートがあるか" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -135,13 +135,13 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Else>
-                  <Throw DisplayName="エラー（シートが無い）" Exception="[New Exception(ErrorMessage_Sheet)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  <Throw DisplayName="エラー（シートが無い）" Exception="[New BusinessRuleException(ErrorMessage_Sheet)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </If.Else>
               </If>
             </Sequence>
           </If.Then>
           <If.Else>
-            <Throw DisplayName="エラー（ファイルが無い）" Exception="[New Exception(ErrorMessage_File)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+            <Throw DisplayName="エラー（ファイルが無い）" Exception="[New BusinessRuleException(ErrorMessage_File)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
           </If.Else>
         </If>
       </If.Else>
