@@ -1,0 +1,239 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="End" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_ResultMessage" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>714,2751.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Initialize_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Configuration.Install</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="終了処理を行う&#xA;&#xA;# 引数&#xA;- in_Config ： 設定ディクショナリ&#xD;&#xA;- in_ResultMessage ： 結果メッセージ" DisplayName="End" sap:VirtualizedContainerService.HintSize="694,2691.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="SelectedButton" />
+      <Variable x:TypeArguments="st:StringBuilder" Name="StrBuilder" />
+      <Variable x:TypeArguments="x:String" Name="FileName" />
+      <Variable x:TypeArguments="x:String" Name="FilePath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="メッセージをログ - 開始ログ" sap:VirtualizedContainerService.HintSize="652,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;End の開始&quot;]" />
+    <Assign DisplayName="実行結果メッセージ - マシン名ユーザー名" sap:VirtualizedContainerService.HintSize="652,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Object">[in_ResultMessage("実行マシン・ユーザー名")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Object">[Environment.MachineName &amp; "\" &amp; Environment.UserName]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="実行結果メッセージ - 処理終了" sap:VirtualizedContainerService.HintSize="652,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Object">[in_ResultMessage("処理終了")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Object">[Now.ToString("yyyy/MM/dd HH:mm:ss")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="シーケンス - 結果Htmlを出力" sap:VirtualizedContainerService.HintSize="652,2030.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="代入 - ファイル名" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["Result_" &amp; Now.ToString("yyyyMMdd-HHmmss")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="代入 - ファイルパス" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[FilePath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Path.GetFullPath(String.Format("{0}/{1}.html", in_Config("ResultHtmlDirectory").ToString, FileName))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="代入 - StringBuilderの初期化" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="st:StringBuilder">[new StringBuilder]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="代入 - 見出し・Html上部タグ" sap:VirtualizedContainerService.HintSize="610,65.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="st:StringBuilder" xml:space="preserve">[StrBuilder.AppendLine(String.Format("&lt;html&gt;&lt;head&gt;&lt;meta charset=""UTF-8""&gt;&lt;title&gt;{0}&lt;/title&gt;" &amp; _
+"&lt;style type=text/css&gt;td,th{{border:1px solid #ccc; padding:10px;}} th{{background:#cceeff}}" &amp; _
+"&lt;/style&gt;" &amp; _
+"&lt;/head&gt;&lt;body&gt;&lt;h3&gt;実行結果&lt;/h3&gt;", FileName))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="代入 - h4・Table開始タグ - 結果メッセージ" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="st:StringBuilder">[StrBuilder.AppendLine("&lt;h4&gt;メッセージ&lt;/h4&gt;&lt;table&gt;")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素) - 結果メッセージ" sap:VirtualizedContainerService.HintSize="610,200.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_ResultMessage]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Object)">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" Name="item" />
+            </ActivityAction.Argument>
+            <Assign DisplayName="代入 - 行の追加 - 結果メッセージ" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="st:StringBuilder">[StrBuilder.AppendLine(String.Format("&lt;tr&gt;&lt;th&gt;{0}&lt;/th&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;/tr&gt;", item.Key, item.Value.ToString))]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </ActivityAction>
+        </ui:ForEach.Body>
+      </ui:ForEach>
+      <Assign DisplayName="代入 - Table終了タグ - 結果メッセージ" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="st:StringBuilder">[StrBuilder.AppendLine("&lt;/table&gt;")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Sequence DisplayName="シーケンス - 設定ファイル" sap:VirtualizedContainerService.HintSize="610,496.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="代入 - h4・Table開始タグ - 設定ファイル" sap:VirtualizedContainerService.HintSize="335.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign.To>
+            <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="st:StringBuilder">[StrBuilder.AppendLine("&lt;h4&gt;設定ファイル&lt;/h4&gt;&lt;table&gt;")]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素) - 設定ファイル" sap:VirtualizedContainerService.HintSize="335.333333333333,200.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_Config]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Object)">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" Name="item" />
+              </ActivityAction.Argument>
+              <Assign DisplayName="代入 - 行の追加 - 設定ファイル" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="st:StringBuilder">[StrBuilder.AppendLine(String.Format("&lt;tr&gt;&lt;th&gt;{0}&lt;/th&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;/tr&gt;", item.Key, item.Value.ToString))]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+        <Assign DisplayName="代入 - Table終了タグ - 設定ファイル" sap:VirtualizedContainerService.HintSize="335.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_13">
+          <Assign.To>
+            <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="st:StringBuilder">[StrBuilder.AppendLine("&lt;/table&gt;")]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
+      <Assign DisplayName="代入 - 見出し・Html下部タグ" sap:VirtualizedContainerService.HintSize="610,62" sap2010:WorkflowViewState.IdRef="Assign_14">
+        <Assign.To>
+          <OutArgument x:TypeArguments="st:StringBuilder">[StrBuilder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="st:StringBuilder">[StrBuilder.AppendLine("&lt;/head&gt;&lt;/html&gt;")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:WriteTextFile DisplayName="テキストをファイルに書き込み - 実行結果Html" FileName="[FilePath]" sap:VirtualizedContainerService.HintSize="610,134.666666666667" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[StrBuilder.ToString()]" />
+      <If Condition="[in_Config(&quot;ShowResultHtml&quot;).ToString = &quot;YES&quot;]" DisplayName="条件分岐 - 実行結果Htmlを表示するか？" sap:VirtualizedContainerService.HintSize="610,269.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <ui:OpenBrowser CommunicationMethod="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="ブラウザーを開く - 実行結果Html" Hidden="False" sap:VirtualizedContainerService.HintSize="434,115.333333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="[String.Format(&quot;file:///{0}&quot;, Strings.Replace(FilePath, &quot;\&quot;, &quot;/&quot;))]">
+            <ui:OpenBrowser.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                </ActivityAction.Argument>
+              </ActivityAction>
+            </ui:OpenBrowser.Body>
+          </ui:OpenBrowser>
+        </If.Then>
+      </If>
+    </Sequence>
+    <ui:LogMessage DisplayName="メッセージをログ - 終了ログ" sap:VirtualizedContainerService.HintSize="652,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;End の終了&quot;]" />
+  </Sequence>
+</Activity>

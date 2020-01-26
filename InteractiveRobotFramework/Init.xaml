@@ -1,11 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Initialize" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Init" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="out_Config" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_ResultMessage" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>764,1516</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>764,1430.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialize_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -57,6 +58,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Configuration.Install</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -64,7 +66,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="初期化処理を行う&#xA;&#xA;# 引数&#xA;- out_Config ： 設定ディクショナリ" DisplayName="Initialize" sap:VirtualizedContainerService.HintSize="744,1456" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="初期化処理を行う&#xA;&#xA;# 引数&#xA;- out_Config ： 設定ディクショナリ&#xD;&#xA;- io_ResultMessage ： 結果メッセージ" DisplayName="Init" sap:VirtualizedContainerService.HintSize="744,1370.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="SelectedButton" />
     </Sequence.Variables>
@@ -74,7 +76,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="メッセージをログ - 開始ログ" sap:VirtualizedContainerService.HintSize="702,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Initialize の開始&quot;]" />
+    <ui:LogMessage DisplayName="メッセージをログ - 開始ログ" sap:VirtualizedContainerService.HintSize="702,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Init の開始&quot;]" />
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="設定ファイルの読み込み" sap:VirtualizedContainerService.HintSize="702,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Common\ReadConfig.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FilePath" />
@@ -87,7 +89,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[out_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[out_Config(&quot;ShowPreStartMessage&quot;).ToString = &quot;YES&quot;]" DisplayName="条件分岐 - 実行前の確認メッセージを表示するか？" sap:VirtualizedContainerService.HintSize="702,558.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[out_Config(&quot;ShowPreStartMessage&quot;).ToString = &quot;YES&quot;]" DisplayName="条件分岐 - 実行前の確認メッセージを表示するか？" sap:VirtualizedContainerService.HintSize="702,558.666666666667" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Sequence DisplayName="シーケンス - 実行前の確認メッセージを表示" sap:VirtualizedContainerService.HintSize="526,404.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
@@ -106,20 +108,12 @@
     </If>
     <Assign DisplayName="実行結果メッセージ - 処理開始" sap:VirtualizedContainerService.HintSize="702,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Object">[Message("処理開始")]</OutArgument>
+        <OutArgument x:TypeArguments="x:Object">[io_ResultMessage("処理開始")]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:Object">[Now.ToString("yyyy/MM/dd HH:mm:ss")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="実行結果メッセージ - 処理結果" sap:VirtualizedContainerService.HintSize="702,62" sap2010:WorkflowViewState.IdRef="Assign_2">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Object">[Message("処理結果")]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Object">[""]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:LogMessage DisplayName="メッセージをログ - 終了ログ" sap:VirtualizedContainerService.HintSize="702,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Initialize の終了&quot;]" />
+    <ui:LogMessage DisplayName="メッセージをログ - 終了ログ" sap:VirtualizedContainerService.HintSize="702,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Init の終了&quot;]" />
   </Sequence>
 </Activity>
