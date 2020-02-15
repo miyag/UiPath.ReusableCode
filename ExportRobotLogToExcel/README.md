@@ -56,5 +56,5 @@ No Dependencies
 
 ## Media
 
-<img src="/Images/wfimage.png" alt="">
-<img src="/Images/xlsimage.png" alt="">
+<img src="/ExportRobotLogToExcel/Images/wfimage.png" alt="">
+<img src="/ExportRobotLogToExcel/Images/xlsimage.png" alt="">
