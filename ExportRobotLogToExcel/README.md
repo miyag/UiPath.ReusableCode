@@ -1,6 +1,7 @@
 # ExportRobotLogToExcel
 
 Read UiPath Execution Log And Export all content to excel.
+
 Uipath 実行ログファイル を読み取り、内容をExcelにすべて出力します。
 
 ## Component Name
@@ -15,13 +16,9 @@ ja en
 
 ## Summary
 
-指定フォルダの実行ログファイルを読み込み、内容を分解してエクセルに出力します。
-ログレベルやメッセージだけでなく、プロセスID等の項目もすべて分解します。
-エクセルに出力することで、各項目ごとにフィルタを掛けて、ログを確認できます。
+指定フォルダの実行ログファイルを読み込み、内容を分解してエクセルに出力します。ログレベルやメッセージだけでなく、プロセスID等の項目もすべて分解します。エクセルに出力することで、各項目ごとにフィルタを掛けて、ログを確認できます。
 
-Read robot exeution log in the specific folder and parse log for excel export.
-Log row data was parsed not only the Loglevel and the Logmessage but also process name and others.
-By outputting to Excel, you can filter each item and check the log.
+Read robot exeution log in the specific folder and parse log for excel export. Log row was parsed not only the Loglevel and the Logmessage but also process name and others. By outputting to Excel, you can filter each item and check the log.
 
 
 ## Benefits
