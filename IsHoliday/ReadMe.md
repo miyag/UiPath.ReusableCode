@@ -45,6 +45,6 @@ No Dependencies
 
 ## Media
 
-<img src="/IsHoliday/Images/wfimage.png" alt="">
-<img src="/IsHoliday/Images/excel.png" alt="">
-<img src="/IsHoliday/Images/usage.png" alt="">
+<img src="/IsHoliday/images/wfimage.png" alt="">
+<img src="/IsHoliday/images/excel.png" alt="">
+<img src="/IsHoliday/images/usage.png" alt="">
