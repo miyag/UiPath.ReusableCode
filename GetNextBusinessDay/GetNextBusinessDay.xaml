@@ -1,0 +1,353 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetNextBusinessDay" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="基準日" Name="in_Date" Type="InArgument(s:DateTime)" />
+    <x:Property sap2010:Annotation.AnnotationText="営業日の計算結果" Name="out_Date" Type="OutArgument(s:DateTime)" />
+    <x:Property sap2010:Annotation.AnnotationText="N日後（N日先）の数値" Name="in_addDate" Type="InArgument(x:Int32)" />
+    <x:Property sap2010:Annotation.AnnotationText="設定Excelシートのファイルパス" Name="in_ConfigPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1028.66666666667,3432</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>IsHoliday_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.POP3.Activities</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Windows</x:String>
+      <x:String>System.Windows.Threading</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Presentation</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="指定日数後の営業日を取得する&#xA;&#xA;# 引数&#xA;in_BaseDate  基準日付&#xA;in_DayCount  指定営業日数&#xA;in_ConfigPath  設定ファイルパス&#xA;out_BusinessDate  《結果》N日後の営業日&#xA;&#xA;# 使用例&#xA;- 8/11(月) の「1」営業日後 ＝ 8/12(火) &#xA;- 8/15(金) の「-2」営業日後 ＝ 8/13(水) " DisplayName="GetNextBusinessDay" sap:VirtualizedContainerService.HintSize="806,3367.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_42">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(Of String, String)]" Name="SpecialDayDict" />
+      <Variable x:TypeArguments="x:String" Default="WeekDayRule" Name="ApprName_Wdr" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DtSpecialDay" />
+      <Variable x:TypeArguments="x:String" Default="SpecialDayList" Name="ApprName_Sdl" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DtWeekDayRule" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(Of String, String)]" Name="WeekDayRuleDict" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="WorkBusinessDays" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="WorkIndex" />
+      <Variable x:TypeArguments="s:String[]" Default="[{&quot;日&quot;,&quot;月&quot;,&quot;火&quot;,&quot;水&quot;,&quot;木&quot;,&quot;金&quot;,&quot;土&quot;}]" Name="WeekDayArray" />
+      <Variable x:TypeArguments="x:Int32" Name="PlusMinus" />
+      <Variable x:TypeArguments="x:Int32" Name="BusinessDaysForCount" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="曜日ルールの設定読み込み" sap:VirtualizedContainerService.HintSize="764,1101.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_48">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[System.Windows.Application.Current.Resources.Contains(ApprName_Wdr)]" DisplayName="曜日ルールがアプリケーションリソースにあるか？" sap:VirtualizedContainerService.HintSize="722,1009.33333333333" sap2010:WorkflowViewState.IdRef="If_26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign DisplayName="あれば読み込み - 曜日ルール" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_75">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[WeekDayRuleDict]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[CType(System.Windows.Application.Current.Resources(ApprName_Wdr), Dictionary(Of String, String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="無ければExcelから作成 - 曜日ルール" sap:VirtualizedContainerService.HintSize="414,855.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_49">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="- 読込失敗は例外発生" DataTable="[DtWeekDayRule]" DisplayName="Excelシートを読み込み - 曜日ルール" sap:VirtualizedContainerService.HintSize="372,117.333333333333" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="曜日ルール" WorkbookPath="[in_ConfigPath]">
+              <ui:ReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ReadRange.Range>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ReadRange>
+            <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="繰り返し（各列） - 曜日ルール" sap:VirtualizedContainerService.HintSize="372,428.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[DtWeekDayRule.Columns]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="sd:DataColumn">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="item" />
+                  </ActivityAction.Argument>
+                  <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[DtWeekDayRule]" DisplayName="繰り返し（各行） - 曜日ルール" sap:VirtualizedContainerService.HintSize="304,290" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                        </ActivityAction.Argument>
+                        <InvokeMethod DisplayName="ディクショナリに追加 - 曜日ルール" sap:VirtualizedContainerService.HintSize="237.333333333333,137.333333333333" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Add">
+                          <InvokeMethod.TargetObject>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[WeekDayRuleDict]</InArgument>
+                          </InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="x:String">[item.ColumnName]</InArgument>
+                          <InArgument x:TypeArguments="x:String">[row.Item(item.ColumnName).ToString]</InArgument>
+                        </InvokeMethod>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                  </ui:ForEachRow>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+            <InvokeMethod DisplayName="リソースに追加 - 曜日ルール" sap:VirtualizedContainerService.HintSize="372,137.333333333333" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Add">
+              <InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="av:ResourceDictionary">[Application.Current.Resources]</InArgument>
+              </InvokeMethod.TargetObject>
+              <InArgument x:TypeArguments="x:String">[ApprName_Wdr]</InArgument>
+              <InArgument x:TypeArguments="x:Object">[WeekDayRuleDict]</InArgument>
+            </InvokeMethod>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="特別日リストの設定読み込み" sap:VirtualizedContainerService.HintSize="764,1338.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_50">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[System.Windows.Application.Current.Resources.Contains(ApprName_Sdl)]" DisplayName="特別日リストがアプリケーションリソースにあるか？" sap:VirtualizedContainerService.HintSize="685.333333333333,870.666666666667" sap2010:WorkflowViewState.IdRef="If_25">
+        <If.Then>
+          <Assign DisplayName="あれば読み込み - 特別日リスト" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_70">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[SpecialDayDict]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[CType(System.Windows.Application.Current.Resources(ApprName_Sdl), Dictionary(Of String, String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="無ければExcelから作成 - 特別日リスト" sap:VirtualizedContainerService.HintSize="377.333333333333,716.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_44">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="- 読込失敗は例外発生" DataTable="[DtSpecialDay]" DisplayName="Excelシートを読み込み - 特別日リスト" sap:VirtualizedContainerService.HintSize="335.333333333333,117.333333333333" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="特別日リスト" WorkbookPath="[in_ConfigPath]">
+              <ui:ReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ReadRange.Range>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ReadRange>
+            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[DtSpecialDay]" DisplayName="繰り返し（各行） - 特別日リスト" sap:VirtualizedContainerService.HintSize="335.333333333333,290" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <InvokeMethod DisplayName="ディクショナリに追加 - 特別日リスト" sap:VirtualizedContainerService.HintSize="237.333333333333,137.333333333333" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Add">
+                    <InvokeMethod.TargetObject>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[SpecialDayDict]</InArgument>
+                    </InvokeMethod.TargetObject>
+                    <InArgument x:TypeArguments="x:String">[CDate(row("日付")).ToString("yyyy/MM/dd")]</InArgument>
+                    <InArgument x:TypeArguments="x:String">[row("営業区分").ToString]</InArgument>
+                  </InvokeMethod>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <InvokeMethod DisplayName="リソースに追加 - 特別日リスト" sap:VirtualizedContainerService.HintSize="335.333333333333,137.333333333333" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+              <InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="av:ResourceDictionary">[Application.Current.Resources]</InArgument>
+              </InvokeMethod.TargetObject>
+              <InArgument x:TypeArguments="x:String">[ApprName_Sdl]</InArgument>
+              <InArgument x:TypeArguments="x:Object">[SpecialDayDict]</InArgument>
+            </InvokeMethod>
+          </Sequence>
+        </If.Else>
+      </If>
+      <ui:CommentOut DisplayName="コメント アウト" sap:VirtualizedContainerService.HintSize="685.333333333333,336" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="無視されたアクティビティ" sap:VirtualizedContainerService.HintSize="271.333333333333,257.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_54">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <WriteLine DisplayName="デバッグ - 特別日リスト" sap:VirtualizedContainerService.HintSize="229.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[String.Join(Environment.NewLine, SpecialDayDict.ToArray)]" />
+            <WriteLine DisplayName="デバッグ - 曜日ルール" sap:VirtualizedContainerService.HintSize="229.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[String.Join(Environment.NewLine, From v in WeekDayRuleDict Select String.Format(&quot;[{0}]{1}&quot;,v.Key ,v.Value))]" />
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+    </Sequence>
+    <Sequence sap2010:Annotation.AnnotationText="日付を1日づつ移動し、営業日かを判定する。営業日の日数が指定値になったらループ終了" DisplayName="営業日を計算" sap:VirtualizedContainerService.HintSize="764,560" sap2010:WorkflowViewState.IdRef="Sequence_56">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="カウントする営業日日数" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_83">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[BusinessDaysForCount]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[IF( in_addDate &lt; 0, in_addDate * -1, in_addDate)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="カウントする営業日日数のプラスマイナス" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_84">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[PlusMinus]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[IF( in_addDate &lt; 0, -1, 1)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <While DisplayName="指定の営業日数まで繰り返し" sap:VirtualizedContainerService.HintSize="484,233.333333333333" sap2010:WorkflowViewState.IdRef="While_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <While.Condition>
+          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="WorkBusinessDays &lt; BusinessDaysForCount" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
+        </While.Condition>
+        <Sequence DisplayName="シーケンス - 日付計算" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_55">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="インデックスのカウントアップ" sap:VirtualizedContainerService.HintSize="1014,62" sap2010:WorkflowViewState.IdRef="Assign_82">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[WorkIndex]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[WorkIndex + 1]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="日付の移動" sap:VirtualizedContainerService.HintSize="1014,62" sap2010:WorkflowViewState.IdRef="Assign_77">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:DateTime">[out_Date]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:DateTime">[in_Date.AddDays(WorkIndex * PlusMinus)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[SpecialDayDict.ContainsKey(out_Date.ToString(&quot;yyyy/MM/dd&quot;))]" DisplayName="条件分岐 - 特別日か？" sap:VirtualizedContainerService.HintSize="1014,370" sap2010:WorkflowViewState.IdRef="If_33">
+            <If.Then>
+              <If Condition="[SpecialDayDict.Item(out_Date.ToString(&quot;yyyy/MM/dd&quot;)).ToString = &quot;営業する&quot;]" DisplayName="条件分岐 - 営業する特別日か？" sap:VirtualizedContainerService.HintSize="484,216" sap2010:WorkflowViewState.IdRef="If_31">
+                <If.Then>
+                  <Assign DisplayName="営業日カウントアップ - 特別営業日" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_80">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[WorkBusinessDays]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[WorkBusinessDays +1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+              </If>
+            </If.Then>
+            <If.Else>
+              <If Condition="[WeekDayRuleDict.item(WeekDayArray(CInt(out_Date.DayOfWeek))).ToString = &quot;営業する&quot;]" DisplayName="条件分岐 - 営業する曜日か？" sap:VirtualizedContainerService.HintSize="484,216" sap2010:WorkflowViewState.IdRef="If_32">
+                <If.Then>
+                  <Assign DisplayName="営業日カウントアップ - 営業する曜日" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_81">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[WorkBusinessDays]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[WorkBusinessDays +1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+              </If>
+            </If.Else>
+          </If>
+        </Sequence>
+      </While>
+    </Sequence>
+  </Sequence>
+</Activity>
