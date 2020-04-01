@@ -1,0 +1,247 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="OutputProcessLogToHtml" this:OutputProcessLogToHtml.In_LogDirectory="[System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) &amp; &quot;\UiPath\Logs&quot;]" this:OutputProcessLogToHtml.In_OpenWithBrowser="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_LogDirectory" Type="InArgument(x:String)" />
+    <x:Property Name="In_OutputDirectory" Type="InArgument(x:String)" />
+    <x:Property Name="In_OpenWithBrowser" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1028.66666666667,2733.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>OutputProcessLogToHtml_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="# Arguments&#xA;In_LogDirectory&#xA;In_OutputDirectory&#xA;In_OpenWithBrowser" DisplayName="OutputProcessLogToHtml" sap:VirtualizedContainerService.HintSize="652,2668.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="HtmlFileName" />
+      <Variable x:TypeArguments="x:String" Name="LogFile" />
+      <Variable x:TypeArguments="st:StringBuilder" Default="[New StringBuilder]" Name="StbLog" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(Of String, String)]" Name="DicMsg" />
+      <Variable x:TypeArguments="x:String" Name="HtmlFilePath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <WriteLine DisplayName="WriteLine - Output Html" sap:VirtualizedContainerService.HintSize="610,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="Output Execution Log To Html File" />
+    <Sequence sap2010:Annotation.AnnotationText="Get Current Process Log" DisplayName="Get Execution log" sap:VirtualizedContainerService.HintSize="610,419.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="Assign - Target log file" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[LogFile]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Io.Directory.GetFiles(In_LogDirectory, "*Execution.log").Where(function(file) Not(file.Contains("WorkflowAnalyzer"))).OrderByDescending(function(file) file.ToString).ToArray(0)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Do not use activities because it is too slow" Code="Dim regex As New System.Text.RegularExpressions.Regex(&#xA;    &quot;([0-9:.]{13})\s(Trace|Info|Warn|Error|Fatal)\s(\{.*\})&quot;,&#xA;    System.Text.RegularExpressions.RegexOptions.IgnoreCase)&#xA;&#xA;Using fs As FileStream = New FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)&#xA;    Using sr As StreamReader =New StreamReader(fs, System.Text.Encoding.GetEncoding(&quot;Utf-8&quot;))&#xA;        Do While sr.Peek() &gt;= 0&#xA;            Dim matches As System.Text.RegularExpressions.MatchCollection = regex.Matches(sr.ReadLine())&#xA;            If matches.Count &gt; 0 Then&#xA;                Dim jobj As JObject = JObject.Parse(matches(0).Groups(3).Value)&#xA;                Dim dict As Dictionary(Of String, Object) = jobj.ToObject(Of Dictionary(Of String, Object))&#xA;                If dict.ContainsKey(&quot;message&quot;) Then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;'// Clear previous exection log&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;If dict.Item(&quot;message&quot;).ToString.Contains(&quot; execution ended&quot;)  Or dict.Item(&quot;message&quot;).ToString.Contains(&quot; の実行を終了しました&quot;)Then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;stbLog.Clear()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Else&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;stbLog.AppendLine(matches(0).Groups(1).Value &amp; vbTab &amp; matches(0).Groups(2).Value &amp; vbTab &amp; dict.Item(&quot;message&quot;).ToString)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#x9;&#x9;&#x9;&#x9;&#xA;                End If&#xA;            End If&#xA;        Loop&#xA;    End Using&#xA;End Using" DisplayName="Invoke Code - Set Log to StringBuilder" sap:VirtualizedContainerService.HintSize="334,194.666666666667" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+        <ui:InvokeCode.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="filePath">[LogFile]</InArgument>
+          <InOutArgument x:TypeArguments="st:StringBuilder" x:Key="stbLog">[StbLog]</InOutArgument>
+        </ui:InvokeCode.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeCode>
+    </Sequence>
+    <Sequence sap2010:Annotation.AnnotationText="Get project and environment Information" DisplayName="Set Additional Message" sap:VirtualizedContainerService.HintSize="610,815.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="ProjectJsonString" />
+        <Variable x:TypeArguments="njl:JObject" Name="ProjectJson" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ReadTextFile Content="[ProjectJsonString]" DisplayName="ReadTextFile - projectJson" FileName="project.json" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+      <Assign DisplayName="Cast - DeserializeObject" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_11">
+        <Assign.To>
+          <OutArgument x:TypeArguments="njl:JObject">[ProjectJson]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="njl:JObject">[CType(JsonConvert.DeserializeObject(ProjectJsonString), JObject)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - ProjectName" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_12">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[DicMsg("ProjectName")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[ProjectJson.GetValue("name").ToString]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - ProjectDescription" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_13">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[DicMsg("ProjectDescription")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[ProjectJson.GetValue("description").ToString]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - MachineName" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[DicMsg("MachineName")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Environment.MachineName]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - UserName" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[DicMsg("UserName")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Environment.UserName]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - CurrentDateTime" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[DicMsg("CurrentDateTime")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Now.ToString("yyyy/MM/dd (ddd) HH:mm:ss")]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <Sequence DisplayName="Create Html File" sap:VirtualizedContainerService.HintSize="610,740.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="LogText" />
+        <Variable x:TypeArguments="x:String" Name="InfoText" />
+        <Variable x:TypeArguments="x:String" Name="CssText" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="Assign - html file name" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[HtmlFileName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[String.Format("Result_{0}.html", Now.ToString("yyyyMMdd-HHmmss"))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - html file path" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[HtmlFilePath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Path.GetFullPath(In_OutputDirectory &amp; "/" &amp; HtmlFileName)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - CssText" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[CssText]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["div{border:solid 1px} td,th{border:1px solid #ccc; padding:10px;} th{background:#cceeff}"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - LogText" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[LogText]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[StbLog.ToString().Replace(Environment.NewLine,"&lt;br&gt;")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - InfoText" sap:VirtualizedContainerService.HintSize="334,65.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[InfoText]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String" xml:space="preserve">[String.Join(Environment.NewLine, 
+            From item In DicMsg Select (
+            String.Format("&lt;tr&gt;&lt;th&gt;{0}&lt;/th&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;/tr&gt;", item.Key, item.Value.ToString)))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:WriteTextFile DisplayName="WriteTextFile - Html" FileName="[HtmlFilePath]" sap:VirtualizedContainerService.HintSize="334,135.333333333333" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[String.Format( &quot;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;&quot;UTF-8&quot;&quot;&gt;&quot; &amp; _&#xA;&quot;&lt;title&gt;{0}&lt;/title&gt;&lt;style type=&quot;&quot;text/css&quot;&quot;&gt;{1}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&quot; &amp; _&#xA;&quot;&lt;h3&gt;Process Information&lt;/h3&gt;&lt;table&gt;{2}&lt;/table&gt;&lt;h3&gt;Process Log&lt;/h3&gt;&lt;div&gt;{3}&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;,&#xA; HtmlFileName, CssText, InfoText, LogText)]" />
+    </Sequence>
+    <If sap2010:Annotation.AnnotationText="Show result for confirmation" Condition="[In_OpenWithBrowser]" DisplayName="If - Open Html With Browser" sap:VirtualizedContainerService.HintSize="610,300" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:OpenBrowser CommunicationMethod="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="OpenBrowser - Html" Hidden="False" sap:VirtualizedContainerService.HintSize="434,115.333333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="[String.Format(&quot;file:///{0}&quot;, Strings.Replace(HtmlFilePath, &quot;\&quot;, &quot;/&quot;))]">
+          <ui:OpenBrowser.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+            </ActivityAction>
+          </ui:OpenBrowser.Body>
+        </ui:OpenBrowser>
+      </If.Then>
+    </If>
+  </Sequence>
+</Activity>
