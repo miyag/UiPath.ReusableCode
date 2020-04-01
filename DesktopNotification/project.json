@@ -1,6 +1,6 @@
 {
-  "name": "CommonWorkflow-DesktopNotification",
-  "description": "CommonWorkflow Desktop Notification",
+  "name": "DesktopNotificationWithXaml",
+  "description": "Desktop Notification With Xaml",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.UIAutomation.Activities": "[18.4.5]",
