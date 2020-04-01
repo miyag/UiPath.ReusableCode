@@ -1,6 +1,6 @@
 {
-  "name": "CommonWorkflow-CheckValue",
-  "description": "CommonWorkflow Check Value",
+  "name": "CheckValue",
+  "description": "Check Value",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.UIAutomation.Activities": "[18.4.5]",
