@@ -1,13 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DebugDataTable" this:DebugDataTable.in_DebugRowCount="5" this:DebugDataTable.in_DebugColCount="10" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DebugDataTable" this:DebugDataTable.in_DebugColumnsCount="10" this:DebugDataTable.in_DebugRowsCount="5" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_DataTable" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_DebugRowCount" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_DebugColCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DebugColumnsCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DebugRowsCount" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>396,589</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1028.66666666667,814</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataTableDebug_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -58,10 +58,9 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="データテーブルの内容をデバッグ出力する&#xA;&#xA;# 引数&#xA;- in_DataTable : データテーブル&#xA;- in_DebugRowCount : デバッグ表示する「行」数のリミット&#xA;- in_DebugColCount : デバッグ表示する「列」数のリミット" DisplayName="DebugDataTable" sap:VirtualizedContainerService.HintSize="376,489" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="データテーブルの内容をデバッグ出力します&#xA;&#xA;# 引数&#xA;- in_DataTable : データテーブル&#xA;- in_DebugRowsCount : デバッグ表示する「行」数のリミット&#xA;- in_DebugColumnsCount : デバッグ表示する「列」数のリミット&#xA;&#xA;# 出力例&#xA;DebugDataTable (Rows.Count=2 [DisplayLimit=3], Columns.Count=2 [DisplayLimit=3]&#xA;[Column] A列 B列 &#xA;[Row-1] 値１１ 値１２ &#xA;[Row-2] 値２１ 値２２" DisplayName="DebugDataTable" sap:VirtualizedContainerService.HintSize="376,619.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="DebugString" />
     </Sequence.Variables>
@@ -71,14 +70,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim sb As New System.Text.StringBuilder()&#xD;&#xA;'// Colum&#xD;&#xA;Dim idxCol As Int32 = 0&#xD;&#xA;sb.Append(&quot;[Column]&quot; &amp; vbTab)&#xD;&#xA;For Each c As DataColumn In dataTable.Columns&#xD;&#xA; sb.Append(c.ColumnName() + vbTab)&#xD;&#xA; idxCol = idxCol + 1&#xD;&#xA; If idxCol &gt;= debugColCount Then&#xD;&#xA;  sb.Append(&quot;...&quot;)&#xD;&#xA;  Exit For&#xD;&#xA; End If&#xD;&#xA;Next&#xD;&#xA;sb.AppendLine(&quot;&quot;)&#xD;&#xA;'// Row&#xD;&#xA;Dim idxRow As Int32 = 0&#xD;&#xA;For Each row As DataRow In dataTable.Rows&#xD;&#xA; idxRow = idxRow + 1&#xD;&#xA; sb.Append(&quot;[Row-&quot; &amp; idxRow &amp; &quot;]&quot; &amp; vbTab)&#xD;&#xA; idxCol = 0&#xD;&#xA; For Each col As DataColumn In dataTable.Columns&#xD;&#xA;  sb.Append(row.Item(col.ColumnName).ToString &amp; vbTab) &#xD;&#xA;  idxCol = idxCol + 1&#xD;&#xA;  If idxCol &gt;= debugColCount Then&#xD;&#xA;   sb.Append(&quot;...&quot;)&#xD;&#xA;   Exit For&#xD;&#xA;  End If&#xD;&#xA; Next&#xD;&#xA; If idxRow &gt;= debugRowCount Then&#xD;&#xA;  sb.AppendLine(&quot;...&quot;)&#xD;&#xA;  Exit For&#xD;&#xA; End If&#xD;&#xA; sb.AppendLine(&quot;&quot;)&#xD;&#xA;Next&#xD;&#xA;debugString = sb.ToString" DisplayName="コードを呼び出し - デバッグ出力" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim sb As New System.Text.StringBuilder()&#xD;&#xA;Dim idx_col As Int32 = 0&#xD;&#xA;Dim idx_row As Int32 = 0&#xD;&#xA;sb.Append(&quot;[Column]&quot; &amp; vbTab)&#xD;&#xA;For Each c As DataColumn In dataTable.Columns&#xD;&#xA;  sb.Append(c.ColumnName() + vbTab)&#xD;&#xA;  idx_col = idx_col + 1&#xD;&#xA;  If idx_col &gt;= debugColumnsCount Then&#xD;&#xA;    sb.Append(&quot;...&quot;)&#xD;&#xA;    Exit For&#xD;&#xA;  End If&#xD;&#xA;Next&#xD;&#xA;sb.AppendLine(&quot;&quot;)&#xD;&#xA;For Each row As DataRow In dataTable.Rows&#xD;&#xA;  idx_row = idx_row + 1&#xD;&#xA;  sb.Append(&quot;[Row-&quot; &amp; idx_row &amp; &quot;]&quot; &amp; vbTab)&#xD;&#xA;  idx_col = 0&#xD;&#xA;  For Each col As DataColumn In dataTable.Columns&#xD;&#xA;    sb.Append(row.Item(col.ColumnName).ToString &amp; vbTab) &#xD;&#xA;    idx_col = idx_col + 1&#xD;&#xA;    If idx_col &gt;= debugColumnsCount Then&#xD;&#xA;      sb.Append(&quot;...&quot;)&#xD;&#xA;      Exit For&#xD;&#xA;    End If&#xD;&#xA;  Next&#xD;&#xA;  If idx_row &gt;= debugRowsCount Then&#xD;&#xA;    sb.AppendLine(&quot;...&quot;)&#xD;&#xA;    Exit For&#xD;&#xA;  End If&#xD;&#xA;  sb.AppendLine(&quot;&quot;)&#xD;&#xA;Next&#xD;&#xA;debugString = sb.ToString" DisplayName="コードを呼び出し - デバッグ出力" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
       <ui:InvokeCode.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="dataTable">[in_DataTable]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="debugString">[DebugString]</OutArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="debugRowCount">[in_DebugRowCount]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="debugColCount">[in_DebugColCount]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="debugRowsCount">[in_DebugRowsCount]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="debugColumnsCount">[in_DebugColumnsCount]</InArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
-    <ui:LogMessage DisplayName="メッセージをログ - デバッグ出力" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[String.Format(&quot;DebugDataTable (Rows.Count={1} [DisplayLimit={2}], Columns.Count={3} [DisplayLimit={4}]{0}{5}&quot;, Environment.NewLine, &#xD;&#xA; in_DataTable.Rows.Count, in_DebugRowCount, in_DataTable.Columns.Count, in_DebugColCount, DebugString)]" />
+    <ui:LogMessage DisplayName="メッセージをログ - デバッグ出力" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[String.Format(&quot;DebugDataTable (Rows.Count={1} [DisplayLimit={2}], Columns.Count={3} [DisplayLimit={4}]{0}{5}&quot;, Environment.NewLine, &#xA; in_DataTable.Rows.Count, in_DebugRowsCount, in_DataTable.Columns.Count, in_DebugColumnsCount, DebugString)]" />
   </Sequence>
 </Activity>
