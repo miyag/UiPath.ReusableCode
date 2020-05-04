@@ -1,0 +1,167 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="列を指定して任意の順で行を並び替え" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1273.33333333333,2290.66666666667" sap2010:WorkflowViewState.IdRef="行と列の入れ替え_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="44">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="方法1）DataTableを複製して列をインポートし並び替え&#xA;方法2）LINQの「OrderBy」で並び替え&#xA;&#xA;2の場合、xamlファイルに下記の記載が必要&#xA;      &lt;AssemblyReference&gt;System.Data.DataSetExtensions&lt;/AssemblyReference&gt;&#xA;" DisplayName="列を指定して任意の順で行を並び替え" sap:VirtualizedContainerService.HintSize="655.333333333333,2086" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_Before" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_After" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_After2" />
+      <Variable x:TypeArguments="x:String" Name="BeforeText" />
+      <Variable x:TypeArguments="x:String" Name="AfterText" />
+      <Variable x:TypeArguments="x:String" Name="AfterText2" />
+      <Variable x:TypeArguments="s:String[]" Name="ArrayOrder" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BuildDataTable DataTable="[Dt_Before]" DisplayName="データテーブルを作成" sap:VirtualizedContainerService.HintSize="613.333333333333,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Name&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Team&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Point&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Age&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Name&gt;Messi&lt;/Name&gt;&#xA;    &lt;Team&gt;Barcelona&lt;/Team&gt;&#xA;    &lt;Point&gt;686&lt;/Point&gt;&#xA;    &lt;Age&gt;32&lt;/Age&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Name&gt;VanDijk&lt;/Name&gt;&#xA;    &lt;Team&gt;Liverpool&lt;/Team&gt;&#xA;    &lt;Point&gt;679&lt;/Point&gt;&#xA;    &lt;Age&gt;28&lt;/Age&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Name&gt;Ronaldo&lt;/Name&gt;&#xA;    &lt;Team&gt;Juventus&lt;/Team&gt;&#xA;    &lt;Point&gt;476&lt;/Point&gt;&#xA;    &lt;Age&gt;35&lt;/Age&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Name&gt;Mané&lt;/Name&gt;&#xA;    &lt;Team&gt;Liverpool&lt;/Team&gt;&#xA;    &lt;Point&gt;347&lt;/Point&gt;&#xA;    &lt;Age&gt;28&lt;/Age&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Name&gt;Salah&lt;/Name&gt;&#xA;    &lt;Team&gt;Liverpool&lt;/Team&gt;&#xA;    &lt;Point&gt;178&lt;/Point&gt;&#xA;    &lt;Age&gt;27&lt;/Age&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:OutputDataTable DataTable="[Dt_Before]" DisplayName="データテーブル出力（操作前）" sap:VirtualizedContainerService.HintSize="613.333333333333,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[BeforeText]" />
+    <ui:Comment DisplayName="コメント" sap:VirtualizedContainerService.HintSize="613.333333333333,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// データテーブルの操作 START ↓↓↓" />
+    <Assign DisplayName="代入 - 並び順の指定（配列）" sap:VirtualizedContainerService.HintSize="613.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:String[]">[ArrayOrder]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:String[]">[{"Liverpool","Barcelona","Juventus"}]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="1）DataTableを複製して列をインポートし並び替え" sap:VirtualizedContainerService.HintSize="613.333333333333,883.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap2010:Annotation.AnnotationText="Clone＝定義のみ（列あり行なし）コピー&#xA;Copy＝全て（列あり行あり）コピー" DisplayName="DataTableを複製" sap:VirtualizedContainerService.HintSize="571.333333333333,107.333333333333" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[Dt_After]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[Dt_Before.Clone]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="並び順に合致するものを上からコピーしていく" DisplayName="並び順の配列でループ" sap:VirtualizedContainerService.HintSize="571.333333333333,644" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ArrayOrder]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+            </ActivityAction.Argument>
+            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[Dt_Before]" DisplayName="データテーブルの行でループ" sap:VirtualizedContainerService.HintSize="534.666666666667,474.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <If Condition="[item.ToString = (row.Item(&quot;Team&quot;).ToString)]" DisplayName="条件分岐 - 指定した並び順に含まれるか？" sap:VirtualizedContainerService.HintSize="484,322" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <InvokeMethod sap2010:Annotation.AnnotationText="ImportRowで列を取り込み" DisplayName="メソッドを呼び出し" sap:VirtualizedContainerService.HintSize="237.333333333333,168" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="ImportRow">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="sd:DataTable">[Dt_After]</InArgument>
+                        </InvokeMethod.TargetObject>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <InArgument x:TypeArguments="sd:DataRow">[row]</InArgument>
+                      </InvokeMethod>
+                    </If.Then>
+                  </If>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEach>
+    </Sequence>
+    <Sequence DisplayName="2）LINQの「OrderBy」で並び替え" sap:VirtualizedContainerService.HintSize="613.333333333333,282.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap2010:Annotation.AnnotationText="列と一致する値をArrayOrder内から見つけ、&#xA;ArrayOrder内の行位置（IndexOf）で並び替え&#xA;&#xA;例）Dt_Before.AsEnumerable().OrderBy(Function(r)  Array.IndexOf(arrayOrder, r.Item(&quot;Team&quot;).ToString)).CopyToDataTable" DisplayName="代入 - LINQで並び替え" sap:VirtualizedContainerService.HintSize="262,190.666666666667" sap2010:WorkflowViewState.IdRef="Assign_11">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[Dt_After2]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[Dt_Before.AsEnumerable().OrderBy(Function(r)  Array.IndexOf(arrayOrder, r.Item("Team").ToString)).CopyToDataTable]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+    </Sequence>
+    <ui:Comment DisplayName="コメント" sap:VirtualizedContainerService.HintSize="613.333333333333,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// データテーブルの操作 END ↑↑↑" />
+    <ui:OutputDataTable DataTable="[Dt_After]" DisplayName="データテーブル出力（操作後）" sap:VirtualizedContainerService.HintSize="613.333333333333,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[AfterText]" />
+    <ui:OutputDataTable DataTable="[Dt_After2]" DisplayName="データテーブル出力（操作後2）" sap:VirtualizedContainerService.HintSize="613.333333333333,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[AfterText2]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="デバッグ表示" sap:VirtualizedContainerService.HintSize="613.333333333333,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[String.Format(&quot;&lt;before&gt;{0}{1}{0}&lt;after&gt;{0}{2}{0}&lt;after(LINQ)&gt;{0}{3}&quot;, Environment.NewLine, BeforeText, AfterText, AfterText2)]" TopMost="True" />
+  </Sequence>
+</Activity>
