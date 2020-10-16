@@ -1,0 +1,506 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="978,7749" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="SlackのAPIを使用して、指定チャンネルのメッセージを削除します&#xD;&#xA;&#xD;&#xA;対象メッセージは「日付範囲」「対象ワード/除外ワードを」で絞り込みが可能です。&#xD;&#xA;削除したメッセージはテキストファイルにバックアップとして出力します。&#xD;&#xA;&#xD;&#xA;# 処理の流れ&#xD;&#xA;- 1. 処理で使用するトークンをセット&#xD;&#xA;- 2. メッセージ削除の条件を指定&#xD;&#xA;- 3. APIからメッセージリストを取得（https://slack.com/api/conversations.history）&#xD;&#xA;- 4. 削除条件に合致するメッセージをリストに退避&#xD;&#xA;- 5. 削除実行前の確認表示（ダイアログ表示）&#xD;&#xA;- 6. APIでメッセージを削除（https://slack.com/api/chat.delete）&#xD;&#xA;- 7. 削除件数の表示（メッセージボックス表示）" DisplayName="シーケンス - Main" sap:VirtualizedContainerService.HintSize="988,7584" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="ResponseString" />
+      <Variable x:TypeArguments="njl:JObject" Name="ResponseJson" />
+      <Variable x:TypeArguments="x:Int32" Name="IndexLoop" />
+      <Variable x:TypeArguments="x:String" Name="Token" />
+      <Variable x:TypeArguments="x:String" Name="ChannelID" />
+      <Variable x:TypeArguments="s:DateTime" Name="DateFrom" />
+      <Variable x:TypeArguments="s:DateTime" Name="DateTo" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_DeleteMessage" />
+      <Variable x:TypeArguments="s:DateTime" Name="DateMessage" />
+      <Variable x:TypeArguments="x:String" Name="UserSelect" />
+      <Variable x:TypeArguments="s:String[]" Default="[{&quot;[Yes] 削除する&quot;, &quot;[No] 何もしない”}]" Name="ArrayUserSelect" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="CountDelete" />
+      <Variable x:TypeArguments="x:String" Name="BackupFilePath" />
+      <Variable x:TypeArguments="sd:DataRow" Name="DRow" />
+      <Variable x:TypeArguments="x:String" Name="TargetWord">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:Boolean" Name="IsDeleteTarget" />
+      <Variable x:TypeArguments="x:String" Name="ExcludeWord">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap2010:Annotation.AnnotationText="APIで使用するトークンを設定&#xD;&#xA;　例）xoxp-866740651669-86003・・・・・・&#xD;&#xA;&#xD;&#xA;取得は下記URLから可能&#xD;&#xA;　https://api.slack.com/legacy/custom-integrations/legacy-tokens&#xD;&#xA;&#xD;&#xA;トークンに必要なスコープは下記&#xD;&#xA;　- channels:history&#xA;　- chat:write&#xA;　- groups:history" DisplayName="1. 処理で使用するトークンをセット" sap:VirtualizedContainerService.HintSize="946,329" sap2010:WorkflowViewState.IdRef="Sequence_25">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="代入 - Slackトークン" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[Token]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">xoxp-866740651669-860031937489-1399643606720-8a911f70886df92b1005cd9b421b3bb7</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <Sequence sap2010:Annotation.AnnotationText="" DisplayName="2. メッセージ削除の条件を指定" sap:VirtualizedContainerService.HintSize="946,1038" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:Comment DisplayName="コメント" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="Comment_1" Text="```&#xD;&#xA;&lt;C01925CA933&gt; : ﻿データ移行-テスト通知&#xD;&#xA;&lt;C0151550MMW&gt; : データ移行-実行通知&#xD;&#xA;```&#xD;&#xA;" />
+      <Assign sap2010:Annotation.AnnotationText="「Web版」のSlackで対象チャンネルを開くと、URLにIDが入っています&#xD;&#xA;例）https://{ワークスペース名}.slack.com/messages/{チャンネルID}" DisplayName="代入 - チャンネルID" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[ChannelID]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">C01925CA933</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <Assign DisplayName="代入 - 日付範囲From" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="s:DateTime">[DateFrom]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="s:DateTime">[DateTime.Parse("2020/01/01 00:00:00")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="代入 - 日付範囲To" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="s:DateTime">[DateTo]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="s:DateTime">[DateTime.Parse("2020/12/31 00:00:00")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="代入 - 絞込み文字列：文字列を含む" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_36">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[TargetWord]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String" Value="" />
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="代入 - 絞込み文字列：文字列を含まない" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[ExcludeWord]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String" Value="" />
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="代入 - 削除メッセージのバックアップ" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[BackupFilePath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[String.Format("Output/delete_{0}.txt",Now.ToString("yyyyMMdd_HHmmss"))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:LogMessage DisplayName="メッセージをログ - 設定内容" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[String.Format(&quot;[Channel] {1}{0}[DateRange] {2} - {3}{0}[TargetWord] {4}{0}[ExcludeWord] {5}{0}[BackupFile] {6}&quot;, _&#xD;&#xA;&#x9;Environment.NewLine, &#xD;&#xA;&#x9;ChannelID, &#xD;&#xA;&#x9;DateFrom.ToString(&quot;yyyy/MM/dd HH:mm:ss&quot;), &#xD;&#xA;&#x9;DateTo.ToString(&quot;yyyy/MM/dd HH:mm:ss&quot;), &#xD;&#xA;&#x9;TargetWord, &#xD;&#xA;&#x9;ExcludeWord,&#xD;&#xA;&#x9;BackupFilePath)]" />
+    </Sequence>
+    <Sequence DisplayName="3. APIからメッセージリストを取得" sap:VirtualizedContainerService.HintSize="946,814" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:BuildDataTable sap2010:Annotation.AnnotationText="deletedt / channel / ts / dt / message" DataTable="[Dt_DeleteMessage]" DisplayName="データ テーブルを構築 - 削除対象メッセージ" sap:VirtualizedContainerService.HintSize="579,90" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;deletedt&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;channel&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;ts&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;dt&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;message&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:BuildDataTable>
+      <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" sap2010:Annotation.AnnotationText="https://slack.com/api/conversations.history" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP 要求 - メッセージ取得" EndPoint="[String.Format(&quot;https://slack.com/api/conversations.history?token={0}&amp;channel={1}&amp;limit=1000&quot;, Token, ChannelID)]" sap:VirtualizedContainerService.HintSize="579,64" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" Result="[ResponseString]" TimeoutMS="6000">
+        <ui:HttpClient.Attachments>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.Attachments>
+        <ui:HttpClient.Cookies>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.Cookies>
+        <ui:HttpClient.Headers>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.Headers>
+        <ui:HttpClient.Parameters>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.Parameters>
+        <ui:HttpClient.UrlSegments>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.UrlSegments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:HttpClient>
+      <Assign DisplayName="代入 - レスポンスのデシリアライズ（メッセージ取得）" sap:VirtualizedContainerService.HintSize="579,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="njl:JObject">[ResponseJson]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="njl:JObject">[CType(Newtonsoft.Json.JsonConvert.DeserializeObject(ResponseString), JObject)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:LogMessage DisplayName="メッセージをログ - リクエスト結果（メッセージ取得）" sap:VirtualizedContainerService.HintSize="579,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;- conversations.history ok: {0} error: {1}&quot;, &#xD;&#xA;&#x9;If(ResponseJson.ContainsKey(&quot;ok&quot;), ResponseJson.Item(&quot;ok&quot;).ToString, &quot;&quot;),&#xD;&#xA;&#x9;If(ResponseJson.ContainsKey(&quot;error&quot;), ResponseJson.Item(&quot;error&quot;).ToString, &quot;&quot;))]" />
+      <If Condition="[ResponseJson.Item(&quot;ok&quot;).ToString = &quot;True&quot;]" DisplayName="条件分岐 - リクエストが成功しているか？（メッセージ取得）" sap:VirtualizedContainerService.HintSize="579,257" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <ui:LogMessage DisplayName="メッセージをログ - 取得メッセージ総数" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[String.Format(&quot;- messages.count: {0}&quot;, ResponseJson.Item(&quot;messages&quot;).Count)]" />
+        </If.Then>
+        <If.Else>
+          <Throw sap2010:Annotation.AnnotationText="New Exception(String.Format(&quot;メッセージ取得エラー：[API]conversations.history [RESPONSE] {0}&quot;, ResponseJson.ToString))" DisplayName="スロー - 取得エラー" Exception="[New Exception(String.Format(&quot;メッセージ取得エラー：[API]conversations.history [RESPONSE] {0}&quot;, ResponseJson.ToString))]" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="Throw_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Throw>
+        </If.Else>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="4. 削除条件に合致するメッセージをリストに退避" sap:VirtualizedContainerService.HintSize="946,1986" sap2010:WorkflowViewState.IdRef="Sequence_20">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="[IndexLoop]" DisplayName="繰り返し (コレクションの各要素) - メッセージ一覧" sap:VirtualizedContainerService.HintSize="904,1894" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[ResponseJson.Item(&quot;messages&quot;)]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="njl:JObject">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="njl:JObject" Name="item" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="繰り返し本体 - メッセージ一覧" sap:VirtualizedContainerService.HintSize="868,1760" sap2010:WorkflowViewState.IdRef="Sequence_19">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="代入 - 投稿日付" sap:VirtualizedContainerService.HintSize="826,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:DateTime">[DateMessage]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:DateTime">[(New DateTime(1970, 1, 1)).AddSeconds(CDbl(item.item("ts").ToString)).ToLocalTime]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign DisplayName="代入 - 削除対象フラグ（初期化）" sap:VirtualizedContainerService.HintSize="826,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[IsDeleteTarget]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[DateMessage &gt;= DateFrom AndAlso DateMessage &lt;= DateTo]" DisplayName="条件分岐 - 投稿日時が指定の範囲内か？" sap:VirtualizedContainerService.HintSize="826,504" sap2010:WorkflowViewState.IdRef="If_9">
+                <If.Then>
+                  <If Condition="[TargetWord = &quot;&quot; OrElse item.ToString.Contains(TargetWord)]" DisplayName="条件分岐 - 絞込み文字列（含む）の指定がない、または含むか？" sap:VirtualizedContainerService.HintSize="655,356" sap2010:WorkflowViewState.IdRef="If_8">
+                    <If.Then>
+                      <If Condition="[ExcludeWord = &quot;&quot; OrElse Not(item.ToString.Contains(ExcludeWord))]" DisplayName="条件分岐 - 絞込み文字列（含まない）の指定がない、または含まないか？" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_14">
+                        <If.Then>
+                          <Assign DisplayName="代入 - 削除対象としてマーク" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_38">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[IsDeleteTarget]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </If.Then>
+                      </If>
+                    </If.Then>
+                  </If>
+                </If.Then>
+              </If>
+              <If Condition="[IsDeleteTarget]" DisplayName="条件分岐 - 削除対象か？" sap:VirtualizedContainerService.HintSize="826,793" sap2010:WorkflowViewState.IdRef="If_10">
+                <If.Then>
+                  <Sequence sap2010:Annotation.AnnotationText="削除リストに格納" DisplayName="シーケンス - 削除対象" sap:VirtualizedContainerService.HintSize="304,645" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="代入 - 新しい行を作成" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd:DataRow">[DRow]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd:DataRow">[Dt_DeleteMessage.NewRow]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="代入 - 行：チャンネルID" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Object">[DRow("channel")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Object">[ChannelID]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="代入 - 行：タイムスタンプ" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Object">[DRow("ts")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Object">[item.item("ts").ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="代入 - 行：投稿日時" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Object">[DRow("dt")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Object">[DateMessage.ToString("yyyy/MM/dd HH:mm:ss")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="代入 - 行：メッセージ全体" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_30">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Object">[DRow("message")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Object">[item.ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[DRow]" DataTable="[Dt_DeleteMessage]" DisplayName="データ行を追加  - 削除データテーブル" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                  </Sequence>
+                </If.Then>
+              </If>
+              <ui:LogMessage DisplayName="メッセージをログ - メッセージデータ" sap:VirtualizedContainerService.HintSize="826,91" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;[{0}] ts:{1} ({2}) : {3}&quot;, &#xA;&#x9;IndexLoop, &#xA;&#x9;Item.Item(&quot;ts&quot;).ToString, &#xA;&#x9;DateMessage.ToString(&quot;yyyy/MM/dd HH:mm:ss&quot;),&#xA;&#x9;If(IsDeleteTarget, &quot;delete target&quot;, &quot;-&quot;))]" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+      </ui:ForEach>
+    </Sequence>
+    <Sequence DisplayName="5. 削除実行前の確認表示" sap:VirtualizedContainerService.HintSize="946,686" sap2010:WorkflowViewState.IdRef="Sequence_26">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[Dt_DeleteMessage.Rows.Count &gt; 0]" DisplayName="条件分岐 - 削除対象のメッセージがあるか？" sap:VirtualizedContainerService.HintSize="547,594" sap2010:WorkflowViewState.IdRef="If_3">
+        <If.Then>
+          <Sequence DisplayName="シーケンス - 削除対象メッセージあり" sap:VirtualizedContainerService.HintSize="376,446" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="メッセージをログ - 実行確認の表示" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;入力ダイアログを表示（操作待ち）&quot;]" />
+            <ui:InputDialog DisplayName="入力ダイアログ - 実行確認" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[String.Format(&quot;メッセージを「{0}件」削除します。よろしいですか？&quot;, Dt_DeleteMessage.Rows.Count.ToString)]" Options="[ArrayUserSelect]" Title="実行確認">
+              <ui:InputDialog.Result>
+                <OutArgument x:TypeArguments="x:String">[UserSelect]</OutArgument>
+              </ui:InputDialog.Result>
+            </ui:InputDialog>
+            <ui:LogMessage DisplayName="メッセージをログ - 実行確認の選択値" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;入力値：&quot; ＆ UserSelect]" />
+          </Sequence>
+        </If.Then>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="6. APIでメッセージを削除" sap:VirtualizedContainerService.HintSize="946,1910" sap2010:WorkflowViewState.IdRef="Sequence_27">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[UserSelect = ArrayUserSelect(0)]" DisplayName="条件分岐 - 削除を実行するか？" sap:VirtualizedContainerService.HintSize="796,1818" sap2010:WorkflowViewState.IdRef="If_13">
+        <If.Then>
+          <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="[IndexLoop]" DisplayName="繰り返し (コレクションの各要素) - 削除データテーブル行" sap:VirtualizedContainerService.HintSize="625,1670" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[Dt_DeleteMessage.Rows]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="dr" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="シーケンス - 対象のメッセージを削除" sap:VirtualizedContainerService.HintSize="589,1536" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="メッセージをログ - 対象のメッセージを削除" sap:VirtualizedContainerService.HintSize="547,91" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;- delete ({0}) ts:{1}({2})&quot;, IndexLoop.ToString, dr.item(&quot;ts&quot;).ToString, dr.item(&quot;dt&quot;).ToString)]" />
+                  <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" sap2010:Annotation.AnnotationText=" https://slack.com/api/chat.delete" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP 要求 - メッセージ削除" EndPoint="[&quot;https://slack.com/api/chat.delete”]" sap:VirtualizedContainerService.HintSize="547,64" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="POST" Result="[ResponseString]" TimeoutMS="6000">
+                    <ui:HttpClient.Attachments>
+                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                    </ui:HttpClient.Attachments>
+                    <ui:HttpClient.Cookies>
+                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                    </ui:HttpClient.Cookies>
+                    <ui:HttpClient.Headers>
+                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                    </ui:HttpClient.Headers>
+                    <ui:HttpClient.Parameters>
+                      <InArgument x:TypeArguments="x:String" x:Key="token">[Token]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="channel">[dr.Item("channel").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="ts">[dr.Item("ts").ToString]</InArgument>
+                    </ui:HttpClient.Parameters>
+                    <ui:HttpClient.UrlSegments>
+                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                    </ui:HttpClient.UrlSegments>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:HttpClient>
+                  <If Condition="[ResponseString = &quot;&quot;]" DisplayName="条件分岐 - レスポンスが空になることがある（削除リクエスト）" sap:VirtualizedContainerService.HintSize="547,212" sap2010:WorkflowViewState.IdRef="If_11">
+                    <If.Then>
+                      <Throw sap2010:Annotation.AnnotationText="New Exception(&quot;メッセージ削除リクエストエラー&quot;)" DisplayName="スロー - メッセージ削除リクエストエラー" Exception="[New Exception(&quot;メッセージ削除リクエストエラー&quot;)]" sap:VirtualizedContainerService.HintSize="200,64" sap2010:WorkflowViewState.IdRef="Throw_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Throw>
+                    </If.Then>
+                  </If>
+                  <Assign DisplayName="代入 - レスポンスのデシリアライズ（メッセージ削除）" sap:VirtualizedContainerService.HintSize="547,60" sap2010:WorkflowViewState.IdRef="Assign_31">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="njl:JObject">[ResponseJson]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="njl:JObject">[CType(Newtonsoft.Json.JsonConvert.DeserializeObject(ResponseString), JObject)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="メッセージをログ - リクエスト結果（メッセージ削除）" sap:VirtualizedContainerService.HintSize="547,91" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[String.Format(&quot;- chat.delete ok: {0} error: {0}&quot;, &#xD;&#xA;&#x9;If(ResponseJson.ContainsKey(&quot;ok&quot;), ResponseJson.Item(&quot;ok&quot;).ToString, &quot;&quot;),&#xD;&#xA;&#x9;If(ResponseJson.ContainsKey(&quot;error&quot;), ResponseJson.Item(&quot;error&quot;).ToString, &quot;&quot;))]" />
+                  <If Condition="[ResponseJson.Item(&quot;ok&quot;).ToString = &quot;True&quot;]" DisplayName="条件分岐 - リクエストが成功しているか？（メッセージ削除）" sap:VirtualizedContainerService.HintSize="547,592" sap2010:WorkflowViewState.IdRef="If_12">
+                    <If.Then>
+                      <Sequence DisplayName="シーケンス - 削除成功" sap:VirtualizedContainerService.HintSize="376,444" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="代入 - 行：削除日時" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_32">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[dr("deletedt")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">[now.ToString("yyyy/MM/dd HH:mm:ss")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign DisplayName="代入 - 削除件数カウントアップ" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_33">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[CountDelete]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[CountDelete + 1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[Dt_DeleteMessage]" Delimitator="Comma" DisplayName="CSV に書き込み - 削除メッセージ" FilePath="[BackupFilePath]" sap:VirtualizedContainerService.HintSize="334,152" sap2010:WorkflowViewState.IdRef="WriteCsvFile_2" />
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                  <Delay sap2010:Annotation.AnnotationText="Rate Limit対応（1-2秒待機）&#xA;&#xA;Timespan.FromMilliseconds(1500)" DisplayName="待機 - 数秒WAIT" Duration="[Timespan.FromMilliseconds(1500)]" sap:VirtualizedContainerService.HintSize="547,94" sap2010:WorkflowViewState.IdRef="Delay_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Delay>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+          </ui:ForEach>
+        </If.Then>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="7. 削除件数の表示（メッセージボックス表示）" sap:VirtualizedContainerService.HintSize="946,282" sap2010:WorkflowViewState.IdRef="Sequence_28">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="メッセージをログ - 削除完了の表示" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;完了メッセージを表示（操作待ち）&quot;]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="メッセージ ボックス - 削除完了" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[String.Format(&quot;処理を終了します。削除件数：{0}&quot;, CountDelete)]" />
+    </Sequence>
+  </Sequence>
+</Activity>

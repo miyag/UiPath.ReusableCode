@@ -1,0 +1,26 @@
+﻿deletedt,channel,ts,dt,message
+2020/10/16 16:00:53,C01925CA933,1602831639.054200,2020/10/16 16:00:39,"{
+  ""client_msg_id"": ""948a5e2f-8920-46fd-ae2a-577d51ca76bb"",
+  ""type"": ""message"",
+  ""text"": ""あああ"",
+  ""user"": ""URA0XTKED"",
+  ""ts"": ""1602831639.054200"",
+  ""team"": ""TRGMSK5KP"",
+  ""blocks"": [
+    {
+      ""type"": ""rich_text"",
+      ""block_id"": ""iZuK8"",
+      ""elements"": [
+        {
+          ""type"": ""rich_text_section"",
+          ""elements"": [
+            {
+              ""type"": ""text"",
+              ""text"": ""あああ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}"
