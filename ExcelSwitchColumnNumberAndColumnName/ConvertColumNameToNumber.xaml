@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>570,1671</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>488,746</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -67,10 +67,9 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="&lt;argument&gt;&#xA;- in_columnName&#xA;- out_columnNumber" DisplayName="ConvertColumNameToNumber" sap:VirtualizedContainerService.HintSize="376,775" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="&lt;argument&gt;&#xA;- in_columnName&#xA;- out_columnNumber" DisplayName="ConvertColumNameToNumber" sap:VirtualizedContainerService.HintSize="376,420" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:Func(x:String, x:Int32)" Name="funcConvertColumNameToNumber" />
-      <Variable x:TypeArguments="x:String" Name="flowName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -78,21 +77,12 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - flowName" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_10">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[flowName]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">ConvertColumNameToNumber</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:LogMessage DisplayName="Log Message - Start" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[flowName &amp; &quot; - Start&quot;]" />
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="out_func = &#xA;&#x9;Function(columnLetter As String) As Integer&#xA;&#x9;&#x9;Dim sum As Integer = 0&#xA;&#x9;&#x9;columnLetter = columnLetter.ToUpper()&#xA;&#x9;&#x9;For idx As Integer = 0 To columnLetter.Length - 1&#xA;&#x9;&#x9;&#x9;sum *= 26&#xA;&#x9;&#x9;&#x9;Dim charA As Integer = CInt(Char.GetNumericValue(&quot;A&quot;c))&#xA;&#x9;&#x9;&#x9;Dim charColLetter As Integer = CInt(Char.GetNumericValue(columnLetter(idx)))&#xA;&#x9;&#x9;&#x9;sum += (charColLetter - charA) + 1&#xA;&#x9;&#x9;Next&#xA;&#x9;&#x9;Return sum&#xA;&#x9;End Function" DisplayName="Invoke code - func" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="out_func = &#xD;&#xA;&#x9;Function(columnLetter As String) As Integer&#xD;&#xA;&#x9;&#x9;Dim sum As Integer = 0&#xD;&#xA;&#x9;&#x9;columnLetter = columnLetter.ToUpper()&#xD;&#xA;&#x9;&#x9;For idx As Integer = 0 To columnLetter.Length - 1&#xD;&#xA;&#x9;&#x9;&#x9;sum *= 26&#xD;&#xA;&#x9;&#x9;&#x9;Dim charA As Integer = CInt(Char.GetNumericValue(&quot;A&quot;c))&#xD;&#xA;&#x9;&#x9;&#x9;Dim charColLetter As Integer = CInt(Char.GetNumericValue(columnLetter(idx)))&#xD;&#xA;&#x9;&#x9;&#x9;sum += (charColLetter - charA) + 1&#xD;&#xA;&#x9;&#x9;Next&#xD;&#xA;&#x9;&#x9;Return sum&#xD;&#xA;&#x9;End Function" DisplayName="Invoke code - func" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
       <ui:InvokeCode.Arguments>
         <OutArgument x:TypeArguments="s:Func(x:String, x:Int32)" x:Key="out_func">[funcConvertColumNameToNumber]</OutArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
-    <Assign DisplayName="Assing - func" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+    <Assign DisplayName="Assing - func" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_12">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[out_columnNumber]</OutArgument>
       </Assign.To>
@@ -100,6 +90,5 @@
         <InArgument x:TypeArguments="x:Int32">[funcConvertColumNameToNumber(in_columnName)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message - End" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[flowName &amp; &quot; - End&quot;]" />
   </Sequence>
 </Activity>
