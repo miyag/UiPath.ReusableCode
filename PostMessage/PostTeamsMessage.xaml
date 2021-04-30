@@ -1,0 +1,133 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="PostTeamsMessage" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_webhookUrl" Type="InArgument(x:String)" />
+    <x:Property Name="In_title" Type="InArgument(x:String)" />
+    <x:Property Name="In_text" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1670,1150</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SendSlackMessage_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Web</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Teamsにメッセージを送信する&#xA;&#xA;# 引数&#xA;- In_webhookUrl : Incoming WebhookのURL&#xA;- In_title : タイトル&#xA;- In_text : テキストメッセージ" DisplayName="PostTeamsMessage" sap:VirtualizedContainerService.HintSize="468,985.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="projectJsonString" />
+      <Variable x:TypeArguments="njl:JObject" Name="projectJson" />
+      <Variable x:TypeArguments="x:String" Name="projectName" />
+      <Variable x:TypeArguments="x:String" Name="projectVersion" />
+      <Variable x:TypeArguments="x:String" Name="machineName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Get additional Information" sap:VirtualizedContainerService.HintSize="426,577.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ReadTextFile Content="[projectJsonString]" DisplayName="ReadTextFile - projectJson" FileName="project.json" sap:VirtualizedContainerService.HintSize="384,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+      <Assign DisplayName="Cast - Json deserialize" sap:VirtualizedContainerService.HintSize="384,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="njl:JObject">[projectJson]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="njl:JObject">[CType(JsonConvert.DeserializeObject(projectJsonString), JObject)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="GetValue - projectName" sap:VirtualizedContainerService.HintSize="384,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[projectName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[projectJson.GetValue("name").ToString]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="GetValue - projectName" sap:VirtualizedContainerService.HintSize="384,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[projectVersion]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[projectJson.GetValue("projectVersion").ToString]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:GetEnvironmentVariable DisplayName="Get environmernt variable - machineName" sap:VirtualizedContainerService.HintSize="384,58.6666666666667" sap2010:WorkflowViewState.IdRef="GetEnvironmentVariable_1" Variable="MachineName" VariableValue="[machineName]" />
+    </Sequence>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;    in_title = in_title.Replace(&quot;\&quot;, &quot;\\&quot;)&#xA;    in_title = If(in_title.Length&gt;50, in_title.Substring(0,50), in_title)&#xA;    in_text = in_text.Replace(&quot;\&quot;, &quot;\\&quot;)&#xA;    in_text = If(in_text.Length&gt;300, in_text.Substring(0,300), in_text)&#xA;    Dim payLoad As String = String.Format(&#xA;        &quot;{{&quot;&quot;@type&quot;&quot;: &quot;&quot;MessageCard&quot;&quot;,&quot; &amp; _&#xA;          &quot;&quot;&quot;@context&quot;&quot;: &quot;&quot;https://schema.org/extensions&quot;&quot;,&quot; &amp; &#xA;          &quot;&quot;&quot;summary&quot;&quot;: &quot;&quot;{0}&quot;&quot;,&quot; &amp; &#xA;          &quot;&quot;&quot;themeColor&quot;&quot;: &quot;&quot;0000ff&quot;&quot;,&quot; &amp;&#xA;          &quot;&quot;&quot;title&quot;&quot;: &quot;&quot;{0}&quot;&quot;,&quot; &amp; &#xA;          &quot;&quot;&quot;sections&quot;&quot;: [{{&quot; &amp; &#xA;                &quot;&quot;&quot;text&quot;&quot;: &quot;&quot;{1}&quot;&quot;&quot; &amp;&#xA;              &quot;}},{{&quot; &amp;&#xA;                &quot;&quot;&quot;activityTitle&quot;&quot;: &quot;&quot;&quot;&quot;,&quot; &amp;&#xA;                &quot;&quot;&quot;activitySubtitle&quot;&quot;: &quot;&quot;{2}  [Machine] {3}  [Project] {4} ({5})&quot;&quot;&quot; &amp;&#xA;              &quot;}}]&quot; &amp; &#xA;&#x9;&#x9;&quot;}}&quot;,&#xA;&#x9;&#x9;  in_title, &#xA;&#x9;&#x9;  in_text, &#xA;&#x9;&#x9;  Datetime.Now.ToString(&quot;yyyy/MM/dd (ddd) HH:mm:ss&quot;, New System.Globalization.CultureInfo(&quot;ja-JP&quot;)),&#xA;&#x9;&#x9;  in_mname, in_pname, in_pversion&#xA;&#x9;&#x9;  )&#xA;    Dim wc As New Net.WebClient&#xA;    wc.Encoding = System.Text.Encoding.UTF8&#xA;    Console.WriteLine(&quot;PostTeamsMessage - [request] &quot; &amp; payLoad)&#xA;    Dim res As String = wc.UploadString(in_url, payLoad)&#xA;    Console.WriteLine(&quot;PostTeamsMessage - [response] &quot; &amp; res)&#xA;Catch ex As Exception&#xA;    Console.WriteLine(&quot;PostTeamsMessage - [error] &quot; &amp; ex.Message)&#xA;End Try" DisplayName="InvokeCode - Post Message" sap:VirtualizedContainerService.HintSize="426,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_text">[In_text]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_url">[In_WebhookUrl]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_title">[In_Title]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pname">[projectName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pversion">[projectVersion]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_mname">[machineName]</InArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+  </Sequence>
+</Activity>
