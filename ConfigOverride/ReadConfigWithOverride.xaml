@@ -1,0 +1,197 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ReadConfigWithOverride" this:ReadConfigWithOverride.in_jsonFilePath="Data\Config.json" this:ReadConfigWithOverride.in_sheetName="[”Settings”]" this:ReadConfigWithOverride.in_filePath="Data\Config.xlsx" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_jsonFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_sheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_filePath" Type="InArgument(x:String)" />
+    <x:Property Name="out_config" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>828,2755</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>loadConfig_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Windows</x:String>
+      <x:String>System.Windows.Threading</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Windows.Presentation</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="指定のExcelワークブック・シートから設定情報を取得する&#xA;※ 指定のJsonファイルがある場合、設定情報を上書きする&#xA;&#xA;# 引数&#xA;- in_filePath : ファイルパス&#xA;- in_sheetName : シート名&#xA;- out_config : 設定情報ディクショナリ" DisplayName="ReadConfigWithOverride" sap:VirtualizedContainerService.HintSize="838,2590" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dtConfig" />
+      <Variable x:TypeArguments="x:String" Name="overrideFileString" />
+      <Variable x:TypeArguments="njl:JObject" Name="overrideJson" />
+      <Variable x:TypeArguments="x:String" Name="flowName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="代入 - フロー名" sap:VirtualizedContainerService.HintSize="796,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[flowName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">ReadConfigWithOverride</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="メッセージをログ - 開始ログ" sap:VirtualizedContainerService.HintSize="796,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[flowName &amp; &quot; - Start&quot;]" />
+    <Assign DisplayName="代入 - ディクショナリの初期化" sap:VirtualizedContainerService.HintSize="796,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_Config]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[new Dictionary(of String, object)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="メッセージをログ - 読込内容" sap:VirtualizedContainerService.HintSize="796,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} - FilePath: {1} [SheetName]{2}&quot;, flowName, in_filePath, in_sheetName)]" />
+    <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="- 読込失敗は例外スロー" DataTable="[dtConfig]" DisplayName="シートを読み込み - 設定ファイル" sap:VirtualizedContainerService.HintSize="796,118" sap2010:WorkflowViewState.IdRef="ReadRange_5" SheetName="[in_sheetName]" WorkbookPath="[in_filePath]">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ReadRange>
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtConfig]" DisplayName="行ループ - シート読み込み" sap:VirtualizedContainerService.HintSize="796,472" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <If Condition="[Not(String.IsNullOrEmpty(row(0).ToString.Trim))]" DisplayName="条件分岐 - キーが設定されているか" sap:VirtualizedContainerService.HintSize="484,324" sap2010:WorkflowViewState.IdRef="If_11">
+            <If.Then>
+              <InvokeMethod sap2010:Annotation.AnnotationText="- A列(key)B列(value)でセット&#xA;- キー重複時は例外スロー" DisplayName="メソッドを呼び出し - Dictionary.Add" sap:VirtualizedContainerService.HintSize="237,176" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+                <InvokeMethod.TargetObject>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_config]</InArgument>
+                </InvokeMethod.TargetObject>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <InArgument x:TypeArguments="x:String">[row(0).ToString.Trim]</InArgument>
+                <InArgument x:TypeArguments="x:String">[row(1).ToString.Trim]</InArgument>
+              </InvokeMethod>
+            </If.Then>
+          </If>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:Comment DisplayName="設定上書きファイルの確認" sap:VirtualizedContainerService.HintSize="796,74" sap2010:WorkflowViewState.IdRef="Comment_1" Text="``指定のJsonファイルがあれば、設定を上書きする&#xA;※ファイルがなければ何もしない``&#xA;" />
+    <If Condition="[io.File.Exists(in_jsonFilePath)]" DisplayName="条件分岐 - 設定上書きファイルが存在するか" sap:VirtualizedContainerService.HintSize="796,1004" sap2010:WorkflowViewState.IdRef="If_12">
+      <If.Then>
+        <Sequence DisplayName="シーケンス - 内容の取得" sap:VirtualizedContainerService.HintSize="625,856" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadTextFile Content="[overrideFileString]" DisplayName="テキストの読み込み - Jsonファイル" FileName="[in_jsonFilePath]" sap:VirtualizedContainerService.HintSize="583,59" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+          <Assign DisplayName="代入 - デシリアライズ" sap:VirtualizedContainerService.HintSize="583,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="njl:JObject">[overrideJson]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="njl:JObject">[CType(JsonConvert.DeserializeObject(overrideFileString), JObject)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素) - 各項目" sap:VirtualizedContainerService.HintSize="583,565" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[overrideJson.Item(&quot;settings&quot;)]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="njl:JProperty">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="njl:JProperty" Name="item" />
+                </ActivityAction.Argument>
+                <If Condition="[out_config.ContainsKey(item.Name.ToString)]" DisplayName="条件分岐 - 上書きファイルの項目が設定ディクショナリにあるか" sap:VirtualizedContainerService.HintSize="547,431" sap2010:WorkflowViewState.IdRef="If_13">
+                  <If.Then>
+                    <Sequence DisplayName="シーケンス - 設定ディクショナリを上書き" sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="代入 - 設定ディクショナリの値を上書き" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_Config.Item(item.Name.ToString)]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[item.Value.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:LogMessage DisplayName="メッセージをログ - 設定ディクショナリの値を上書き" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;{0} - ConfigOverride [key]{0} [Value]{1}&quot;, flowName, item.Name.ToString, item.Value.ToString)]" />
+                    </Sequence>
+                  </If.Then>
+                </If>
+              </ActivityAction>
+            </ui:ForEach.Body>
+          </ui:ForEach>
+        </Sequence>
+      </If.Then>
+    </If>
+    <ui:LogMessage DisplayName="メッセージをログ - 終了ログ" sap:VirtualizedContainerService.HintSize="796,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[flowName &amp; &quot; - End&quot;]" />
+  </Sequence>
+</Activity>
