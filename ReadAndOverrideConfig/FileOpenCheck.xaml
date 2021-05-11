@@ -76,6 +76,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="# 引数&#xA;- in_filePath" DisplayName="FileOpenCheck" sap:VirtualizedContainerService.HintSize="526,946.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -93,7 +94,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="メッセージをログ - 開始" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;IsFileOpen - 開始&quot;]" />
+    <ui:LogMessage DisplayName="メッセージをログ - 開始" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;FileOpenCheck - 開始&quot;]" />
     <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="ファイルを排他モードで開いて、エラーが出れば使用中とみなす" Code="isUsing = False&#xD;&#xA;If Not(System.IO.File.Exists(filePath)) Then&#xD;&#xA;    Throw New Exception(&quot;ファイルがありません。&quot; &amp; filePath)&#xD;&#xA;End If&#xD;&#xA;Try&#xD;&#xA;    Using myFileStream As New FileStream(filePath,FileMode.Open, FileAccess.ReadWrite, FileShare.None)&#xD;&#xA;    End Using&#xD;&#xA;Catch ex As Exception&#xD;&#xA;    isUsing = True&#xD;&#xA;End Try" DisplayName="Invoke Code - ファイルが利用中かチェック" sap:VirtualizedContainerService.HintSize="484,194.666666666667" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
       <ui:InvokeCode.Arguments>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="isUsing">[isUsing]</OutArgument>
@@ -116,6 +117,6 @@
         </ui:MessageBox>
       </If.Then>
     </If>
-    <ui:LogMessage DisplayName="メッセージをログ - 終了" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;IsFileOpen - 終了&quot;]" />
+    <ui:LogMessage DisplayName="メッセージをログ - 終了" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;FileOpenCheck - 終了&quot;]" />
   </Sequence>
 </Activity>
