@@ -1,0 +1,103 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetInstalledBrowserVersion" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="718,963.333333333333" sap2010:WorkflowViewState.IdRef="スペック情報取得_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="66">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.Win32</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>Microsoft.VisualBasic.Devices</x:String>
+      <x:String>System.Threading</x:String>
+      <x:String>System.Management</x:String>
+      <x:String>Microsoft.Office.Interop.Excel</x:String>
+      <x:String>System.Windows</x:String>
+      <x:String>System.Net.NetworkInformation</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Reflection</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="58">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Management</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetInstalledBrowserVersion " sap:VirtualizedContainerService.HintSize="471.333333333333,798.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:Func(scg:Dictionary(x:String, x:Object))" Name="func_GetInstalledBrowserInfo" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="メッセージをログ - 開始" sap:VirtualizedContainerService.HintSize="429.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;GetInstalledBrowserVersion  - 開始&quot;]" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="func =&#xA;&#x9;Function() As Dictionary(Of String, Object)&#xA;&#x9;&#x9;Dim dic As New Dictionary(Of String, Object)&#xA;&#x9;&#x9;Dim browserKeys As RegistryKey = Registry.LocalMachine.OpenSubKey(&quot;SOFTWARE\WOW6432Node\Clients\StartMenuInternet&quot;)&#xA;&#x9;&#x9;If browserKeys Is Nothing Then&#xA;&#x9;&#x9;&#x9;browserKeys = Registry.LocalMachine.OpenSubKey(&quot;SOFTWARE\Clients\StartMenuInternet&quot;)&#xA;&#x9;&#x9;End If&#xA;&#x9;&#x9;Dim browserNames As String() = browserKeys.GetSubKeyNames&#xA;&#x9;&#x9;For Each bName As String In browserNames&#xA;&#x9;&#x9;&#x9;Dim browserKey As RegistryKey = browserKeys.OpenSubKey(bName)&#xA;&#x9;&#x9;&#x9;Dim browserKeyPath As RegistryKey = browserKey.OpenSubKey(&quot;shell\open\command&quot;)&#xA;&#x9;&#x9;&#x9;Dim browserName As String = browserKey.GetValue(Nothing).ToString&#xA;&#x9;&#x9;&#x9;Dim browserPath As String = browserKeyPath.GetValue(Nothing).ToString.Trim.Replace(&quot;&quot;&quot;&quot;,&quot;&quot;)&#xA;&#x9;&#x9;&#x9;Dim browserVersion As String = System.Diagnostics.FileVersionInfo.GetVersionInfo(browserPath).FileVersion&#xA;&#x9;&#x9;&#x9;dic(browserName) = browserVersion&#xA;&#x9;&#x9;Next&#xA;&#x9;&#x9;Return dic&#xA;&#x9;End Function&#xA;" DisplayName="Invoke code - funcGetInstalledBrowserVersion " sap:VirtualizedContainerService.HintSize="429.333333333333,164" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+      <ui:InvokeCode.Arguments>
+        <OutArgument x:TypeArguments="s:Func(scg:Dictionary(x:String, x:Object))" x:Key="func">[func_GetInstalledBrowserInfo]</OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素) - func_GetInstalledBrowserInfo" sap:VirtualizedContainerService.HintSize="429.333333333333,233.333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[func_GetInstalledBrowserInfo()]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Object)">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" Name="kv" />
+          </ActivityAction.Argument>
+          <ui:LogMessage DisplayName="メッセージをログ" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[String.Format(&quot;[{0}] {1}&quot;, kv.Key , kv.Value)]" />
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:LogMessage DisplayName="メッセージをログ - 終了" sap:VirtualizedContainerService.HintSize="429.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;GetInstalledBrowserVersion - 終了&quot;]" />
+  </Sequence>
+</Activity>
