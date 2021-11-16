@@ -7,6 +7,22 @@ body {
   line-height: 1.25;
 }
 th { text-align:left}
+
+
+table.dtable {table-layout: fixed; box-shadow: 2px 2px 4px gray;}
+table.dtable, table.dtable th, table.dtable td{border-collapse:collapse; border:1px solid #ccc; line-height:1.5; font-size:15px;}
+table.dtable th {padding:5px; font-weight:normal; background:#3f3f3f; color:#fff; }
+table.dtable td {padding:5px; max-width:400px; word-break: break-all;}
+table.dtable td.wide {padding:5px; max-width:800px; word-break: break-all;}
+table.dtable tr:nth-child(2n+1) {background:#f5f5f5;}
+table.dtable th {position:-webkit-sticky; position:sticky; top:0; z-index:1;}
+table.dtable tr:hover {background-color:#ffc;}
+
+
+
+
+
+
 ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 .mname:before{
 	padding-left:5px;
@@ -100,7 +116,7 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 </head>
 <body>
 <h3>UI Automation.アプリケーション</h3>
-<table border=1px>
+<table border=1px class='dtable'>
 	<thead>
 	<tr>
 		<th>Modern Activities</th>
@@ -109,127 +125,127 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 	</thead>
 	<tbody>
 	<tr>
-		<th><span class="mname" id="n-application-card"></span><br><span class="murl"><a id="n-application-card-href"></a></span></th>
+		<td><span class="mname" id="n-application-card"></span><br><span class="murl"><a id="n-application-card-href" target="_blank"></a></span></td>
 		<td><ul>
-			<li><span class="cname" id="open-browser"></span><span class="curl"><a id="open-browser-href"></a></span></li>
-			<li><span class="cname" id="browser-scope"></span><span class="curl"><a id="browser-scope-href"></a></span></li>
-			<li><span class="cname" id="open-application"></span><span class="curl"><a id="open-application-href"></a></span></li>
-			<li><span class="cname" id="window-scope"></span><span class="curl"><a id="window-scope-href"></a></span></li>
-			<li><span class="cname" id="close-window"></span><span class="curl"><a id="close-window-href"></a></span></li>
-			<li><span class="cname" id="start-process"></span><span class="curl"><a id="start-process-href"></a></span></li>
+			<li><span class="cname" id="open-browser"></span><span class="curl"><a id="open-browser-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="browser-scope"></span><span class="curl"><a id="browser-scope-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="open-application"></span><span class="curl"><a id="open-application-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="window-scope"></span><span class="curl"><a id="window-scope-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="close-window"></span><span class="curl"><a id="close-window-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="start-process"></span><span class="curl"><a id="start-process-href" target="_blank"></a></span></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-check-state"></span><br><span class="murl"><a id="n-check-state-href"></a></span></th>
+		<td><span class="mname" id="n-check-state"></span><br><span class="murl"><a id="n-check-state-href" target="_blank"></a></span></td>
 		<td><ul>
-			<li><span class="cname" id="on-ui-element-appear"></span><span class="curl"><a id="on-ui-element-appear-href"></a></span></li>
-			<li><span class="cname" id="on-ui-element-vanish"></span><span class="curl"><a id="on-ui-element-vanish-href"></a></span></li>
-			<li><span class="cname" id="on-image-appear"></span><span class="curl"><a id="on-image-appear-href"></a></span></li>
-			<li><span class="cname" id="on-image-vanish"></span><span class="curl"><a id="on-image-vanish-href"></a></span></li>
-			<li><span class="cname" id="wait-ui-element-vanish"></span><span class="curl"><a id="wait-ui-element-vanish-href"></a></span></li>
-			<li><span class="cname" id="wait-image-vanish"></span><span class="curl"><a id="wait-image-vanish-href"></a></span></li>
-			<li><span class="cname" id="wait-image-appear"></span><span class="curl"><a id="wait-image-appear-href"></a></span></li>
-			<li><span class="cname" id="image-found"></span><span class="curl"><a id="image-found-href"></a></span></li>
+			<li><span class="cname" id="on-ui-element-appear"></span><span class="curl"><a id="on-ui-element-appear-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="on-ui-element-vanish"></span><span class="curl"><a id="on-ui-element-vanish-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="on-image-appear"></span><span class="curl"><a id="on-image-appear-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="on-image-vanish"></span><span class="curl"><a id="on-image-vanish-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="wait-ui-element-vanish"></span><span class="curl"><a id="wait-ui-element-vanish-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="wait-image-vanish"></span><span class="curl"><a id="wait-image-vanish-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="wait-image-appear"></span><span class="curl"><a id="wait-image-appear-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="image-found"></span><span class="curl"><a id="image-found-href" target="_blank"></a></span></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-extract-data"></span>&nbsp;<span class="murl"><a id="n-extract-data-href"></a></span></th>
+		<td><span class="mname" id="n-extract-data"></span>&nbsp;<span class="murl"><a id="n-extract-data-href" target="_blank"></a></span></td>
 		<td><ul>
-			<li><span class="cname" id="extract-data"></span><span class="curl"><a id="extract-data-href"></a></span></li>
-			<li><span class="cname" id="get-full-text"></span><span class="curl"><a id="get-full-text-href"></a></span></li>
-			<li><span class="cname" id="get-visible-text"></span><span class="curl"><a id="get-visible-text-href"></a></span></li>
+			<li><span class="cname" id="extract-data"></span><span class="curl"><a id="extract-data-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="get-full-text"></span><span class="curl"><a id="get-full-text-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="get-visible-text"></span><span class="curl"><a id="get-visible-text-href" target="_blank"></a></span></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-click"></span>&nbsp;<span class="murl"><a id="n-click-href"></a></span></th>
+		<td><span class="mname" id="n-click"></span>&nbsp;<span class="murl"><a id="n-click-href" target="_blank"></a></span></td>
 		<td><ul>
-			<li><span class="cname" id="click"></span><span class="curl"><a id="click-href"></a></span></li>
-			<li><span class="cname" id="double-click"></span><span class="curl"><a id="double-click-href"></a></span></li>
-			<li><span class="cname" id="click-text"></span><span class="curl"><a id="click-text-href"></a></span></li>
-			<li><span class="cname" id="double-click-text"></span><span class="curl"><a id="double-click-text-href"></a></span></li>
-			<li><span class="cname" id="click-image"></span><span class="curl"><a id="click-image-href"></a></span></li>
-			<li><span class="cname" id="double-click-image"></span><span class="curl"><a id="double-click-image-href"></a></span></li>
+			<li><span class="cname" id="click"></span><span class="curl"><a id="click-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="double-click"></span><span class="curl"><a id="double-click-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="click-text"></span><span class="curl"><a id="click-text-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="double-click-text"></span><span class="curl"><a id="double-click-text-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="click-image"></span><span class="curl"><a id="click-image-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="double-click-image"></span><span class="curl"><a id="double-click-image-href" target="_blank"></a></span></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-hover"></span>&nbsp;<span class="murl"><a id="n-hover-href"></a></span></th>
+		<td><span class="mname" id="n-hover"></span>&nbsp;<span class="murl"><a id="n-hover-href" target="_blank"></a></span></td>
 		<td><ul>
-			<li><span class="cname" id="hover"></span><span class="curl"><a id="hover-href"></a></span></li>
-			<li><span class="cname" id="hover-text"></span><span class="curl"><a id="hover-text-href"></a></span></li>
-			<li><span class="cname" id="hover-image"></span><span class="curl"><a id="hover-image-href"></a></span></li>
+			<li><span class="cname" id="hover"></span><span class="curl"><a id="hover-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="hover-text"></span><span class="curl"><a id="hover-text-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="hover-image"></span><span class="curl"><a id="hover-image-href" target="_blank"></a></span></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-type-into"></span>&nbsp;<span class="murl"><a id="n-type-into-href"></a></span></th>
+		<td><span class="mname" id="n-type-into"></span>&nbsp;<span class="murl"><a id="n-type-into-href" target="_blank"></a></span></td>
 		<td><ul>
-			<li><span class="cname" id="type-into"></span><span class="curl"><a id="type-into-href"></a></span></li>
-			<li><span class="cname" id="type-secure-text"></span><span class="curl"><a id="type-secure-text-href"></a></span></li>
+			<li><span class="cname" id="type-into"></span><span class="curl"><a id="type-into-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="type-secure-text"></span><span class="curl"><a id="type-secure-text-href" target="_blank"></a></span></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-navigate-browser"></span>&nbsp;<span class="murl"><a id="n-navigate-browser-href"></a></span></th>
+		<td><span class="mname" id="n-navigate-browser"></span>&nbsp;<span class="murl"><a id="n-navigate-browser-href" target="_blank"></a></span></td>
 		<td><ul>
-			<li><span class="cname" id="refresh-browser"></span><span class="curl"><a id="refresh-browser-href"></a></span></li>
-			<li><span class="cname" id="go-home"></span><span class="curl"><a id="go-home-href"></a></span></li>
-			<li><span class="cname" id="close-tab"></span><span class="curl"><a id="close-tab-href"></a></span></li>
-			<li><span class="cname" id="go-back"></span><span class="curl"><a id="go-back-href"></a></span></li>
-			<li><span class="cname" id="go-forward"></span><span class="curl"><a id="go-forward-href"></a></span></li>
+			<li><span class="cname" id="refresh-browser"></span><span class="curl"><a id="refresh-browser-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="go-home"></span><span class="curl"><a id="go-home-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="close-tab"></span><span class="curl"><a id="close-tab-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="go-back"></span><span class="curl"><a id="go-back-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="go-forward"></span><span class="curl"><a id="go-forward-href" target="_blank"></a></span></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-get-text"></span>&nbsp;<span class="murl"><a id="n-get-text-href"></a></span></th>
-		<td><ul><li><span class="cname" id="get-value"></span><span class="curl"><a id="get-value-href"></a></span></li></ul></td>
+		<td><span class="mname" id="n-get-text"></span>&nbsp;<span class="murl"><a id="n-get-text-href" target="_blank"></a></span></td>
+		<td><ul><li><span class="cname" id="get-value"></span><span class="curl"><a id="get-value-href" target="_blank"></a></span></li></ul></td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-highlight"></span>&nbsp;<span class="murl"><a id="n-highlight-href"></a></span></th>
-		<td><ul><li><span class="cname" id="highlight"></span><span class="curl"><a id="highlight-href"></a></span></li></ul></td>
+		<td><span class="mname" id="n-highlight"></span>&nbsp;<span class="murl"><a id="n-highlight-href" target="_blank"></a></span></td>
+		<td><ul><li><span class="cname" id="highlight"></span><span class="curl"><a id="highlight-href" target="_blank"></a></span></li></ul></td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-select-item"></span>&nbsp;<span class="murl"><a id="n-select-item-href"></a></span></th>
-		<td><ul><li><span class="cname" id="select-item"></span><span class="curl"><a id="select-item-href"></a></span></li></ul></td>
+		<td><span class="mname" id="n-select-item"></span>&nbsp;<span class="murl"><a id="n-select-item-href" target="_blank"></a></span></td>
+		<td><ul><li><span class="cname" id="select-item"></span><span class="curl"><a id="select-item-href" target="_blank"></a></span></li></ul></td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-check"></span>&nbsp;<span class="murl"><a id="n-check-href"></a></span></th>
-		<td><span class="cname" id="check"></span><span class="curl"><a id="check-href"></a></span></td>
+		<td><span class="mname" id="n-check"></span>&nbsp;<span class="murl"><a id="n-check-href" target="_blank"></a></span></td>
+		<td><span class="cname" id="check"></span><span class="curl"><a id="check-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-take-screenshot"></span><span class="murl"><a id="n-take-screenshot-href"></a></span></th>
-		<td><span class="cname" id="take-screenshot"></span><span class="curl"><a id="take-screenshot-href"></a></span></td>
+		<td><span class="mname" id="n-take-screenshot"></span><span class="murl"><a id="n-take-screenshot-href" target="_blank"></a></span></td>
+		<td><span class="cname" id="take-screenshot"></span><span class="curl"><a id="take-screenshot-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-keyboard-shortcuts"></span>&nbsp;<span class="murl"><a id="n-keyboard-shortcuts-href"></a></span></th>
-		<td><span class="cname" id="send-hotkey"></span><span class="curl"><a id="send-hotkey-href"></a></span></td>
+		<td><span class="mname" id="n-keyboard-shortcuts"></span>&nbsp;<span class="murl"><a id="n-keyboard-shortcuts-href" target="_blank"></a></span></td>
+		<td><span class="cname" id="send-hotkey"></span><span class="curl"><a id="send-hotkey-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-get-attribute"></span>&nbsp;<span class="murl"><a id="n-get-attribute-href"></a></span></th>
-		<td><span class="cname" id="get-attribute"></span><span class="curl"><a id="get-attribute-href"></a></span></td>
+		<td><span class="mname" id="n-get-attribute"></span>&nbsp;<span class="murl"><a id="n-get-attribute-href" target="_blank"></a></span></td>
+		<td><span class="cname" id="get-attribute"></span><span class="curl"><a id="get-attribute-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-go-to-url"></span>&nbsp;<span class="murl"><a id="n-go-to-url-href"></a></span></th>
-		<td><span class="cname" id="navigate-to"></span><span class="curl"><a id="navigate-to-href"></a></span></td>
+		<td><span class="mname" id="n-go-to-url"></span>&nbsp;<span class="murl"><a id="n-go-to-url-href" target="_blank"></a></span></td>
+		<td><span class="cname" id="navigate-to"></span><span class="curl"><a id="navigate-to-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<th><span class="mname" id="n-mouse-scroll"></span>&nbsp;<span class="murl"><a id="n-mouse-scroll-href"></a></span></th>
+		<td><span class="mname" id="n-mouse-scroll"></span>&nbsp;<span class="murl"><a id="n-mouse-scroll-href" target="_blank"></a></span></td>
 		<td>Ｘ（対応なし）</td>
 	</tr>
 	<tr>
-		<th>Ｘ（対応なし）</th>
+		<td>Ｘ（対応なし）</td>
 		<td>
 			<ul
-			<li><span class="cname" id="text-exists"></span><span class="curl"><a id="text-exists-href"></a></span></li>
-			<li><span class="cname" id="find-text"></span><span class="curl"><a id="find-text-href"></a></span></li>
-			<li><span class="cname" id="anchor-base"></span><span class="curl"><a id="anchor-base-href"></a></span></li>
-			<li><span class="cname" id="anchor-context-aware"></span><span class="curl"><a id="anchor-context-aware-href"></a></span></li>
-			<li><span class="cname" id="element-scope"></span><span class="curl"><a id="element-scope-href"></a></span></li>
-			<li><span class="cname" id="ui-element-exists"></span><span class="curl"><a id="ui-element-exists-href"></a></span></li>
-			<li><span class="cname" id="close-application"></span><span class="curl"><a id="close-application-href"></a></span></li>
+			<li><span class="cname" id="text-exists"></span><span class="curl"><a id="text-exists-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="find-text"></span><span class="curl"><a id="find-text-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="anchor-base"></span><span class="curl"><a id="anchor-base-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="anchor-context-aware"></span><span class="curl"><a id="anchor-context-aware-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="element-scope"></span><span class="curl"><a id="element-scope-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="ui-element-exists"></span><span class="curl"><a id="ui-element-exists-href" target="_blank"></a></span></li>
+			<li><span class="cname" id="close-application"></span><span class="curl"><a id="close-application-href" target="_blank"></a></span></li>
 			</ul>
 		</td>
 	</tr>
