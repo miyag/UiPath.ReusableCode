@@ -1,0 +1,312 @@
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+th { text-align:left}
+ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
+.mname:before{
+	padding-left:5px;
+	content:"";
+	display:inline-block;
+	width:20px;
+	height:20px;
+	background-size:contain;
+}
+.cname:before{
+	padding-left:5px;
+	content:"";
+	display:inline-block;
+	width:20px;
+	height:20px;
+}
+.murl{ font-size: 0.85em; text-align:right}
+.murl:before{content:" ("}
+.murl:after{ content:")"}
+.curl{ font-size: 0.85em;}
+.curl:before{content:" ("}
+.curl:after{ content:")"}
+
+/* UiModern */
+#n-application-card:before{	background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-application-card.png) no-repeat; background-size:contain}
+#n-check-state:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-check-state.png) no-repeat; background-size:contain;}
+#n-keyboard-shortcuts:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-keyboard-shortcuts.png) no-repeat; background-size:contain;}
+#n-click:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-click.png) no-repeat; background-size:contain;}
+#n-take-screenshot:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-take-screenshot.png) no-repeat; background-size:contain;}
+#n-check:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-check.png) no-repeat; background-size:contain;}
+#n-get-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-get-text.png) no-repeat; background-size:contain;}
+#n-hover:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-hover.png) no-repeat; background-size:contain;}
+#n-mouse-scroll:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-mouse-scroll.png) no-repeat; background-size:contain;}
+#n-get-attribute:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-get-attribute.png) no-repeat; background-size:contain;}
+#n-highlight:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-highlight.png) no-repeat; background-size:contain;}
+#n-type-into:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-type-into.png) no-repeat; background-size:contain;}
+#n-extract-data:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-extract-data.png) no-repeat; background-size:contain;}
+#n-select-item:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-select-item.png) no-repeat; background-size:contain;}
+#n-go-to-url:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-go-to-url.png) no-repeat; background-size:contain;}
+#n-navigate-browser:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-navigate-browser.png) no-repeat; background-size:contain;}
+/* UiClassic */
+#window-scope:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/window-scope.png) no-repeat; background-size:contain;}
+#close-window:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/close-window.png) no-repeat; background-size:contain;}
+#click-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/click-text.png) no-repeat; background-size:contain;}
+#double-click-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/double-click-text.png) no-repeat; background-size:contain;}
+#hover-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/hover-text.png) no-repeat; background-size:contain;}
+#text-exists:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/text-exists.png) no-repeat; background-size:contain;}
+#find-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/find-text.png) no-repeat; background-size:contain;}
+#get-full-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/get-full-text.png) no-repeat; background-size:contain;}
+#extract-data:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/extract-data.png) no-repeat; background-size:contain;}
+#get-visible-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/get-visible-text.png) no-repeat; background-size:contain;}
+#navigate-to:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/navigate-to.png) no-repeat; background-size:contain;}
+#close-tab:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/close-tab.png) no-repeat; background-size:contain;}
+#browser-scope:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/browser-scope.png) no-repeat; background-size:contain;}
+#refresh-browser:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/refresh-browser.png) no-repeat; background-size:contain;}
+#open-browser:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/open-browser.png) no-repeat; background-size:contain;}
+#go-home:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/go-home.png) no-repeat; background-size:contain;}
+#go-back:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/go-back.png) no-repeat; background-size:contain;}
+#go-forward:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/go-forward.png) no-repeat; background-size:contain;}
+#on-image-appear:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/on-image-appear.png) no-repeat; background-size:contain;}
+#on-image-vanish:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/on-image-vanish.png) no-repeat; background-size:contain;}
+#click-image:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/click-image.png) no-repeat; background-size:contain;}
+#double-click-image:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/double-click-image.png) no-repeat; background-size:contain;}
+#hover-image:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/hover-image.png) no-repeat; background-size:contain;}
+#image-found:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/image-found.png) no-repeat; background-size:contain;}
+#wait-image-vanish:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/wait-image-vanish.png) no-repeat; background-size:contain;}
+#wait-image-appear:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/wait-image-appear.png) no-repeat; background-size:contain;}
+#on-ui-element-appear:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/on-ui-element-appear.png) no-repeat; background-size:contain;}
+#on-ui-element-vanish:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/on-ui-element-vanish.png) no-repeat; background-size:contain;}
+#type-secure-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/type-secure-text.png) no-repeat; background-size:contain;}
+#send-hotkey:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/send-hotkey.png) no-repeat; background-size:contain;}
+#type-into:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/type-into.png) no-repeat; background-size:contain;}
+#click:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/click.png) no-repeat; background-size:contain;}
+#double-click:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/double-click.png) no-repeat; background-size:contain;}
+#hover:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/hover.png) no-repeat; background-size:contain;}
+#check:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/check.png) no-repeat; background-size:contain;}
+#get-value:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/get-value.png) no-repeat; background-size:contain;}
+#highlight:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/highlight.png) no-repeat; background-size:contain;}
+#select-item:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/select-item.png) no-repeat; background-size:contain;}
+#take-screenshot:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/take-screenshot.png) no-repeat; background-size:contain;}
+#get-attribute:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/get-attribute.png) no-repeat; background-size:contain;}
+#anchor-base:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/anchor-base.png) no-repeat; background-size:contain;}
+#anchor-context-aware:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/anchor-context-aware.png) no-repeat; background-size:contain;}
+#element-scope:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/element-scope.png) no-repeat; background-size:contain;}
+#ui-element-exists:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/ui-element-exists.png) no-repeat; background-size:contain;}
+#wait-ui-element-vanish:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/wait-ui-element-vanish.png) no-repeat; background-size:contain;}
+#open-application:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/open-application.png) no-repeat; background-size:contain;}
+#close-application:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/close-application.png) no-repeat; background-size:contain;}
+#start-process:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/start-process.png) no-repeat; background-size:contain;}
+</style>
+</head>
+<body>
+<h3>UI Automation.アプリケーション</h3>
+<table border=1px>
+	<thead>
+	<tr>
+		<th>Modern Activities</th>
+		<th>Classic Activities</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th><span class="mname" id="n-application-card"></span><br><span class="murl"><a id="n-application-card-href"></a></span></th>
+		<td><ul>
+			<li><span class="cname" id="open-browser"></span><span class="curl"><a id="open-browser-href"></a></span></li>
+			<li><span class="cname" id="browser-scope"></span><span class="curl"><a id="browser-scope-href"></a></span></li>
+			<li><span class="cname" id="open-application"></span><span class="curl"><a id="open-application-href"></a></span></li>
+			<li><span class="cname" id="window-scope"></span><span class="curl"><a id="window-scope-href"></a></span></li>
+			<li><span class="cname" id="close-window"></span><span class="curl"><a id="close-window-href"></a></span></li>
+			<li><span class="cname" id="start-process"></span><span class="curl"><a id="start-process-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-check-state"></span><br><span class="murl"><a id="n-check-state-href"></a></span></th>
+		<td><ul>
+			<li><span class="cname" id="on-ui-element-appear"></span><span class="curl"><a id="on-ui-element-appear-href"></a></span></li>
+			<li><span class="cname" id="on-ui-element-vanish"></span><span class="curl"><a id="on-ui-element-vanish-href"></a></span></li>
+			<li><span class="cname" id="on-image-appear"></span><span class="curl"><a id="on-image-appear-href"></a></span></li>
+			<li><span class="cname" id="on-image-vanish"></span><span class="curl"><a id="on-image-vanish-href"></a></span></li>
+			<li><span class="cname" id="wait-ui-element-vanish"></span><span class="curl"><a id="wait-ui-element-vanish-href"></a></span></li>
+			<li><span class="cname" id="wait-image-vanish"></span><span class="curl"><a id="wait-image-vanish-href"></a></span></li>
+			<li><span class="cname" id="wait-image-appear"></span><span class="curl"><a id="wait-image-appear-href"></a></span></li>
+			<li><span class="cname" id="image-found"></span><span class="curl"><a id="image-found-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-extract-data"></span>&nbsp;<span class="murl"><a id="n-extract-data-href"></a></span></th>
+		<td><ul>
+			<li><span class="cname" id="extract-data"></span><span class="curl"><a id="extract-data-href"></a></span></li>
+			<li><span class="cname" id="get-full-text"></span><span class="curl"><a id="get-full-text-href"></a></span></li>
+			<li><span class="cname" id="get-visible-text"></span><span class="curl"><a id="get-visible-text-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-click"></span>&nbsp;<span class="murl"><a id="n-click-href"></a></span></th>
+		<td><ul>
+			<li><span class="cname" id="click"></span><span class="curl"><a id="click-href"></a></span></li>
+			<li><span class="cname" id="double-click"></span><span class="curl"><a id="double-click-href"></a></span></li>
+			<li><span class="cname" id="click-text"></span><span class="curl"><a id="click-text-href"></a></span></li>
+			<li><span class="cname" id="double-click-text"></span><span class="curl"><a id="double-click-text-href"></a></span></li>
+			<li><span class="cname" id="click-image"></span><span class="curl"><a id="click-image-href"></a></span></li>
+			<li><span class="cname" id="double-click-image"></span><span class="curl"><a id="double-click-image-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-hover"></span>&nbsp;<span class="murl"><a id="n-hover-href"></a></span></th>
+		<td><ul>
+			<li><span class="cname" id="hover"></span><span class="curl"><a id="hover-href"></a></span></li>
+			<li><span class="cname" id="hover-text"></span><span class="curl"><a id="hover-text-href"></a></span></li>
+			<li><span class="cname" id="hover-image"></span><span class="curl"><a id="hover-image-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-type-into"></span>&nbsp;<span class="murl"><a id="n-type-into-href"></a></span></th>
+		<td><ul>
+			<li><span class="cname" id="type-into"></span><span class="curl"><a id="type-into-href"></a></span></li>
+			<li><span class="cname" id="type-secure-text"></span><span class="curl"><a id="type-secure-text-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-navigate-browser"></span>&nbsp;<span class="murl"><a id="n-navigate-browser-href"></a></span></th>
+		<td><ul>
+			<li><span class="cname" id="refresh-browser"></span><span class="curl"><a id="refresh-browser-href"></a></span></li>
+			<li><span class="cname" id="go-home"></span><span class="curl"><a id="go-home-href"></a></span></li>
+			<li><span class="cname" id="close-tab"></span><span class="curl"><a id="close-tab-href"></a></span></li>
+			<li><span class="cname" id="go-back"></span><span class="curl"><a id="go-back-href"></a></span></li>
+			<li><span class="cname" id="go-forward"></span><span class="curl"><a id="go-forward-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-get-text"></span>&nbsp;<span class="murl"><a id="n-get-text-href"></a></span></th>
+		<td><ul><li><span class="cname" id="get-value"></span><span class="curl"><a id="get-value-href"></a></span></li></ul></td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-highlight"></span>&nbsp;<span class="murl"><a id="n-highlight-href"></a></span></th>
+		<td><ul><li><span class="cname" id="highlight"></span><span class="curl"><a id="highlight-href"></a></span></li></ul></td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-select-item"></span>&nbsp;<span class="murl"><a id="n-select-item-href"></a></span></th>
+		<td><ul><li><span class="cname" id="select-item"></span><span class="curl"><a id="select-item-href"></a></span></li></ul></td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-check"></span>&nbsp;<span class="murl"><a id="n-check-href"></a></span></th>
+		<td><span class="cname" id="check"></span><span class="curl"><a id="check-href"></a></span></td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-take-screenshot"></span><span class="murl"><a id="n-take-screenshot-href"></a></span></th>
+		<td><span class="cname" id="take-screenshot"></span><span class="curl"><a id="take-screenshot-href"></a></span></td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-keyboard-shortcuts"></span>&nbsp;<span class="murl"><a id="n-keyboard-shortcuts-href"></a></span></th>
+		<td><span class="cname" id="send-hotkey"></span><span class="curl"><a id="send-hotkey-href"></a></span></td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-get-attribute"></span>&nbsp;<span class="murl"><a id="n-get-attribute-href"></a></span></th>
+		<td><span class="cname" id="get-attribute"></span><span class="curl"><a id="get-attribute-href"></a></span></td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-go-to-url"></span>&nbsp;<span class="murl"><a id="n-go-to-url-href"></a></span></th>
+		<td><span class="cname" id="navigate-to"></span><span class="curl"><a id="navigate-to-href"></a></span></td>
+	</tr>
+	<tr>
+		<th><span class="mname" id="n-mouse-scroll"></span>&nbsp;<span class="murl"><a id="n-mouse-scroll-href"></a></span></th>
+		<td>Ｘ（対応なし）</td>
+	</tr>
+	<tr>
+		<th>Ｘ（対応なし）</th>
+		<td>
+			<ul
+			<li><span class="cname" id="text-exists"></span><span class="curl"><a id="text-exists-href"></a></span></li>
+			<li><span class="cname" id="find-text"></span><span class="curl"><a id="find-text-href"></a></span></li>
+			<li><span class="cname" id="anchor-base"></span><span class="curl"><a id="anchor-base-href"></a></span></li>
+			<li><span class="cname" id="anchor-context-aware"></span><span class="curl"><a id="anchor-context-aware-href"></a></span></li>
+			<li><span class="cname" id="element-scope"></span><span class="curl"><a id="element-scope-href"></a></span></li>
+			<li><span class="cname" id="ui-element-exists"></span><span class="curl"><a id="ui-element-exists-href"></a></span></li>
+			<li><span class="cname" id="close-application"></span><span class="curl"><a id="close-application-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	</tbody>
+</table>   
+</body>
+<script>
+var setActivity = function(aid, aname, anameSub,docUrl){
+	document.getElementById(aid).innerText = aname;
+	document.getElementById(aid + "-href").textContent = anameSub;
+	document.getElementById(aid + "-href").href = docUrl;
+}
+// UiModern
+setActivity("n-application-card", "アプリケーション/ブラウザーを使用", "Use Application/Browser", "https://docs.uipath.com/activities/lang-ja/docs/n-application-card");
+setActivity("n-check-state", "アプリのステートを確認","Check App State", "https://docs.uipath.com/activities/lang-ja/docs/n-check-state");
+setActivity("n-keyboard-shortcuts", "キーボード ショートカット", "Keyboard Shortcuts", "https://docs.uipath.com/activities/lang-ja/docs/n-keyboard-shortcuts");
+setActivity("n-click", "クリック", "Click", "https://docs.uipath.com/activities/lang-ja/docs/n-click");
+setActivity("n-take-screenshot", "スクリーンショットを作成", "Take Screenshot", "https://docs.uipath.com/activities/lang-ja/docs/n-take-screenshot");
+setActivity("n-check", "チェック/チェック解除", "Check/Uncheck", "https://docs.uipath.com/activities/lang-ja/docs/n-check");
+setActivity("n-get-text", "テキストを取得", "Get Text", "https://docs.uipath.com/activities/lang-ja/docs/n-get-text");
+setActivity("n-hover", "ホバー", "Hover", "https://docs.uipath.com/activities/lang-ja/docs/n-hover");
+setActivity("n-mouse-scroll", "マウススクロール", "Mouse Scroll", "https://docs.uipath.com/activities/lang-ja/docs/n-mouse-scroll");
+setActivity("n-get-attribute", "属性を取得", "Get Attribute", "https://docs.uipath.com/activities/lang-ja/docs/n-get-attribute");
+setActivity("n-highlight", "強調表示", "Highlight", "https://docs.uipath.com/activities/lang-ja/docs/n-highlight");
+setActivity("n-type-into", "文字を入力", "Type Into", "https://docs.uipath.com/activities/lang-ja/docs/n-type-into");
+setActivity("n-extract-data", "表データを抽出", "Extract Table Data", "https://docs.uipath.com/activities/lang-ja/docs/n-extract-data");
+setActivity("n-select-item", "項目を選択", "Select Item", "https://docs.uipath.com/activities/lang-ja/docs/n-select-item");
+setActivity("n-go-to-url", "URL に移動", "Go to URL", "https://docs.uipath.com/activities/lang-ja/docs/n-go-to-url");
+setActivity("n-navigate-browser", "ブラウザー内を移動", "Navigate Browser", "https://docs.uipath.com/activities/lang-ja/docs/n-navigate-browser");
+// UiClassic
+setActivity("window-scope", "ウィンドウにアタッチ", "Attach Window", "https://docs.uipath.com/activities/lang-ja/docs/window-scope");
+setActivity("close-window", "ウィンドウを閉じる", "Close Window", "https://docs.uipath.com/activities/lang-ja/docs/close-window");
+setActivity("click-text", "テキストをクリック", "Click Text", "https://docs.uipath.com/activities/lang-ja/docs/click-text");
+setActivity("double-click-text", "テキストをダブルクリック", "Double Click Text", "https://docs.uipath.com/activities/lang-ja/docs/double-click-text");
+setActivity("hover-text", "テキスト上でホバー", "Hover Text", "https://docs.uipath.com/activities/lang-ja/docs/hover-text");
+setActivity("text-exists", "テキストの存在を確認", "Text Exists", "https://docs.uipath.com/activities/lang-ja/docs/text-exists");
+setActivity("find-text", "テキスト位置を探す", "Find Text Position", "https://docs.uipath.com/activities/lang-ja/docs/find-text");
+setActivity("get-full-text", "フル テキストを取得", "Get Full Text", "https://docs.uipath.com/activities/lang-ja/docs/get-full-text");
+setActivity("extract-data", "構造化データを抽出", "Extract Structured Data", "https://docs.uipath.com/activities/lang-ja/docs/extract-data");
+setActivity("get-visible-text", "表示中のテキストを取得", "Get Visible Text", "https://docs.uipath.com/activities/lang-ja/docs/get-visible-text");
+setActivity("navigate-to", "URL に移動", "Navigate To", "https://docs.uipath.com/activities/lang-ja/docs/navigate-to");
+setActivity("close-tab", "タブを閉じる", "Close Tab", "https://docs.uipath.com/activities/lang-ja/docs/close-tab");
+setActivity("browser-scope", "ブラウザーにアタッチ", "Attach Browser", "https://docs.uipath.com/activities/lang-ja/docs/browser-scope");
+setActivity("refresh-browser", "ブラウザーを更新", "Refresh Browser", "https://docs.uipath.com/activities/lang-ja/docs/refresh-browser");
+setActivity("open-browser", "ブラウザーを開く", "Open Browser", "https://docs.uipath.com/activities/lang-ja/docs/open-browser");
+setActivity("go-home", "ホームに移動", "Go Home", "https://docs.uipath.com/activities/lang-ja/docs/go-home");
+setActivity("go-back", "前に戻る", "Go Back", "https://docs.uipath.com/activities/lang-ja/docs/go-back");
+setActivity("go-forward", "次に進む", "Go Forward", "https://docs.uipath.com/activities/lang-ja/docs/go-forward");
+setActivity("on-image-appear", "画像が出現したとき", "On Image Appear", "https://docs.uipath.com/activities/lang-ja/docs/on-image-appear");
+setActivity("on-image-vanish", "画像が消滅したとき", "On Image Vanish", "https://docs.uipath.com/activities/lang-ja/docs/on-image-vanish");
+setActivity("click-image", "画像をクリック", "Click Image", "https://docs.uipath.com/activities/lang-ja/docs/click-image");
+setActivity("double-click-image", "画像をダブルクリック", "Double Click Image", "https://docs.uipath.com/activities/lang-ja/docs/double-click-image");
+setActivity("hover-image", "画像上でホバー", "Hover Image", "https://docs.uipath.com/activities/lang-ja/docs/hover-image");
+setActivity("image-found", "画像の存在を確認", "Image Exists", "https://docs.uipath.com/activities/lang-ja/docs/image-found");
+setActivity("wait-image-vanish", "画像の消滅を待つ", "Wait Image Vanish", "https://docs.uipath.com/activities/lang-ja/docs/wait-image-vanish");
+setActivity("wait-image-appear", "画像を探す", "Find Image", "https://docs.uipath.com/activities/lang-ja/docs/wait-image-appear");
+setActivity("on-ui-element-appear", "要素が出現したとき", "On Element Appear", "https://docs.uipath.com/activities/lang-ja/docs/on-ui-element-appear");
+setActivity("on-ui-element-vanish", "要素が消滅したとき", "On Element Vanish", "https://docs.uipath.com/activities/lang-ja/docs/on-ui-element-vanish");
+setActivity("type-secure-text", "SecureStringで文字を入力", "Type Secure Text", "https://docs.uipath.com/activities/lang-ja/docs/type-secure-text");
+setActivity("send-hotkey", "ホットキーを押下", "Send Hotkey", "https://docs.uipath.com/activities/lang-ja/docs/send-hotkey");
+setActivity("type-into", "文字を入力", "Type Into", "https://docs.uipath.com/activities/lang-ja/docs/type-into");
+setActivity("click", "クリック", "Click", "https://docs.uipath.com/activities/lang-ja/docs/click");
+setActivity("double-click", "ダブルクリック", "Double Click", "https://docs.uipath.com/activities/lang-ja/docs/double-click");
+setActivity("hover", "ホバー", "Hover", "https://docs.uipath.com/activities/lang-ja/docs/hover");
+setActivity("check", "チェック", "Check", "https://docs.uipath.com/activities/lang-ja/docs/check");
+setActivity("get-value", "テキストを取得", "Get Text", "https://docs.uipath.com/activities/lang-ja/docs/get-value");
+setActivity("highlight", "強調表示", "Highlight", "https://docs.uipath.com/activities/lang-ja/docs/highlight");
+setActivity("select-item", "項目を選択", "Select Item", "https://docs.uipath.com/activities/lang-ja/docs/select-item");
+setActivity("take-screenshot", "スクリーンショットを作成", "Take Screenshot", "https://docs.uipath.com/activities/lang-ja/docs/take-screenshot");
+setActivity("get-attribute", "属性を取得", "Get Attribute", "https://docs.uipath.com/activities/lang-ja/docs/get-attribute");
+setActivity("anchor-base", "アンカー ベース", "Anchor Base", "https://docs.uipath.com/activities/lang-ja/docs/anchor-base");
+setActivity("anchor-context-aware", "コンテキスト対応のアンカー", "Context Aware Anchor", "https://docs.uipath.com/activities/lang-ja/docs/anchor-context-aware");
+setActivity("element-scope", "要素スコープ", "Element Scope", "https://docs.uipath.com/activities/lang-ja/docs/element-scope");
+setActivity("ui-element-exists", "要素の存在を確認", "Element Exists", "https://docs.uipath.com/activities/lang-ja/docs/ui-element-exists");
+setActivity("wait-ui-element-vanish", "要素の消滅を待つ", "Wait Element Vanish", "https://docs.uipath.com/activities/lang-ja/docs/wait-ui-element-vanish");
+setActivity("open-application", "アプリケーションを開く", "Open Application", "https://docs.uipath.com/activities/lang-ja/docs/open-application");
+setActivity("close-application", "アプリケーションを閉じる", "Close Application", "https://docs.uipath.com/activities/lang-ja/docs/close-application");
+setActivity("start-process", "プロセスを開始", "Start Process", "https://docs.uipath.com/activities/lang-ja/docs/start-process");
+</script>
+</html>
