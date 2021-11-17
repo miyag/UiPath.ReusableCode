@@ -1,0 +1,522 @@
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=320,height=480,initial-scale=1.0,minimum-scale=1.0 maximum-scale=2.0,user-scalable=yes" />
+
+<style>
+body{ font-family: "Open Sans", sans-serif; line-height: 1.25; }
+th{ text-align:left}
+table.dtable {table-layout: fixed; box-shadow: 2px 2px 4px gray;}
+table.dtable, table.dtable th, table.dtable td{border-collapse:collapse; border:1px solid #ccc; line-height:1.5; font-size:15px;}
+table.dtable th {padding:5px; font-weight:normal; background:#3f3f3f; color:#fff; }
+table.dtable td {padding:5px; max-width:445px; word-break: break-all;}
+table.dtable tr:nth-child(2n+1) {background:#f5f5f5;}
+table.dtable th {position:-webkit-sticky; position:sticky; top:0; z-index:1;}
+table.dtable tr:hover {background-color:#ffc;}
+ul{ list-style-type: none; padding-left: 0px; padding-top: 13px;}
+.mname:before{ padding-left:5px; content:""; display:inline-block; width:20px; height:20px; background-size:contain;}
+.cname:before{ padding-left:5px; content:""; display:inline-block; width:20px; height:20px; }
+.navi{ margin:15px; }
+.navi_on{ margin-right:15px; font-weight:bold}
+.navi_off{ margin-right:15px; margin:10px; font-size:0.95em;}
+.footer{ background: #fff; margin:5px;padding-top:10px; max-width:800px;}
+.updated{ color:#000; font-size:0.8em; text-align:left;}
+.type{ font-size: 0.85em;}
+.nashi{ color:#dc143c; font-weight:bold; }
+.murl{ font-size: 0.85em; text-align:right}
+.murl:before{ content:" ("}
+.murl:after{  content:")"}
+.curl{ font-size: 0.85em;}
+.curl:before{ content:" ("}
+.curl:after{  content:")"}
+
+/* ExcelModern */
+#copy-chart-to-clipboard-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#insert-excel-chart-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#update-chart-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#auto-fill-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#write-cell-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#read-cell-value-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#read-cell-formula-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#change-pivot-table-data-source-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#create-pivot-table-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#refresh-pivot-table-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#refresh-data-connections-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#save-as-pdf-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#save-excel-file-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#unprotect-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#protect-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#delete-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#insert-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#duplicate-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#rename-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#execute-macro-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#save-excel-file-as-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#for-each-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#export-excel-to-csv-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#v-lookup-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#clear-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#format-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#write-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#text-to-columns-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#filter-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#find-replace-value-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#delete-column-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#insert-column-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#find-first-last-data-row-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#copy-paste-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#fill-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#sort-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#append-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#auto-fit-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#read-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#excel-for-each-row:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#delete-rows-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#insert-rows-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#create-table-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#remove-duplicates-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#excel-application-card:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#excel-process-scope-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#sequence-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+/* ExcelClassic */
+#invoke-vba:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/invoke-vba.png) no-repeat; background-size:contain;}
+#execute-macro:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/execute-macro.png) no-repeat; background-size:contain;}
+#excel-insert-delete-columns:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-insert-delete-columns.png) no-repeat; background-size:contain;}
+#excel-insert-delete-columns2:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-insert-delete-columns.png) no-repeat; background-size:contain;}
+#excel-auto-fill-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-auto-fill-range.png) no-repeat; background-size:contain;}
+#excel-copy-paste-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-copy-paste-range.png) no-repeat; background-size:contain;}
+#excel-look-up-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-look-up-range.png) no-repeat; background-size:contain;}
+#excel-insert-delete-rows:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-insert-delete-rows.png) no-repeat; background-size:contain;}
+#excel-remove-duplicates-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-remove-duplicates-range.png) no-repeat; background-size:contain;}
+#excel-create-pivot-table:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-create-pivot-table.png) no-repeat; background-size:contain;}
+#excel-refresh-pivot-table:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-refresh-pivot-table.png) no-repeat; background-size:contain;}
+#excel-delete-column:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-delete-column.png) no-repeat; background-size:contain;}
+#excel-insert-column:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-insert-column.png) no-repeat; background-size:contain;}
+#excel-get-table-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-get-table-range.png) no-repeat; background-size:contain;}
+#excel-filter-table:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-filter-table.png) no-repeat; background-size:contain;}
+#excel-sort-table:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-sort-table.png) no-repeat; background-size:contain;}
+#excel-create-table:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-create-table.png) no-repeat; background-size:contain;}
+#excel-application-scope:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-application-scope.png) no-repeat; background-size:contain;}
+#excel-copy-sheet:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-copy-sheet.png) no-repeat; background-size:contain;}
+#excel-write-cell:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-write-cell.png) no-repeat; background-size:contain;}
+#excel-read-cell-formula:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-read-cell-formula.png) no-repeat; background-size:contain;}
+#excel-get-cell-color:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-get-cell-color.png) no-repeat; background-size:contain;}
+#excel-read-cell:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-read-cell.png) no-repeat; background-size:contain;}
+#excel-get-workbook-sheet:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-get-workbook-sheet.png) no-repeat; background-size:contain;}
+#excel-get-workbook-sheets:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-get-workbook-sheets.png) no-repeat; background-size:contain;}
+#excel-save-workbook:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-save-workbook.png) no-repeat; background-size:contain;}
+#excel-close-workbook:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-close-workbook.png) no-repeat; background-size:contain;}
+#excel-read-column:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-read-column.png) no-repeat; background-size:contain;}
+#excel-write-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-write-range.png) no-repeat; background-size:contain;}
+#excel-set-range-color:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-set-range-color.png) no-repeat; background-size:contain;}
+#excel-delete-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-delete-range.png) no-repeat; background-size:contain;}
+#excel-append-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-append-range.png) no-repeat; background-size:contain;}
+#excel-read-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-read-range.png) no-repeat; background-size:contain;}
+#excel-select-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-select-range.png) no-repeat; background-size:contain;}
+#excel-read-row:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-read-row.png) no-repeat; background-size:contain;}
+#excel-get-selected-range:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/excel-get-selected-range.png) no-repeat; background-size:contain;}
+</style>
+
+<script type='text/javascript'>
+// filter
+(function(document) {
+'use strict';
+var LightTableFilter = (function(Arr) {
+var _input;
+function _onInputEvent(e) {
+_input = e.target;
+var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+Arr.forEach.call(tables, function(table) {
+Arr.forEach.call(table.tBodies, function(tbody) {
+Arr.forEach.call(tbody.rows, _filter);
+});
+});
+}
+function _filter(row) {
+var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+}
+return {
+init: function() {
+var inputs = document.getElementsByClassName('table-filter');
+Arr.forEach.call(inputs, function(input) {
+input.oninput = _onInputEvent;
+});
+}
+};
+})(Array.prototype);
+document.addEventListener('readystatechange', function() {
+if (document.readyState === 'complete') {
+LightTableFilter.init();
+}
+});
+})(document);
+</script>
+</head>
+<body>
+
+<div class="navi">
+	<span class="navi_on">Excel Modern</span><span class="navi_off"><a href="#">Ui Modern</a></span>
+</div>
+
+<div class='search-filter'><input type='search' class='table-filter' data-table='activity-table' placeholder='search' /></div>
+<table border=1px class='dtable activity-table'>
+	<thead>
+	<tr>
+		<th>Type</th>
+		<th>Excel Modern Activities</th>
+		<th>Excel Classic Activities</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><span class="type">スコープ</td>
+		<td><span class="mname" id="excel-process-scope-x"></span><span class="murl"><a id="excel-process-scope-x-href"></a></span></td>
+		<td><span class="cname" id="excel-application-scope"></span><span class="curl"><a id="excel-application-scope-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">スコープ</td>
+		<td><span class="mname" id="excel-application-card"></span><span class="murl"><a id="excel-application-card-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">スコープ</td>
+		<td><span class="mname" id="sequence-x"></span><span class="murl"><a id="sequence-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">書込み</span></td>
+		<td><span class="mname" id="text-to-columns-x"></span><span class="murl"><a id="text-to-columns-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">書込み</span></td>
+		<td><span class="mname" id="append-range-x"></span><span class="murl"><a id="append-range-x-href"></a></span></td>
+		<td><span class="cname" id="excel-append-range"></span><span class="curl"><a id="excel-append-range-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">書込み</span></td>
+		<td><span class="mname" id="write-range-x"></span><span class="murl"><a id="write-range-x-href"></a></span></td>
+		<td><span class="cname" id="excel-write-range"></span><span class="curl"><a id="excel-write-range-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">書込み</span></td>
+		<td><span class="mname" id="write-cell-x"></span><span class="murl"><a id="write-cell-x-href"></a></span></td>
+		<td><span class="cname" id="excel-write-cell"></span><span class="curl"><a id="excel-write-cell-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">書込み</span></td>
+		<td><span class="mname" id="clear-range-x"></span><span class="murl"><a id="clear-range-x-href"></a></span></td>
+		<td><span class="cname" id="excel-delete-range"></span><span class="curl"><a id="excel-delete-range-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">読込み</span></td>
+		<td><span class="mname" id="read-cell-value-x"></span><span class="murl"><a id="read-cell-value-x-href"></a></span></td>
+		<td><span class="cname" id="excel-read-cell"></span><span class="curl"><a id="excel-read-cell-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">読込み</span></td>
+		<td><span class="mname" id="read-cell-formula-x"></span><span class="murl"><a id="read-cell-formula-x-href"></a></span></td>
+		<td><span class="cname" id="excel-read-cell-formula"></span><span class="curl"><a id="excel-read-cell-formula-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">読込み</span></td>
+		<td><span class="mname" id="read-range-x"></span><span class="murl"><a id="read-range-x-href"></a></span></td>
+		<td><span class="cname" id="excel-read-range"></span><span class="curl"><a id="excel-read-range-href"></a></span>
+			<span class="cname" id="excel-read-row"></span><span class="curl"><a id="excel-read-row-href"></a></span>
+			<span class="cname" id="excel-read-column"></span><span class="curl"><a id="excel-read-column-href"></a></span>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">出力</span></td>
+		<td><span class="mname" id="save-excel-file-x"></span><span class="murl"><a id="save-excel-file-x-href"></a></span></td>
+		<td><span class="cname" id="excel-save-workbook"></span><span class="curl"><a id="excel-save-workbook-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">出力</span></td>
+		<td><span class="mname" id="save-excel-file-as-x"></span><span class="murl"><a id="save-excel-file-as-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">出力</span></td>
+		<td><span class="mname" id="save-as-pdf-x"></span><span class="murl"><a id="save-as-pdf-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">出力</span></td>
+		<td><span class="mname" id="export-excel-to-csv-x"></span><span class="murl"><a id="export-excel-to-csv-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">グラフ</span></td>
+		<td><span class="mname" id="copy-chart-to-clipboard-x"></span><span class="murl"><a id="copy-chart-to-clipboard-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">グラフ</span></td>
+		<td><span class="mname" id="insert-excel-chart-x"></span><span class="murl"><a id="insert-excel-chart-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">グラフ</span></td>
+		<td><span class="mname" id="update-chart-x"></span><span class="murl"><a id="update-chart-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">Pivot</span></td>
+		<td><span class="mname" id="change-pivot-table-data-source-x"></span><span class="murl"><a id="change-pivot-table-data-source-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">Pivot</span></td>
+		<td><span class="mname" id="create-pivot-table-x"></span><span class="murl"><a id="create-pivot-table-x-href"></a></span></td>
+		<td><span class="cname" id="excel-create-pivot-table"></span><span class="curl"><a id="excel-create-pivot-table-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">Pivot</span></td>
+		<td><span class="mname" id="refresh-pivot-table-x"></span><span class="murl"><a id="refresh-pivot-table-x-href"></a></span></td>
+		<td><span class="cname" id="excel-refresh-pivot-table"></span><span class="curl"><a id="excel-refresh-pivot-table-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="execute-macro-x"></span><span class="murl"><a id="execute-macro-x-href"></a></span></td>
+		<td><span class="cname" id="execute-macro"></span><span class="curl"><a id="execute-macro-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="refresh-data-connections-x"></span><span class="murl"><a id="refresh-data-connections-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="auto-fill-x"></span><span class="murl"><a id="auto-fill-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="v-lookup-x"></span><span class="murl"><a id="v-lookup-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="format-range-x"></span><span class="murl"><a id="format-range-x-href"></a></span></td>
+		<td><span class="cname" id="excel-set-range-color"></span><span class="curl"><a id="excel-set-range-color-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="filter-x"></span><span class="murl"><a id="filter-x-href"></a></span></td>
+		<td><span class="cname" id="excel-filter-table"></span><span class="curl"><a id="excel-filter-table-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="find-replace-value-x"></span><span class="murl"><a id="find-replace-value-x-href"></a></span></td>
+		<td><span class="cname" id="excel-look-up-range"></span><span class="curl"><a id="excel-look-up-range-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="insert-rows-x"></span><span class="murl"><a id="insert-rows-x-href"></a></span>
+			<span class="mname" id="delete-rows-x"></span><span class="murl"><a id="delete-rows-x-href"></a></span></td>
+		<td><span class="cname" id="excel-insert-delete-rows"></span><span class="curl"><a id="excel-insert-delete-rows-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="insert-column-x"></span><span class="murl"><a id="insert-column-x-href"></a></span>
+			<span class="mname" id="delete-column-x"></span><span class="murl"><a id="delete-column-x-href"></a></span></td>
+		<td><span class="cname" id="excel-insert-column"></span><span class="curl"><a id="excel-insert-column-href"></a></span>
+			<span class="cname" id="excel-delete-column"></span><span class="curl"><a id="excel-delete-column-href"></a></span><br>
+			<span class="cname" id="excel-insert-delete-columns"></span><span class="curl"><a id="excel-insert-delete-columns-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="copy-paste-range-x"></span><span class="murl"><a id="copy-paste-range-x-href"></a></span></td>
+		<td><span class="cname" id="excel-copy-paste-range"></span><span class="curl"><a id="excel-copy-paste-range-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="remove-duplicates-x"></span><span class="murl"><a id="remove-duplicates-x-href"></a></span></td>
+		<td><span class="cname" id="excel-remove-duplicates-range"></span><span class="curl"><a id="excel-remove-duplicates-range-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="fill-range-x"></span><span class="murl"><a id="fill-range-x-href"></a></span></td>
+		<td><span class="cname" id="excel-auto-fill-range"></span><span class="curl"><a id="excel-auto-fill-range-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="sort-x"></span><span class="murl"><a id="sort-x-href"></a></span></td>
+		<td><span class="cname" id="excel-sort-table"></span><span class="curl"><a id="excel-sort-table-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="auto-fit-x"></span><span class="murl"><a id="auto-fit-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">編集</span></td>
+		<td><span class="mname" id="create-table-x"></span><span class="murl"><a id="create-table-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">シート</span></td>
+		<td><span class="mname" id="protect-sheet-x"></span><span class="murl"><a id="protect-sheet-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">シート</span></td>
+		<td><span class="mname" id="unprotect-sheet-x"></span><span class="murl"><a id="unprotect-sheet-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">シート</span></td>
+		<td><span class="mname" id="rename-sheet-x"></span><span class="murl"><a id="rename-sheet-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">シート</span></td>
+		<td><span class="mname" id="delete-sheet-x"></span><span class="murl"><a id="delete-sheet-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">シート</span></td>
+		<td><span class="mname" id="insert-sheet-x"></span><span class="murl"><a id="insert-sheet-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">シート</span></td>
+		<td><span class="mname" id="duplicate-sheet-x"></span><span class="murl"><a id="duplicate-sheet-x-href"></a></span></td>
+		<td><span class="cname" id="excel-copy-sheet"></span><span class="curl"><a id="excel-copy-sheet-href"></a></span></td>
+	</tr>
+	<tr>
+		<td><span class="type">取得</span></td>
+		<td><span class="mname" id="find-first-last-data-row-x"></span><span class="murl"><a id="find-first-last-data-row-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">ループ</span></td>
+		<td><span class="mname" id="for-each-sheet-x"></span><span class="murl"><a id="for-each-sheet-x-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span>
+			<div>※<span class="cname" id="excel-get-workbook-sheet"></span><span class="curl"><a id="excel-get-workbook-sheet-href"></a></span></div>
+			<div>※<span class="cname" id="excel-get-workbook-sheets"></span><span class="curl"><a id="excel-get-workbook-sheets-href"></a></span></div>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">ループ</span></td>
+		<td><span class="mname" id="excel-for-each-row"></span><span class="murl"><a id="excel-for-each-row-href"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">その他</span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+		<td>
+			<ul>
+			<li><span class="cname" id="invoke-vba"></span><span class="curl"><a id="invoke-vba-href"></a></span></li>
+			<li><span class="cname" id="excel-close-workbook"></span><span class="curl"><a id="excel-close-workbook-href"></a></span></li>
+			<li><span class="cname" id="excel-get-table-range"></span><span class="curl"><a id="excel-get-table-range-href"></a></span></li>
+			<li><span class="cname" id="excel-create-table"></span><span class="curl"><a id="excel-create-table-href"></a></span></li>
+			<li><span class="cname" id="excel-get-cell-color"></span><span class="curl"><a id="excel-get-cell-color-href"></a></span></li>
+			<li><span class="cname" id="excel-select-range"></span><span class="curl"><a id="excel-select-range-href"></a></span></li>
+			<li><span class="cname" id="excel-get-selected-range"></span><span class="curl"><a id="excel-get-selected-range-href"></a></span></li>
+			</ul>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<footer class="footer"><p class="updated">updated at 2021/11/17</p></footer>
+
+</body>
+
+<script>
+var setActivity = function(aid, aname, anameSub,docUrl){
+	document.getElementById(aid).innerText = aname;
+	document.getElementById(aid + "-href").textContent = anameSub;
+	document.getElementById(aid + "-href").href = docUrl;
+}
+
+// ExcelModern
+setActivity("copy-chart-to-clipboard-x", "Excelグラフを取得", "Get Excel Chart", "https://docs.uipath.com/activities/lang-ja/docs/copy-chart-to-clipboard-x");
+setActivity("insert-excel-chart-x", "Excelグラフを挿入", "Insert Excel Chart", "https://docs.uipath.com/activities/lang-ja/docs/insert-excel-chart-x");
+setActivity("update-chart-x", "Excelグラフを更新", "Update Excel Chart", "https://docs.uipath.com/activities/lang-ja/docs/update-chart-x");
+setActivity("auto-fill-x", "オートフィル", "Auto Fill", "https://docs.uipath.com/activities/lang-ja/docs/auto-fill-x");
+setActivity("write-cell-x", "セルに書き込み", "Write Cell", "https://docs.uipath.com/activities/lang-ja/docs/write-cell-x");
+setActivity("read-cell-value-x", "セルの値を読み込み", "Read Cell Value", "https://docs.uipath.com/activities/lang-ja/docs/read-cell-value-x");
+setActivity("read-cell-formula-x", "セルの数式を読み込み", "Read Cell Formula", "https://docs.uipath.com/activities/lang-ja/docs/read-cell-formula-x");
+setActivity("change-pivot-table-data-source-x", "ピボットテーブルのデータソースを変更", "Change Pivot Data Source", "https://docs.uipath.com/activities/lang-ja/docs/change-pivot-table-data-source-x");
+setActivity("create-pivot-table-x", "ピボットテーブルを作成", "Create Pivot Table", "https://docs.uipath.com/activities/lang-ja/docs/create-pivot-table-x");
+setActivity("refresh-pivot-table-x", "ピボットテーブルを更新", "Refresh Pivot Table", "https://docs.uipath.com/activities/lang-ja/docs/refresh-pivot-table-x");
+setActivity("refresh-data-connections-x", "Excelのデータ接続を更新", "Refresh Excel Data Connections", "https://docs.uipath.com/activities/lang-ja/docs/refresh-data-connections-x");
+setActivity("save-as-pdf-x", "ExcelファイルをPDF として保存", "Save Excel File As PDF", "https://docs.uipath.com/activities/lang-ja/docs/save-as-pdf-x");
+setActivity("save-excel-file-x", "Excel ファイルを保存", "Save Excel File", "https://docs.uipath.com/activities/lang-ja/docs/save-excel-file-x");
+setActivity("unprotect-sheet-x", "シートの保護を解除", "Unprotect Sheet", "https://docs.uipath.com/activities/lang-ja/docs/unprotect-sheet-x");
+setActivity("protect-sheet-x", "シートを保護", "Protect Sheet", "https://docs.uipath.com/activities/lang-ja/docs/protect-sheet-x");
+setActivity("delete-sheet-x", "シートを削除", "Delete Sheet", "https://docs.uipath.com/activities/lang-ja/docs/delete-sheet-x");
+setActivity("insert-sheet-x", "シートを挿入", "Insert Sheet", "https://docs.uipath.com/activities/lang-ja/docs/insert-sheet-x");
+setActivity("duplicate-sheet-x", "シートを複製", "Duplicate Sheet", "https://docs.uipath.com/activities/lang-ja/docs/duplicate-sheet-x");
+setActivity("rename-sheet-x", "シート名を変更", "Rename Sheet", "https://docs.uipath.com/activities/lang-ja/docs/rename-sheet-x");
+setActivity("execute-macro-x", "スプレッドシートのマクロを実行", "Run Spreadsheet Macro", "https://docs.uipath.com/activities/lang-ja/docs/execute-macro-x");
+setActivity("save-excel-file-as-x", "名前を付けて Excelファイルを保存", "Save Excel File As", "https://docs.uipath.com/activities/lang-ja/docs/save-excel-file-as-x");
+setActivity("for-each-sheet-x", "繰り返し(Excelの各シート)", "For Each Excel Sheet", "https://docs.uipath.com/activities/lang-ja/docs/for-each-sheet-x");
+setActivity("export-excel-to-csv-x", "CSV にエクスポート", "Export to CSV", "https://docs.uipath.com/activities/lang-ja/docs/export-excel-to-csv-x");
+setActivity("v-lookup-x", "VLOOKUP", "VLookup", "https://docs.uipath.com/activities/lang-ja/docs/v-lookup-x");
+setActivity("clear-range-x", "シート/範囲/表をクリア", "Clear Sheet/Range/Table", "https://docs.uipath.com/activities/lang-ja/docs/clear-range-x");
+setActivity("format-range-x", "セルを書式設定", "Format Cells", "https://docs.uipath.com/activities/lang-ja/docs/format-range-x");
+setActivity("write-range-x", "データテーブルをExcelに書き込み", "Write DataTable to Excel", "https://docs.uipath.com/activities/lang-ja/docs/write-range-x");
+setActivity("text-to-columns-x", "テキストを列に分割", "Text to Columns", "https://docs.uipath.com/activities/lang-ja/docs/text-to-columns-x");
+setActivity("filter-x", "フィルター", "Filter", "https://docs.uipath.com/activities/lang-ja/docs/filter-x");
+setActivity("find-replace-value-x", "値を検索/置換", "Find/Replace Value", "https://docs.uipath.com/activities/lang-ja/docs//find-replace-value-x");
+setActivity("delete-column-x", "列を削除", "Delete Column", "https://docs.uipath.com/activities/lang-ja/docs/delete-column-x");
+setActivity("insert-column-x", "列を挿入", "Insert Column", "https://docs.uipath.com/activities/lang-ja/docs/insert-column-x");
+setActivity("find-first-last-data-row-x", "最初/最後のデータ行を検索", "Find First/Last Data Row", "https://docs.uipath.com/activities/lang-ja/docs/find-first-last-data-row-x");
+setActivity("copy-paste-range-x", "範囲をコピー/貼り付け", "Copy/Paste Range", "https://docs.uipath.com/activities/lang-ja/docs/copy-paste-range-x");
+setActivity("fill-range-x", "範囲をフィル", "Fill Range", "https://docs.uipath.com/activities/lang-ja/docs/fill-range-x");
+setActivity("sort-x", "範囲を並べ替え", "Sort Range", "https://docs.uipath.com/activities/lang-ja/docs/sort-x");
+setActivity("append-range-x", "範囲を書き込み", "Append Range", "https://docs.uipath.com/activities/lang-ja/docs/append-range-x");
+setActivity("auto-fit-x", "範囲を自動調整", "Autofit Range", "https://docs.uipath.com/activities/lang-ja/docs/auto-fit-x");
+setActivity("read-range-x", "範囲を読み込み", "Read Range", "https://docs.uipath.com/activities/lang-ja/docs/read-range-x");
+setActivity("excel-for-each-row", "繰り返し(Excelの各行)", "For Each Excel Row", "https://docs.uipath.com/activities/lang-ja/docs/excel-for-each-row");
+setActivity("delete-rows-x", "行を削除", "Delete Rows", "https://docs.uipath.com/activities/lang-ja/docs/delete-rows-x");
+setActivity("insert-rows-x", "行を挿入", "Insert Rows", "https://docs.uipath.com/activities/lang-ja/docs/insert-rows-x");
+setActivity("create-table-x", "表として書式設定", "Format As Table", "https://docs.uipath.com/activities/lang-ja/docs/create-table-x");
+setActivity("remove-duplicates-x", "重複を削除", "Remove Duplicates", "https://docs.uipath.com/activities/lang-ja/docs/remove-duplicates-x");
+setActivity("excel-application-card", "Excelファイルを使用", "Use Excel File", "https://docs.uipath.com/activities/lang-ja/docs/excel-application-card");
+setActivity("excel-process-scope-x", "Excelプロセススコープ", "Excel Process Scope", "https://docs.uipath.com/activities/lang-ja/docs/excel-process-scope-x");
+setActivity("sequence-x", "単一のExcelプロセススコープ", "Single Excel Process Scope", "https://docs.uipath.com/activities/lang-ja/docs/sequence-x");
+
+// ExcelClassic
+setActivity("invoke-vba", "VBAを呼び出し", "Invoke VBA", "https://docs.uipath.com/activities/lang-ja/docs/invoke-vba");
+setActivity("execute-macro", "マクロを実行", "Execute Macro", "https://docs.uipath.com/activities/lang-ja/docs/execute-macro");
+setActivity("excel-insert-delete-columns", "列を挿入/削除", "Insert/Delete Columns", "https://docs.uipath.com/activities/lang-ja/docs/excel-insert-delete-columns");
+setActivity("excel-auto-fill-range", "範囲をオートフィル", "Auto Fill Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-auto-fill-range");
+setActivity("excel-copy-paste-range", "範囲をコピー/貼り付け", "Copy Paste Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-copy-paste-range");
+setActivity("excel-look-up-range", "範囲内で検索", "LookUp Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-look-up-range");
+setActivity("excel-insert-delete-rows", "行を挿入/削除", "Insert/Delete Rows", "https://docs.uipath.com/activities/lang-ja/docs/excel-insert-delete-rows");
+setActivity("excel-remove-duplicates-range", "重複行を削除", "Remove Duplicates Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-remove-duplicates-range");
+setActivity("excel-create-pivot-table", "ピボットテーブルを作成", "Create Pivot Table", "https://docs.uipath.com/activities/lang-ja/docs/excel-create-pivot-table");
+setActivity("excel-refresh-pivot-table", "ピボットテーブルを更新", "Refresh Pivot Table", "https://docs.uipath.com/activities/lang-ja/docs/excel-refresh-pivot-table");
+setActivity("excel-delete-column", "列を削除", "Delete Column", "https://docs.uipath.com/activities/lang-ja/docs/excel-delete-column");
+setActivity("excel-insert-column", "列を挿入", "Insert Column", "https://docs.uipath.com/activities/lang-ja/docs/excel-insert-column");
+setActivity("excel-get-table-range", "表の範囲を取得", "Get Table Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-get-table-range");
+setActivity("excel-filter-table", "表をフィルター", "Filter Table", "https://docs.uipath.com/activities/lang-ja/docs/excel-filter-table");
+setActivity("excel-sort-table", "表を並べ替え", "Sort Table", "https://docs.uipath.com/activities/lang-ja/docs/excel-sort-table");
+setActivity("excel-create-table", "表を作成", "Create Table", "https://docs.uipath.com/activities/lang-ja/docs/excel-create-table");
+setActivity("excel-application-scope", "Excelアプリケーションスコープ", "Excel Application Scope", "https://docs.uipath.com/activities/lang-ja/docs/excel-application-scope");
+setActivity("excel-copy-sheet", "シートをコピー", "Copy Sheet", "https://docs.uipath.com/activities/lang-ja/docs/excel-copy-sheet");
+setActivity("excel-write-cell", "セルに書き込み", "Write Cell", "https://docs.uipath.com/activities/lang-ja/docs/excel-write-cell");
+setActivity("excel-read-cell-formula", "セルの数式を読み込み", "Read Cell Formula", "https://docs.uipath.com/activities/lang-ja/docs/excel-read-cell-formula");
+setActivity("excel-get-cell-color", "セルの色を取得", "Get Cell Color", "https://docs.uipath.com/activities/lang-ja/docs/excel-get-cell-color");
+setActivity("excel-read-cell", "セルを読み込み", "Read Cell", "https://docs.uipath.com/activities/lang-ja/docs/excel-read-cell");
+setActivity("excel-get-workbook-sheet", "ブックのシートを取得", "Get Workbook Sheet", "https://docs.uipath.com/activities/lang-ja/docs/excel-get-workbook-sheet");
+setActivity("excel-get-workbook-sheets", "ブックの全シートを取得", "Get Workbook Sheets", "https://docs.uipath.com/activities/lang-ja/docs/excel-get-workbook-sheets");
+setActivity("excel-save-workbook", "ブックを保存", "Save Workbook", "https://docs.uipath.com/activities/lang-ja/docs/excel-save-workbook");
+setActivity("excel-close-workbook", "ブックを閉じる", "Close Workbook", "https://docs.uipath.com/activities/lang-ja/docs/excel-close-workbook");
+setActivity("excel-read-column", "列を読み込み", "Read Column", "https://docs.uipath.com/activities/lang-ja/docs/excel-read-column");
+setActivity("excel-write-range", "範囲に書き込み", "Write Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-write-range");
+setActivity("excel-set-range-color", "範囲の色を設定", "Set Range Color", "https://docs.uipath.com/activities/lang-ja/docs/excel-set-range-color");
+setActivity("excel-delete-range", "範囲を削除", "Delete Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-delete-range");
+setActivity("excel-append-range", "範囲を書き込み", "Append Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-append-range");
+setActivity("excel-read-range", "範囲を読み込み", "Read Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-read-range");
+setActivity("excel-select-range", "範囲を選択", "Select Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-select-range");
+setActivity("excel-read-row", "行を読み込み", "Read Row", "https://docs.uipath.com/activities/lang-ja/docs/excel-read-row");
+setActivity("excel-get-selected-range", "選択範囲を取得", "Get Selected Range", "https://docs.uipath.com/activities/lang-ja/docs/excel-get-selected-range");
+</script>
+</html>

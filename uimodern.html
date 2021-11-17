@@ -1,14 +1,11 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=320,height=480,initial-scale=1.0,minimum-scale=1.0 maximum-scale=2.0,user-scalable=yes" />
+
 <style>
-body {
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.25;
-}
-th { text-align:left}
-
-
+body{ font-family: "Open Sans", sans-serif; line-height: 1.25; }
+th{ text-align:left}
 table.dtable {table-layout: fixed; box-shadow: 2px 2px 4px gray;}
 table.dtable, table.dtable th, table.dtable td{border-collapse:collapse; border:1px solid #ccc; line-height:1.5; font-size:15px;}
 table.dtable th {padding:5px; font-weight:normal; background:#3f3f3f; color:#fff; }
@@ -17,34 +14,22 @@ table.dtable td.wide {padding:5px; max-width:800px; word-break: break-all;}
 table.dtable tr:nth-child(2n+1) {background:#f5f5f5;}
 table.dtable th {position:-webkit-sticky; position:sticky; top:0; z-index:1;}
 table.dtable tr:hover {background-color:#ffc;}
-
-
-
-
-
-
-ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
-.mname:before{
-	padding-left:5px;
-	content:"";
-	display:inline-block;
-	width:20px;
-	height:20px;
-	background-size:contain;
-}
-.cname:before{
-	padding-left:5px;
-	content:"";
-	display:inline-block;
-	width:20px;
-	height:20px;
-}
+ul{ list-style-type: none; padding-left: 0px; padding-top:0px; margin:5px}
+.mname:before{ padding-left:5px; content:""; display:inline-block; width:20px; height:20px; background-size:contain;}
+.cname:before{ padding-left:5px; content:""; display:inline-block; width:20px; height:20px; }
+.navi{ margin:15px; }
+.navi_on{ margin-right:15px; font-weight:bold}
+.navi_off{ margin-right:15px; margin:10px; font-size:0.95em;}
+.footer{ background: #fff; margin:5px;padding-top:10px; max-width:800px;}
+.updated{ color:#000; font-size:0.8em; text-align:left;}
+.type{ font-size: 0.85em;}
+.nashi{ color:#dc143c; font-weight:bold; }
 .murl{ font-size: 0.85em; text-align:right}
-.murl:before{content:" ("}
-.murl:after{ content:")"}
+.murl:before{ content:" ("}
+.murl:after{  content:")"}
 .curl{ font-size: 0.85em;}
-.curl:before{content:" ("}
-.curl:after{ content:")"}
+.curl:before{ content:" ("}
+.curl:after{  content:")"}
 
 /* UiModern */
 #n-application-card:before{	background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-application-card.png) no-repeat; background-size:contain}
@@ -63,6 +48,7 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 #n-select-item:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-select-item.png) no-repeat; background-size:contain;}
 #n-go-to-url:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-go-to-url.png) no-repeat; background-size:contain;}
 #n-navigate-browser:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-navigate-browser.png) no-repeat; background-size:contain;}
+
 /* UiClassic */
 #window-scope:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/window-scope.png) no-repeat; background-size:contain;}
 #close-window:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/close-window.png) no-repeat; background-size:contain;}
@@ -113,18 +99,63 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 #close-application:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/close-application.png) no-repeat; background-size:contain;}
 #start-process:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/start-process.png) no-repeat; background-size:contain;}
 </style>
+
+
+<script type='text/javascript'>
+// filter
+(function(document) {
+'use strict';
+var LightTableFilter = (function(Arr) {
+var _input;
+function _onInputEvent(e) {
+_input = e.target;
+var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+Arr.forEach.call(tables, function(table) {
+Arr.forEach.call(table.tBodies, function(tbody) {
+Arr.forEach.call(tbody.rows, _filter);
+});
+});
+}
+function _filter(row) {
+var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+}
+return {
+init: function() {
+var inputs = document.getElementsByClassName('table-filter');
+Arr.forEach.call(inputs, function(input) {
+input.oninput = _onInputEvent;
+});
+}
+};
+})(Array.prototype);
+document.addEventListener('readystatechange', function() {
+if (document.readyState === 'complete') {
+LightTableFilter.init();
+}
+});
+})(document);
+</script>
 </head>
+
 <body>
-<h3>UI Automation.アプリケーション</h3>
-<table border=1px class='dtable'>
+
+<div class="navi">
+	<span class="navi_on">Ui Modern</span><span class="navi_off"><a href="#">Excel Modern</a></span>
+</div>
+
+<div class='search-filter'><input type='search' class='table-filter' data-table='activity-table' placeholder='search' /></div>
+<table border=1px class='dtable activity-table'>
 	<thead>
 	<tr>
+		<th>Type</th>
 		<th>Modern Activities</th>
 		<th>Classic Activities</th>
 	</tr>
 	</thead>
 	<tbody>
 	<tr>
+		<td><span class="type">Window</td>
 		<td><span class="mname" id="n-application-card"></span><br><span class="murl"><a id="n-application-card-href" target="_blank"></a></span></td>
 		<td><ul>
 			<li><span class="cname" id="open-browser"></span><span class="curl"><a id="open-browser-href" target="_blank"></a></span></li>
@@ -137,6 +168,7 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 		</td>
 	</tr>
 	<tr>
+		<td><span class="type">チェック</td>
 		<td><span class="mname" id="n-check-state"></span><br><span class="murl"><a id="n-check-state-href" target="_blank"></a></span></td>
 		<td><ul>
 			<li><span class="cname" id="on-ui-element-appear"></span><span class="curl"><a id="on-ui-element-appear-href" target="_blank"></a></span></li>
@@ -151,7 +183,8 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 		</td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-extract-data"></span>&nbsp;<span class="murl"><a id="n-extract-data-href" target="_blank"></a></span></td>
+		<td><span class="type">表</td>
+		<td><span class="mname" id="n-extract-data"></span><span class="murl"><a id="n-extract-data-href" target="_blank"></a></span></td>
 		<td><ul>
 			<li><span class="cname" id="extract-data"></span><span class="curl"><a id="extract-data-href" target="_blank"></a></span></li>
 			<li><span class="cname" id="get-full-text"></span><span class="curl"><a id="get-full-text-href" target="_blank"></a></span></li>
@@ -160,7 +193,8 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 		</td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-click"></span>&nbsp;<span class="murl"><a id="n-click-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-click"></span><span class="murl"><a id="n-click-href" target="_blank"></a></span></td>
 		<td><ul>
 			<li><span class="cname" id="click"></span><span class="curl"><a id="click-href" target="_blank"></a></span></li>
 			<li><span class="cname" id="double-click"></span><span class="curl"><a id="double-click-href" target="_blank"></a></span></li>
@@ -172,7 +206,8 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 		</td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-hover"></span>&nbsp;<span class="murl"><a id="n-hover-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-hover"></span><span class="murl"><a id="n-hover-href" target="_blank"></a></span></td>
 		<td><ul>
 			<li><span class="cname" id="hover"></span><span class="curl"><a id="hover-href" target="_blank"></a></span></li>
 			<li><span class="cname" id="hover-text"></span><span class="curl"><a id="hover-text-href" target="_blank"></a></span></li>
@@ -181,7 +216,8 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 		</td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-type-into"></span>&nbsp;<span class="murl"><a id="n-type-into-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-type-into"></span><span class="murl"><a id="n-type-into-href" target="_blank"></a></span></td>
 		<td><ul>
 			<li><span class="cname" id="type-into"></span><span class="curl"><a id="type-into-href" target="_blank"></a></span></li>
 			<li><span class="cname" id="type-secure-text"></span><span class="curl"><a id="type-secure-text-href" target="_blank"></a></span></li>
@@ -189,7 +225,8 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 		</td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-navigate-browser"></span>&nbsp;<span class="murl"><a id="n-navigate-browser-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-navigate-browser"></span><span class="murl"><a id="n-navigate-browser-href" target="_blank"></a></span></td>
 		<td><ul>
 			<li><span class="cname" id="refresh-browser"></span><span class="curl"><a id="refresh-browser-href" target="_blank"></a></span></li>
 			<li><span class="cname" id="go-home"></span><span class="curl"><a id="go-home-href" target="_blank"></a></span></li>
@@ -200,43 +237,53 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 		</td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-get-text"></span>&nbsp;<span class="murl"><a id="n-get-text-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-get-text"></span><span class="murl"><a id="n-get-text-href" target="_blank"></a></span></td>
 		<td><ul><li><span class="cname" id="get-value"></span><span class="curl"><a id="get-value-href" target="_blank"></a></span></li></ul></td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-highlight"></span>&nbsp;<span class="murl"><a id="n-highlight-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-highlight"></span><span class="murl"><a id="n-highlight-href" target="_blank"></a></span></td>
 		<td><ul><li><span class="cname" id="highlight"></span><span class="curl"><a id="highlight-href" target="_blank"></a></span></li></ul></td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-select-item"></span>&nbsp;<span class="murl"><a id="n-select-item-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-select-item"></span><span class="murl"><a id="n-select-item-href" target="_blank"></a></span></td>
 		<td><ul><li><span class="cname" id="select-item"></span><span class="curl"><a id="select-item-href" target="_blank"></a></span></li></ul></td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-check"></span>&nbsp;<span class="murl"><a id="n-check-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-check"></span><span class="murl"><a id="n-check-href" target="_blank"></a></span></td>
 		<td><span class="cname" id="check"></span><span class="curl"><a id="check-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
+		<td><span class="type">操作</td>
 		<td><span class="mname" id="n-take-screenshot"></span><span class="murl"><a id="n-take-screenshot-href" target="_blank"></a></span></td>
 		<td><span class="cname" id="take-screenshot"></span><span class="curl"><a id="take-screenshot-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-keyboard-shortcuts"></span>&nbsp;<span class="murl"><a id="n-keyboard-shortcuts-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-keyboard-shortcuts"></span><span class="murl"><a id="n-keyboard-shortcuts-href" target="_blank"></a></span></td>
 		<td><span class="cname" id="send-hotkey"></span><span class="curl"><a id="send-hotkey-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-get-attribute"></span>&nbsp;<span class="murl"><a id="n-get-attribute-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-get-attribute"></span><span class="murl"><a id="n-get-attribute-href" target="_blank"></a></span></td>
 		<td><span class="cname" id="get-attribute"></span><span class="curl"><a id="get-attribute-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-go-to-url"></span>&nbsp;<span class="murl"><a id="n-go-to-url-href" target="_blank"></a></span></td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-go-to-url"></span><span class="murl"><a id="n-go-to-url-href" target="_blank"></a></span></td>
 		<td><span class="cname" id="navigate-to"></span><span class="curl"><a id="navigate-to-href" target="_blank"></a></span></td>
 	</tr>
 	<tr>
-		<td><span class="mname" id="n-mouse-scroll"></span>&nbsp;<span class="murl"><a id="n-mouse-scroll-href" target="_blank"></a></span></td>
-		<td>Ｘ（対応なし）</td>
+		<td><span class="type">操作</td>
+		<td><span class="mname" id="n-mouse-scroll"></span><span class="murl"><a id="n-mouse-scroll-href" target="_blank"></a></span></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td>Ｘ（対応なし）</td>
+		<td><span class="type">その他</td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
 		<td>
 			<ul
 			<li><span class="cname" id="text-exists"></span><span class="curl"><a id="text-exists-href" target="_blank"></a></span></li>
@@ -250,7 +297,10 @@ ul { list-style-type: none; padding-left: 0px; padding-top: 13px;}
 		</td>
 	</tr>
 	</tbody>
-</table>   
+</table>
+
+<footer class="footer"><p class="updated">updated at 2021/11/17</p></footer>
+
 </body>
 <script>
 var setActivity = function(aid, aname, anameSub,docUrl){
@@ -275,6 +325,7 @@ setActivity("n-extract-data", "表データを抽出", "Extract Table Data", "ht
 setActivity("n-select-item", "項目を選択", "Select Item", "https://docs.uipath.com/activities/lang-ja/docs/n-select-item");
 setActivity("n-go-to-url", "URL に移動", "Go to URL", "https://docs.uipath.com/activities/lang-ja/docs/n-go-to-url");
 setActivity("n-navigate-browser", "ブラウザー内を移動", "Navigate Browser", "https://docs.uipath.com/activities/lang-ja/docs/n-navigate-browser");
+
 // UiClassic
 setActivity("window-scope", "ウィンドウにアタッチ", "Attach Window", "https://docs.uipath.com/activities/lang-ja/docs/window-scope");
 setActivity("close-window", "ウィンドウを閉じる", "Close Window", "https://docs.uipath.com/activities/lang-ja/docs/close-window");
