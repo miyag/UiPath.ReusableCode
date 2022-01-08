@@ -4,8 +4,13 @@
 <meta charset="utf-8">
 <meta name="description" content="UiPath Ui Automationモダンとクラシックアクティビティの対応表まとめ">
 <meta name="viewport" content="width=320,height=480,initial-scale=1.0,minimum-scale=1.0 maximum-scale=2.0,user-scalable=yes" />
-
 <style>
+a[target="_blank"]:after{content:url('https://miyag.github.io/UiPath.ReusableCode/images/a-href.png'); margin:0px 5px;}
+.hide{ display: none;}
+a.tooltip, a.tooltip2 { margin:0; text-decoration:none; font-size:0.8em;}
+span.tooltiplink {color: #fff; text-align: center; padding: 0 0.5em; background-color: #808000; border-radius:5px; -moz-border-radius:5px;}
+p.tgToolTip {margin:0; padding:0.5em 1em; background-color:#fff; border:1px solid #000; color: #000; border-radius:5px; -moz-border-radius: 5px; min-height: 1em; top: 100px; left: 20px; position: absolute; z-index:100; font-size:0.85em;}
+.dummy {width: 100%; height: 100%; position: fixed; top: 0; left: 0; opacity: 0;}
 body{ font-family: "Open Sans", sans-serif; line-height: 1.25; }
 th{ text-align:left}
 table.dtable {table-layout: fixed; box-shadow: 2px 2px 4px gray;}
@@ -17,8 +22,8 @@ table.dtable tr:nth-child(2n+1) {background:#f5f5f5;}
 table.dtable th {position:-webkit-sticky; position:sticky; top:0; z-index:1;}
 table.dtable tr:hover {background-color:#ffc;}
 ul{ list-style-type: none; padding-left: 0px; padding-top:0px; margin:5px}
-.mname:before{ padding-left:5px; content:""; display:inline-block; width:20px; height:20px; background-size:contain;}
-.cname:before{ padding-left:5px; content:""; display:inline-block; width:20px; height:20px; }
+.mnam:before{ padding-left:5px; content:""; display:inline-block; width:20px; height:20px; background-size:contain;}
+.cnam:before{ padding-left:5px; content:""; display:inline-block; width:20px; height:20px; }
 .navi{ margin:15px; }
 .navi_on{ margin-right:15px; font-weight:bold}
 .navi_off{ margin-right:15px; margin:10px; font-size:0.95em;}
@@ -26,13 +31,414 @@ ul{ list-style-type: none; padding-left: 0px; padding-top:0px; margin:5px}
 .updated{ color:#000; font-size:0.8em; text-align:left;}
 .type{ font-size: 0.85em;}
 .nashi{ color:#dc143c; font-weight:bold; }
-.murl{ font-size: 0.85em; text-align:right}
-.murl:before{ content:" ("}
-.murl:after{  content:")"}
-.curl{ font-size: 0.85em;}
-.curl:before{ content:" ("}
-.curl:after{  content:")"}
-
+.msub{ font-size: 0.85em; text-align:right}
+.msub:before{ content:" ("}
+.msub:after{  content:")"}
+.csub{ font-size: 0.85em;}
+.csub:before{ content:" ("}
+.csub:after{  content:")"}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type='text/javascript'>
+(function(document) {
+'use strict';
+var LightTableFilter = (function(Arr) {
+var _input;
+function _onInputEvent(e) {
+_input = e.target;
+var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+Arr.forEach.call(tables, function(table) {
+Arr.forEach.call(table.tBodies, function(tbody) {
+Arr.forEach.call(tbody.rows, _filter);
+});
+});
+}
+function _filter(row) {
+var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+}
+return {
+init: function() {
+var inputs = document.getElementsByClassName('table-filter');
+Arr.forEach.call(inputs, function(input) {
+input.oninput = _onInputEvent;
+});
+}
+};
+})(Array.prototype);
+document.addEventListener('readystatechange', function() {
+if (document.readyState === 'complete') {
+LightTableFilter.init();
+}
+});
+})(document);
+$(function(){
+    var dataTooltip, insertHtml;
+    $('.tooltip').click(function(e){
+        e.preventDefault();
+        dataTooltip = $(this).attr('data-tooltip');
+        insertHtml = '<p class="tgToolTip">' + dataTooltip + '</p>';
+        $('body').append(insertHtml);
+        var position = $(this).position();
+        var newPositionTop = position.top +23;
+        var newPositionLeft = position.left -50;
+        $(".tgToolTip").css({'top': newPositionTop + 'px', 'left': newPositionLeft + 'px'});
+        $('body').append('<p class="dummy"></p>');
+    });
+    $('.tooltip2').click(function(e){
+        e.preventDefault();
+        dataTooltip = $(this).attr('data-tooltip');
+        insertHtml = '<p class="tgToolTip">' + dataTooltip + '</p>';
+        $('body').append(insertHtml);
+        var position = $(this).position();
+        var newPositionTop = position.top +23;
+        var newPositionLeft = position.left -300;
+        $(".tgToolTip").css({'top': newPositionTop + 'px', 'left': newPositionLeft + 'px'});
+        $('body').append('<p class="dummy"></p>');
+    });
+    $('body').on('click', '.dummy', function(){
+        $('p.tgToolTip').remove();
+        $('p.dummy').remove();
+    });
+});
+</script>
+</head>
+<body>
+<div class="navi">
+	<span class="navi_on">Ui Modern</span><span class="navi_off"><a href="https://miyag.github.io/UiPath.ReusableCode/excelmodern.html">Excel Modern</a></span>
+</div>
+<div class='search-filter'><input type='search' class='table-filter' data-table='activity-table' placeholder='search' /></div>
+<table border=1px class='dtable activity-table'>
+	<thead>
+	<tr>
+		<th>Type</th>
+		<th>Modern Activities</th>
+		<th>Classic Activities</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><span class="type">Window</td>
+		<td><span class="mnam" id="n-application-card"></span>
+			<span class="msub" id="n-application-card-subname"></span>
+			<a class="tooltip" id="n-application-card-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<li><span class="cnam" id="open-browser"></span>
+			<span class="csub" id="open-browser-subname"></span>
+			<a class="tooltip2" id="open-browser-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="browser-scope"></span>
+			<span class="csub" id="browser-scope-subname"></span>
+			<a class="tooltip2" id="browser-scope-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="open-application"></span>
+			<span class="csub" id="open-application-subname"></span>
+			<a class="tooltip2" id="open-application-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="window-scope"></span>
+			<span class="csub" id="window-scope-subname"></span>
+			<a class="tooltip2" id="window-scope-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="close-window"></span>
+			<span class="csub" id="close-window-subname"></span>
+			<a class="tooltip2" id="close-window-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="start-process"></span>
+			<span class="csub" id="start-process-subname"></span>
+			<a class="tooltip2" id="start-process-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">チェック</td>
+		<td><span class="mnam" id="n-check-state"></span>
+			<span class="msub" id="n-check-state-subname"></span>
+			<a class="tooltip" id="n-check-state-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<li><span class="cnam" id="on-ui-element-appear"></span>
+			<span class="csub" id="on-ui-element-appear-subname"></span>
+			<a class="tooltip2" id="on-ui-element-appear-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="on-ui-element-vanish"></span>
+			<span class="csub" id="on-ui-element-vanish-subname"></span>
+			<a class="tooltip2" id="on-ui-element-vanish-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="on-image-appear"></span>
+			<span class="csub" id="on-image-appear-subname"></span>
+			<a class="tooltip2" id="on-image-appear-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="on-image-vanish"></span>
+			<span class="csub" id="on-image-vanish-subname"></span>
+			<a class="tooltip2" id="on-image-vanish-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="wait-ui-element-vanish"></span>
+			<span class="csub" id="wait-ui-element-vanish-subname"></span>
+			<a class="tooltip2" id="wait-ui-element-vanish-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="wait-image-vanish"></span>
+			<span class="csub" id="wait-image-vanish-subname"></span>
+			<a class="tooltip2" id="wait-image-vanish-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="wait-image-appear"></span>
+			<span class="csub" id="wait-image-appear-subname"></span>
+			<a class="tooltip2" id="wait-image-appear-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="image-found"></span>
+			<span class="csub" id="image-found-subname"></span>
+			<a class="tooltip2" id="image-found-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">表</td>
+		<td><span class="mnam" id="n-extract-data"></span>
+			<span class="msub" id="n-extract-data-subname"></span>
+			<a class="tooltip" id="n-extract-data-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<li><span class="cnam" id="extract-data"></span>
+			<span class="csub" id="extract-data-subname"></span>
+			<a class="tooltip2" id="extract-data-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="get-full-text"></span>
+			<span class="csub" id="get-full-text-subname"></span>
+			<a class="tooltip2" id="get-full-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="get-visible-text"></span>
+			<span class="csub" id="get-visible-text-subname"></span>
+			<a class="tooltip2" id="get-visible-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-click"></span>
+			<span class="msub" id="n-click-subname"></span>
+			<a class="tooltip" id="n-click-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<li><span class="cnam" id="click"></span>
+			<span class="csub" id="click-subname"></span>
+			<a class="tooltip2" id="click-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="double-click"></span>
+			<span class="csub" id="double-click-subname"></span>
+			<a class="tooltip2" id="double-click-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="click-text"></span>
+			<span class="csub" id="click-text-subname"></span>
+			<a class="tooltip2" id="click-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="double-click-text"></span>
+			<span class="csub" id="double-click-text-subname"></span>
+			<a class="tooltip2" id="double-click-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="click-image"></span>
+			<span class="csub" id="click-image-subname"></span>
+			<a class="tooltip2" id="click-image-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="double-click-image"></span>
+			<span class="csub" id="double-click-image-subname"></span>
+			<a class="tooltip2" id="double-click-image-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-hover"></span>
+			<span class="msub" id="n-hover-subname"></span>
+			<a class="tooltip" id="n-hover-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<li><span class="cnam" id="hover"></span>
+			<span class="csub" id="hover-subname"></span>
+			<a class="tooltip2" id="hover-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="hover-text"></span>
+			<span class="csub" id="hover-text-subname"></span>
+			<a class="tooltip2" id="hover-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="hover-image"></span>
+			<span class="csub" id="hover-image-subname"></span>
+			<a class="tooltip2" id="hover-image-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-type-into"></span>
+			<span class="msub" id="n-type-into-subname"></span>
+			<a class="tooltip" id="n-type-into-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<li><span class="cnam" id="type-into"></span>
+			<span class="csub" id="type-into-subname"></span>
+			<a class="tooltip2" id="type-into-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="type-secure-text"></span>
+			<span class="csub" id="type-secure-text-subname"></span>
+			<a class="tooltip2" id="type-secure-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-navigate-browser"></span>
+			<span class="msub" id="n-navigate-browser-subname"></span>
+			<a class="tooltip" id="n-navigate-browser-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<li><span class="cnam" id="refresh-browser"></span>
+			<span class="csub" id="refresh-browser-subname"></span>
+			<a class="tooltip2" id="refresh-browser-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="go-home"></span>
+			<span class="csub" id="go-home-subname"></span>
+			<a class="tooltip2" id="go-home-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="close-tab"></span>
+			<span class="csub" id="close-tab-subname"></span>
+			<a class="tooltip2" id="close-tab-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="go-back"></span>
+			<span class="csub" id="go-back-subname"></span>
+			<a class="tooltip2" id="go-back-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="go-forward"></span>
+			<span class="csub" id="go-forward-subname"></span>
+			<a class="tooltip2" id="go-forward-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-get-text"></span>
+			<span class="msub" id="n-get-text-subname"></span>
+			<a class="tooltip" id="n-get-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="get-value"></span>
+			<span class="csub" id="get-value-subname"></span>
+			<a class="tooltip2" id="get-value-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-highlight"></span>
+			<span class="msub" id="n-highlight-subname"></span>
+			<a class="tooltip" id="n-highlight-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="highlight"></span>
+			<span class="csub" id="highlight-subname"></span>
+			<a class="tooltip2" id="highlight-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-select-item"></span>
+			<span class="msub" id="n-select-item-subname"></span>
+			<a class="tooltip" id="n-select-item-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="select-item"></span>
+			<span class="csub" id="select-item-subname"></span>
+			<a class="tooltip2" id="select-item-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-check"></span>
+			<span class="msub" id="n-check-subname"></span>
+			<a class="tooltip" id="n-check-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="check"></span>
+			<span class="csub" id="check-subname"></span>
+			<a class="tooltip2" id="check-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-take-screenshot"></span>
+			<span class="msub" id="n-take-screenshot-subname"></span>
+			<a class="tooltip" id="n-take-screenshot-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="take-screenshot"></span>
+			<span class="csub" id="take-screenshot-subname"></span>
+			<a class="tooltip2" id="take-screenshot-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-keyboard-shortcuts"></span>
+			<span class="msub" id="n-keyboard-shortcuts-subname"></span>
+			<a class="tooltip" id="n-keyboard-shortcuts-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="send-hotkey"></span>
+			<span class="csub" id="send-hotkey-subname"></span>
+			<a class="tooltip2" id="send-hotkey-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-get-attribute"></span>
+			<span class="msub" id="n-get-attribute-subname"></span>
+			<a class="tooltip" id="n-get-attribute-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="get-attribute"></span>
+			<span class="csub" id="get-attribute-subname"></span>
+			<a class="tooltip2" id="get-attribute-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-go-to-url"></span>
+			<span class="msub" id="n-go-to-url-subname"></span>
+			<a class="tooltip" id="n-go-to-url-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="navigate-to"></span>
+			<span class="csub" id="navigate-to-subname"></span>
+			<a class="tooltip2" id="navigate-to-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">操作</td>
+		<td><span class="mnam" id="n-mouse-scroll"></span>
+			<span class="msub" id="n-mouse-scroll-subname"></span>
+			<a class="tooltip" id="n-mouse-scroll-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">その他</td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+		<td><ul>
+		<li><span class="cnam" id="text-exists"></span>
+			<span class="csub" id="text-exists-subname"></span>
+			<a class="tooltip2" id="text-exists-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="find-text"></span>
+			<span class="csub" id="find-text-subname"></span>
+			<a class="tooltip2" id="find-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="anchor-base"></span>
+			<span class="csub" id="anchor-base-subname"></span>
+			<a class="tooltip2" id="anchor-base-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="anchor-context-aware"></span>
+			<span class="csub" id="anchor-context-aware-subname"></span>
+			<a class="tooltip2" id="anchor-context-aware-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="element-scope"></span>
+			<span class="csub" id="element-scope-subname"></span>
+			<a class="tooltip2" id="element-scope-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="ui-element-exists"></span>
+			<span class="csub" id="ui-element-exists-subname"></span>
+			<a class="tooltip2" id="ui-element-exists-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="close-application"></span>
+			<span class="csub" id="close-application-subname"></span>
+			<a class="tooltip2" id="close-application-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<footer class="footer"><p class="updated">updated at 2022/01/08</p></footer>
+</body>
+<style>
 /* UiModern */
 #n-application-card:before{	background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-application-card.png) no-repeat; background-size:contain}
 #n-check-state:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-check-state.png) no-repeat; background-size:contain;}
@@ -50,7 +456,6 @@ ul{ list-style-type: none; padding-left: 0px; padding-top:0px; margin:5px}
 #n-select-item:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-select-item.png) no-repeat; background-size:contain;}
 #n-go-to-url:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-go-to-url.png) no-repeat; background-size:contain;}
 #n-navigate-browser:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/n-navigate-browser.png) no-repeat; background-size:contain;}
-
 /* UiClassic */
 #window-scope:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/window-scope.png) no-repeat; background-size:contain;}
 #close-window:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/close-window.png) no-repeat; background-size:contain;}
@@ -101,281 +506,83 @@ ul{ list-style-type: none; padding-left: 0px; padding-top:0px; margin:5px}
 #close-application:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/close-application.png) no-repeat; background-size:contain;}
 #start-process:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/start-process.png) no-repeat; background-size:contain;}
 </style>
-
-
-<script type='text/javascript'>
-// filter
-(function(document) {
-'use strict';
-var LightTableFilter = (function(Arr) {
-var _input;
-function _onInputEvent(e) {
-_input = e.target;
-var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-Arr.forEach.call(tables, function(table) {
-Arr.forEach.call(table.tBodies, function(tbody) {
-Arr.forEach.call(tbody.rows, _filter);
-});
-});
-}
-function _filter(row) {
-var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-}
-return {
-init: function() {
-var inputs = document.getElementsByClassName('table-filter');
-Arr.forEach.call(inputs, function(input) {
-input.oninput = _onInputEvent;
-});
-}
-};
-})(Array.prototype);
-document.addEventListener('readystatechange', function() {
-if (document.readyState === 'complete') {
-LightTableFilter.init();
-}
-});
-})(document);
-</script>
-</head>
-
-<body>
-
-<div class="navi">
-	<span class="navi_on">Ui Modern</span><span class="navi_off"><a href="https://miyag.github.io/UiPath.ReusableCode/excelmodern.html">Excel Modern</a></span>
-</div>
-
-<div class='search-filter'><input type='search' class='table-filter' data-table='activity-table' placeholder='search' /></div>
-<table border=1px class='dtable activity-table'>
-	<thead>
-	<tr>
-		<th>Type</th>
-		<th>Modern Activities</th>
-		<th>Classic Activities</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td><span class="type">Window</td>
-		<td><span class="mname" id="n-application-card"></span><br><span class="murl"><a id="n-application-card-href" target="_blank"></a></span></td>
-		<td><ul>
-			<li><span class="cname" id="open-browser"></span><span class="curl"><a id="open-browser-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="browser-scope"></span><span class="curl"><a id="browser-scope-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="open-application"></span><span class="curl"><a id="open-application-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="window-scope"></span><span class="curl"><a id="window-scope-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="close-window"></span><span class="curl"><a id="close-window-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="start-process"></span><span class="curl"><a id="start-process-href" target="_blank"></a></span></li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">チェック</td>
-		<td><span class="mname" id="n-check-state"></span><br><span class="murl"><a id="n-check-state-href" target="_blank"></a></span></td>
-		<td><ul>
-			<li><span class="cname" id="on-ui-element-appear"></span><span class="curl"><a id="on-ui-element-appear-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="on-ui-element-vanish"></span><span class="curl"><a id="on-ui-element-vanish-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="on-image-appear"></span><span class="curl"><a id="on-image-appear-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="on-image-vanish"></span><span class="curl"><a id="on-image-vanish-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="wait-ui-element-vanish"></span><span class="curl"><a id="wait-ui-element-vanish-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="wait-image-vanish"></span><span class="curl"><a id="wait-image-vanish-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="wait-image-appear"></span><span class="curl"><a id="wait-image-appear-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="image-found"></span><span class="curl"><a id="image-found-href" target="_blank"></a></span></li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">表</td>
-		<td><span class="mname" id="n-extract-data"></span><span class="murl"><a id="n-extract-data-href" target="_blank"></a></span></td>
-		<td><ul>
-			<li><span class="cname" id="extract-data"></span><span class="curl"><a id="extract-data-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="get-full-text"></span><span class="curl"><a id="get-full-text-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="get-visible-text"></span><span class="curl"><a id="get-visible-text-href" target="_blank"></a></span></li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-click"></span><span class="murl"><a id="n-click-href" target="_blank"></a></span></td>
-		<td><ul>
-			<li><span class="cname" id="click"></span><span class="curl"><a id="click-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="double-click"></span><span class="curl"><a id="double-click-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="click-text"></span><span class="curl"><a id="click-text-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="double-click-text"></span><span class="curl"><a id="double-click-text-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="click-image"></span><span class="curl"><a id="click-image-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="double-click-image"></span><span class="curl"><a id="double-click-image-href" target="_blank"></a></span></li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-hover"></span><span class="murl"><a id="n-hover-href" target="_blank"></a></span></td>
-		<td><ul>
-			<li><span class="cname" id="hover"></span><span class="curl"><a id="hover-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="hover-text"></span><span class="curl"><a id="hover-text-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="hover-image"></span><span class="curl"><a id="hover-image-href" target="_blank"></a></span></li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-type-into"></span><span class="murl"><a id="n-type-into-href" target="_blank"></a></span></td>
-		<td><ul>
-			<li><span class="cname" id="type-into"></span><span class="curl"><a id="type-into-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="type-secure-text"></span><span class="curl"><a id="type-secure-text-href" target="_blank"></a></span></li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-navigate-browser"></span><span class="murl"><a id="n-navigate-browser-href" target="_blank"></a></span></td>
-		<td><ul>
-			<li><span class="cname" id="refresh-browser"></span><span class="curl"><a id="refresh-browser-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="go-home"></span><span class="curl"><a id="go-home-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="close-tab"></span><span class="curl"><a id="close-tab-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="go-back"></span><span class="curl"><a id="go-back-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="go-forward"></span><span class="curl"><a id="go-forward-href" target="_blank"></a></span></li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-get-text"></span><span class="murl"><a id="n-get-text-href" target="_blank"></a></span></td>
-		<td><ul><li><span class="cname" id="get-value"></span><span class="curl"><a id="get-value-href" target="_blank"></a></span></li></ul></td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-highlight"></span><span class="murl"><a id="n-highlight-href" target="_blank"></a></span></td>
-		<td><ul><li><span class="cname" id="highlight"></span><span class="curl"><a id="highlight-href" target="_blank"></a></span></li></ul></td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-select-item"></span><span class="murl"><a id="n-select-item-href" target="_blank"></a></span></td>
-		<td><ul><li><span class="cname" id="select-item"></span><span class="curl"><a id="select-item-href" target="_blank"></a></span></li></ul></td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-check"></span><span class="murl"><a id="n-check-href" target="_blank"></a></span></td>
-		<td><span class="cname" id="check"></span><span class="curl"><a id="check-href" target="_blank"></a></span></td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-take-screenshot"></span><span class="murl"><a id="n-take-screenshot-href" target="_blank"></a></span></td>
-		<td><span class="cname" id="take-screenshot"></span><span class="curl"><a id="take-screenshot-href" target="_blank"></a></span></td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-keyboard-shortcuts"></span><span class="murl"><a id="n-keyboard-shortcuts-href" target="_blank"></a></span></td>
-		<td><span class="cname" id="send-hotkey"></span><span class="curl"><a id="send-hotkey-href" target="_blank"></a></span></td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-get-attribute"></span><span class="murl"><a id="n-get-attribute-href" target="_blank"></a></span></td>
-		<td><span class="cname" id="get-attribute"></span><span class="curl"><a id="get-attribute-href" target="_blank"></a></span></td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-go-to-url"></span><span class="murl"><a id="n-go-to-url-href" target="_blank"></a></span></td>
-		<td><span class="cname" id="navigate-to"></span><span class="curl"><a id="navigate-to-href" target="_blank"></a></span></td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mname" id="n-mouse-scroll"></span><span class="murl"><a id="n-mouse-scroll-href" target="_blank"></a></span></td>
-		<td><span class="nashi">Ｘ（対応なし）</span></td>
-	</tr>
-	<tr>
-		<td><span class="type">その他</td>
-		<td><span class="nashi">Ｘ（対応なし）</span></td>
-		<td>
-			<ul
-			<li><span class="cname" id="text-exists"></span><span class="curl"><a id="text-exists-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="find-text"></span><span class="curl"><a id="find-text-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="anchor-base"></span><span class="curl"><a id="anchor-base-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="anchor-context-aware"></span><span class="curl"><a id="anchor-context-aware-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="element-scope"></span><span class="curl"><a id="element-scope-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="ui-element-exists"></span><span class="curl"><a id="ui-element-exists-href" target="_blank"></a></span></li>
-			<li><span class="cname" id="close-application"></span><span class="curl"><a id="close-application-href" target="_blank"></a></span></li>
-			</ul>
-		</td>
-	</tr>
-	</tbody>
-</table>
-
-<footer class="footer"><p class="updated">updated at 2021/11/17</p></footer>
-
-</body>
 <script>
-var setActivity = function(aid, aname, anameSub,docUrl){
-	document.getElementById(aid).innerText = aname;
-	document.getElementById(aid + "-href").textContent = anameSub;
-	document.getElementById(aid + "-href").href = docUrl;
-}
-// UiModern
-setActivity("n-application-card", "アプリケーション/ブラウザーを使用", "Use Application/Browser", "https://docs.uipath.com/activities/lang-ja/docs/n-application-card");
-setActivity("n-check-state", "アプリのステートを確認","Check App State", "https://docs.uipath.com/activities/lang-ja/docs/n-check-state");
-setActivity("n-keyboard-shortcuts", "キーボード ショートカット", "Keyboard Shortcuts", "https://docs.uipath.com/activities/lang-ja/docs/n-keyboard-shortcuts");
-setActivity("n-click", "クリック", "Click", "https://docs.uipath.com/activities/lang-ja/docs/n-click");
-setActivity("n-take-screenshot", "スクリーンショットを作成", "Take Screenshot", "https://docs.uipath.com/activities/lang-ja/docs/n-take-screenshot");
-setActivity("n-check", "チェック/チェック解除", "Check/Uncheck", "https://docs.uipath.com/activities/lang-ja/docs/n-check");
-setActivity("n-get-text", "テキストを取得", "Get Text", "https://docs.uipath.com/activities/lang-ja/docs/n-get-text");
-setActivity("n-hover", "ホバー", "Hover", "https://docs.uipath.com/activities/lang-ja/docs/n-hover");
-setActivity("n-mouse-scroll", "マウススクロール", "Mouse Scroll", "https://docs.uipath.com/activities/lang-ja/docs/n-mouse-scroll");
-setActivity("n-get-attribute", "属性を取得", "Get Attribute", "https://docs.uipath.com/activities/lang-ja/docs/n-get-attribute");
-setActivity("n-highlight", "強調表示", "Highlight", "https://docs.uipath.com/activities/lang-ja/docs/n-highlight");
-setActivity("n-type-into", "文字を入力", "Type Into", "https://docs.uipath.com/activities/lang-ja/docs/n-type-into");
-setActivity("n-extract-data", "表データを抽出", "Extract Table Data", "https://docs.uipath.com/activities/lang-ja/docs/n-extract-data");
-setActivity("n-select-item", "項目を選択", "Select Item", "https://docs.uipath.com/activities/lang-ja/docs/n-select-item");
-setActivity("n-go-to-url", "URL に移動", "Go to URL", "https://docs.uipath.com/activities/lang-ja/docs/n-go-to-url");
-setActivity("n-navigate-browser", "ブラウザー内を移動", "Navigate Browser", "https://docs.uipath.com/activities/lang-ja/docs/n-navigate-browser");
-
-// UiClassic
-setActivity("window-scope", "ウィンドウにアタッチ", "Attach Window", "https://docs.uipath.com/activities/lang-ja/docs/window-scope");
-setActivity("close-window", "ウィンドウを閉じる", "Close Window", "https://docs.uipath.com/activities/lang-ja/docs/close-window");
-setActivity("click-text", "テキストをクリック", "Click Text", "https://docs.uipath.com/activities/lang-ja/docs/click-text");
-setActivity("double-click-text", "テキストをダブルクリック", "Double Click Text", "https://docs.uipath.com/activities/lang-ja/docs/double-click-text");
-setActivity("hover-text", "テキスト上でホバー", "Hover Text", "https://docs.uipath.com/activities/lang-ja/docs/hover-text");
-setActivity("text-exists", "テキストの存在を確認", "Text Exists", "https://docs.uipath.com/activities/lang-ja/docs/text-exists");
-setActivity("find-text", "テキスト位置を探す", "Find Text Position", "https://docs.uipath.com/activities/lang-ja/docs/find-text");
-setActivity("get-full-text", "フル テキストを取得", "Get Full Text", "https://docs.uipath.com/activities/lang-ja/docs/get-full-text");
-setActivity("extract-data", "構造化データを抽出", "Extract Structured Data", "https://docs.uipath.com/activities/lang-ja/docs/extract-data");
-setActivity("get-visible-text", "表示中のテキストを取得", "Get Visible Text", "https://docs.uipath.com/activities/lang-ja/docs/get-visible-text");
-setActivity("navigate-to", "URL に移動", "Navigate To", "https://docs.uipath.com/activities/lang-ja/docs/navigate-to");
-setActivity("close-tab", "タブを閉じる", "Close Tab", "https://docs.uipath.com/activities/lang-ja/docs/close-tab");
-setActivity("browser-scope", "ブラウザーにアタッチ", "Attach Browser", "https://docs.uipath.com/activities/lang-ja/docs/browser-scope");
-setActivity("refresh-browser", "ブラウザーを更新", "Refresh Browser", "https://docs.uipath.com/activities/lang-ja/docs/refresh-browser");
-setActivity("open-browser", "ブラウザーを開く", "Open Browser", "https://docs.uipath.com/activities/lang-ja/docs/open-browser");
-setActivity("go-home", "ホームに移動", "Go Home", "https://docs.uipath.com/activities/lang-ja/docs/go-home");
-setActivity("go-back", "前に戻る", "Go Back", "https://docs.uipath.com/activities/lang-ja/docs/go-back");
-setActivity("go-forward", "次に進む", "Go Forward", "https://docs.uipath.com/activities/lang-ja/docs/go-forward");
-setActivity("on-image-appear", "画像が出現したとき", "On Image Appear", "https://docs.uipath.com/activities/lang-ja/docs/on-image-appear");
-setActivity("on-image-vanish", "画像が消滅したとき", "On Image Vanish", "https://docs.uipath.com/activities/lang-ja/docs/on-image-vanish");
-setActivity("click-image", "画像をクリック", "Click Image", "https://docs.uipath.com/activities/lang-ja/docs/click-image");
-setActivity("double-click-image", "画像をダブルクリック", "Double Click Image", "https://docs.uipath.com/activities/lang-ja/docs/double-click-image");
-setActivity("hover-image", "画像上でホバー", "Hover Image", "https://docs.uipath.com/activities/lang-ja/docs/hover-image");
-setActivity("image-found", "画像の存在を確認", "Image Exists", "https://docs.uipath.com/activities/lang-ja/docs/image-found");
-setActivity("wait-image-vanish", "画像の消滅を待つ", "Wait Image Vanish", "https://docs.uipath.com/activities/lang-ja/docs/wait-image-vanish");
-setActivity("wait-image-appear", "画像を探す", "Find Image", "https://docs.uipath.com/activities/lang-ja/docs/wait-image-appear");
-setActivity("on-ui-element-appear", "要素が出現したとき", "On Element Appear", "https://docs.uipath.com/activities/lang-ja/docs/on-ui-element-appear");
-setActivity("on-ui-element-vanish", "要素が消滅したとき", "On Element Vanish", "https://docs.uipath.com/activities/lang-ja/docs/on-ui-element-vanish");
-setActivity("type-secure-text", "SecureStringで文字を入力", "Type Secure Text", "https://docs.uipath.com/activities/lang-ja/docs/type-secure-text");
-setActivity("send-hotkey", "ホットキーを押下", "Send Hotkey", "https://docs.uipath.com/activities/lang-ja/docs/send-hotkey");
-setActivity("type-into", "文字を入力", "Type Into", "https://docs.uipath.com/activities/lang-ja/docs/type-into");
-setActivity("click", "クリック", "Click", "https://docs.uipath.com/activities/lang-ja/docs/click");
-setActivity("double-click", "ダブルクリック", "Double Click", "https://docs.uipath.com/activities/lang-ja/docs/double-click");
-setActivity("hover", "ホバー", "Hover", "https://docs.uipath.com/activities/lang-ja/docs/hover");
-setActivity("check", "チェック", "Check", "https://docs.uipath.com/activities/lang-ja/docs/check");
-setActivity("get-value", "テキストを取得", "Get Text", "https://docs.uipath.com/activities/lang-ja/docs/get-value");
-setActivity("highlight", "強調表示", "Highlight", "https://docs.uipath.com/activities/lang-ja/docs/highlight");
-setActivity("select-item", "項目を選択", "Select Item", "https://docs.uipath.com/activities/lang-ja/docs/select-item");
-setActivity("take-screenshot", "スクリーンショットを作成", "Take Screenshot", "https://docs.uipath.com/activities/lang-ja/docs/take-screenshot");
-setActivity("get-attribute", "属性を取得", "Get Attribute", "https://docs.uipath.com/activities/lang-ja/docs/get-attribute");
-setActivity("anchor-base", "アンカー ベース", "Anchor Base", "https://docs.uipath.com/activities/lang-ja/docs/anchor-base");
-setActivity("anchor-context-aware", "コンテキスト対応のアンカー", "Context Aware Anchor", "https://docs.uipath.com/activities/lang-ja/docs/anchor-context-aware");
-setActivity("element-scope", "要素スコープ", "Element Scope", "https://docs.uipath.com/activities/lang-ja/docs/element-scope");
-setActivity("ui-element-exists", "要素の存在を確認", "Element Exists", "https://docs.uipath.com/activities/lang-ja/docs/ui-element-exists");
-setActivity("wait-ui-element-vanish", "要素の消滅を待つ", "Wait Element Vanish", "https://docs.uipath.com/activities/lang-ja/docs/wait-ui-element-vanish");
-setActivity("open-application", "アプリケーションを開く", "Open Application", "https://docs.uipath.com/activities/lang-ja/docs/open-application");
-setActivity("close-application", "アプリケーションを閉じる", "Close Application", "https://docs.uipath.com/activities/lang-ja/docs/close-application");
-setActivity("start-process", "プロセスを開始", "Start Process", "https://docs.uipath.com/activities/lang-ja/docs/start-process");
+var json = '{"data": [' +
+    '{"id": "n-application-card", "name": "アプリケーション/ブラウザーを使用", "name2": "Use Application/Browser", "nspace": "UiPath.UIAutomationNext.Activities.NApplicationCard", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-application-card"}' + 
+   ',{"id": "n-check-state", "name": "アプリのステートを確認", "name2": "Check App State", "nspace": "UiPath.UIAutomationNext.Activities.NCheckState", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-check-state"}' + 
+   ',{"id": "n-keyboard-shortcuts", "name": "キーボード ショートカット", "name2": "Keyboard Shortcuts", "nspace": "UiPath.UIAutomationNext.Activities.NKeyboardShortcuts", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-keyboard-shortcuts"}' + 
+   ',{"id": "n-click", "name": "クリック", "name2": "Click", "nspace": "UiPath.UIAutomationNext.Activities.NClick", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-click"}' + 
+   ',{"id": "n-take-screenshot", "name": "スクリーンショットを作成", "name2": "Take Screenshot", "nspace": "UiPath.UIAutomationNext.Activities.NTakeScreenshot", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-take-screenshot"}' + 
+   ',{"id": "n-check", "name": "チェック/チェック解除", "name2": "Check/Uncheck", "nspace": "UiPath.UIAutomationNext.Activities.NCheck", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-check"}' + 
+   ',{"id": "n-get-text", "name": "テキストを取得", "name2": "Get Text", "nspace": "UiPath.UIAutomationNext.Activities.NGetText", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-get-text"}' + 
+   ',{"id": "n-hover", "name": "ホバー", "name2": "Hover", "nspace": "UiPath.UIAutomationNext.Activities.NHover", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-hover"}' + 
+   ',{"id": "n-mouse-scroll", "name": "マウススクロール", "name2": "Mouse Scroll", "nspace": "UiPath.UIAutomationNext.Activities.NMouseScroll", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-mouse-scroll"}' + 
+   ',{"id": "n-get-attribute", "name": "属性を取得", "name2": "Get Attribute", "nspace": "UiPath.UIAutomationNext.Activities.NGetAttribute", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-get-attribute"}' + 
+   ',{"id": "n-highlight", "name": "強調表示", "name2": "Highlight", "nspace": "UiPath.UIAutomationNext.Activities.NHighlight", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-highlight"}' + 
+   ',{"id": "n-type-into", "name": "文字を入力", "name2": "Type Into", "nspace": "UiPath.UIAutomationNext.Activities.NTypeInto", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-type-into"}' + 
+   ',{"id": "n-extract-data", "name": "表データを抽出", "name2": "Extract Table Data", "nspace": "UiPath.UIAutomationNext.Activities.NExtractData", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-extract-data"}' + 
+   ',{"id": "n-select-item", "name": "項目を選択", "name2": "", "nspace": "", "url": ""}' + 
+   ',{"id": "n-go-to-url", "name": "URL に移動", "name2": "Navigate Browser", "nspace": "UiPath.UIAutomationNext.Activities.NNavigateBrowser", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-navigate-browser"}' + 
+   ',{"id": "n-navigate-browser", "name": "ブラウザー内を移動", "name2": "Navigate Browser", "nspace": "UiPath.UIAutomationNext.Activities.NNavigateBrowser", "url": "https://docs.uipath.com/activities/lang-ja/docs/n-navigate-browser"}' + 
+   ',{"id": "open-browser", "name": "ブラウザーを開く", "name2": "Open Browser", "nspace": "UiPath.Core.Activities.OpenBrowser", "url": "https://docs.uipath.com/activities/lang-ja/docs/open-browser"}' +
+   ',{"id": "browser-scope", "name": "ブラウザーにアタッチ", "name2": "Attach Browser", "nspace": "UiPath.Core.Activities.BrowserScope", "url": "https://docs.uipath.com/activities/lang-ja/docs/browser-scope"}' +
+   ',{"id": "open-application", "name": "アプリケーションを開く", "name2": "Open Application", "nspace": "UiPath.Core.Activities.OpenApplication", "url": "https://docs.uipath.com/activities/lang-ja/docs/open-application"}' +
+   ',{"id": "window-scope", "name": "ウィンドウにアタッチ", "name2": "Attach Window", "nspace": "UiPath.Core.Activities.WindowScope", "url": "https://docs.uipath.com/activities/lang-ja/docs/window-scope"}' +
+   ',{"id": "close-window", "name": "ウィンドウを閉じる", "name2": "Close Window", "nspace": "UiPath.Core.Activities.CloseWindow", "url": "https://docs.uipath.com/activities/lang-ja/docs/close-window"}' +
+   ',{"id": "start-process", "name": "プロセスを開始", "name2": "Start Process", "nspace": "UiPath.Core.Activities.StartProcess", "url": "https://docs.uipath.com/activities/lang-ja/docs/start-process"}' +
+   ',{"id": "on-ui-element-appear", "name": "要素が出現したとき", "name2": "On Element Appear", "nspace": "UiPath.Core.Activities.OnUiElementAppear", "url": "https://docs.uipath.com/activities/lang-ja/docs/on-ui-element-appear"}' +
+   ',{"id": "on-ui-element-vanish", "name": "要素が消滅したとき", "name2": "On Element Vanish", "nspace": "UiPath.Core.Activities.OnUiElementVanish", "url": "https://docs.uipath.com/activities/lang-ja/docs/on-ui-element-vanish"}' +
+   ',{"id": "on-image-appear", "name": "画像が出現したとき", "name2": "On Image Appear", "nspace": "UiPath.Core.Activities.OnImageAppear", "url": "https://docs.uipath.com/activities/lang-ja/docs/on-image-appear"}' +
+   ',{"id": "on-image-vanish", "name": "画像が消滅したとき", "name2": "On Image Vanish", "nspace": "UiPath.Core.Activities.OnImageVanish", "url": "https://docs.uipath.com/activities/lang-ja/docs/on-image-vanish"}' +
+   ',{"id": "wait-ui-element-vanish", "name": "要素の消滅を待つ", "name2": "Wait Element Vanish", "nspace": "UiPath.Core.Activities.WaitUiElementVanish", "url": "https://docs.uipath.com/activities/lang-ja/docs/wait-ui-element-vanish"}' +
+   ',{"id": "wait-image-vanish", "name": "画像の消滅を待つ", "name2": "Wait Image Vanish", "nspace": "UiPath.Core.Activities.WaitImageVanish", "url": "https://docs.uipath.com/activities/lang-ja/docs/wait-image-vanish"}' +
+   ',{"id": "wait-image-appear", "name": "画像を探す", "name2": "Find Image", "nspace": "UiPath.Core.Activities.WaitImageAppear", "url": "https://docs.uipath.com/activities/lang-ja/docs/wait-image-appear"}' +
+   ',{"id": "image-found", "name": "画像の存在を確認", "name2": "Image Exists", "nspace": "UiPath.Core.Activities.ImageFound", "url": "https://docs.uipath.com/activities/lang-ja/docs/image-found"}' +
+   ',{"id": "extract-data", "name": "構造化データを抽出", "name2": "Extract Structured Data", "nspace": "UiPath.Core.Activities.ExtractData", "url": "https://docs.uipath.com/activities/lang-ja/docs/extract-data"}' +
+   ',{"id": "get-full-text", "name": "フル テキストを取得", "name2": "Get Full Text", "nspace": "UiPath.Core.Activities.GetFullText", "url": "https://docs.uipath.com/activities/lang-ja/docs/get-full-text"}' +
+   ',{"id": "get-visible-text", "name": "表示中のテキストを取得", "name2": "Get Visible Text", "nspace": "UiPath.Core.Activities.GetVisibleText", "url": "https://docs.uipath.com/activities/lang-ja/docs/get-visible-text"}' +
+   ',{"id": "click", "name": "クリック", "name2": "Click", "nspace": "UiPath.Core.Activities.Click", "url": "https://docs.uipath.com/activities/lang-ja/docs/click"}' +
+   ',{"id": "double-click", "name": "ダブルクリック", "name2": "Double Click", "nspace": "UiPath.Core.Activities.DoubleClickWithBodyFactory", "url": "https://docs.uipath.com/activities/lang-ja/docs/double-click"}' +
+   ',{"id": "click-text", "name": "テキストをクリック", "name2": "Click Text", "nspace": "UiPath.Core.Activities.ClickText", "url": "https://docs.uipath.com/activities/lang-ja/docs/click-text"}' +
+   ',{"id": "double-click-text", "name": "テキストをダブルクリック", "name2": "Double Click Text", "nspace": "UiPath.Core.Activities.DoubleClickTextWithBodyFactory", "url": "https://docs.uipath.com/activities/lang-ja/docs/double-click-text"}' +
+   ',{"id": "click-image", "name": "画像をクリック", "name2": "Click Image", "nspace": "UiPath.Core.Activities.ClickImage", "url": "https://docs.uipath.com/activities/lang-ja/docs/click-image"}' +
+   ',{"id": "double-click-image", "name": "画像をダブルクリック", "name2": "Double Click Image", "nspace": "UiPath.Core.Activities.DoubleClickImageWithBodyFactory", "url": "https://docs.uipath.com/activities/lang-ja/docs/double-click-image"}' +
+   ',{"id": "hover", "name": "ホバー", "name2": "Hover", "nspace": "UiPath.Core.Activities.Hover", "url": "https://docs.uipath.com/activities/lang-ja/docs/hover"}' +
+   ',{"id": "hover-text", "name": "テキスト上でホバー", "name2": "Hover Text", "nspace": "UiPath.Core.Activities.HoverText", "url": "https://docs.uipath.com/activities/lang-ja/docs/hover-text"}' +
+   ',{"id": "hover-image", "name": "画像上でホバー", "name2": "Hover Image", "nspace": "UiPath.Core.Activities.HoverImage", "url": "https://docs.uipath.com/activities/lang-ja/docs/hover-image"}' +
+   ',{"id": "type-into", "name": "文字を入力", "name2": "Type Into", "nspace": "UiPath.Core.Activities.TypeInto", "url": "https://docs.uipath.com/activities/lang-ja/docs/type-into"}' +
+   ',{"id": "type-secure-text", "name": "SecureStringで文字を入力", "name2": "Type Secure Text", "nspace": "UiPath.Core.Activities.TypeSecureText", "url": "https://docs.uipath.com/activities/lang-ja/docs/type-secure-text"}' +
+   ',{"id": "refresh-browser", "name": "ブラウザーを更新", "name2": "Refresh Browser", "nspace": "UiPath.Core.Activities.RefreshBrowser", "url": "https://docs.uipath.com/activities/lang-ja/docs/refresh-browser"}' +
+   ',{"id": "go-home", "name": "ホームに移動", "name2": "Go Home", "nspace": "UiPath.Core.Activities.GoHome", "url": "https://docs.uipath.com/activities/lang-ja/docs/go-home"}' +
+   ',{"id": "close-tab", "name": "タブを閉じる", "name2": "Close Tab", "nspace": "UiPath.Core.Activities.CloseTab", "url": "https://docs.uipath.com/activities/lang-ja/docs/close-tab"}' +
+   ',{"id": "go-back", "name": "前に戻る", "name2": "Go Back", "nspace": "UiPath.Core.Activities.GoBack", "url": "https://docs.uipath.com/activities/lang-ja/docs/go-back"}' +
+   ',{"id": "go-forward", "name": "次に進む", "name2": "Go Forward", "nspace": "UiPath.Core.Activities.GoForward", "url": "https://docs.uipath.com/activities/lang-ja/docs/go-forward"}' +
+   ',{"id": "get-value", "name": "テキストを取得", "name2": "Get Text", "nspace": "UiPath.Core.Activities.GetValue", "url": "https://docs.uipath.com/activities/lang-ja/docs/get-value"}' +
+   ',{"id": "highlight", "name": "強調表示", "name2": "Highlight", "nspace": "UiPath.Core.Activities.Highlight", "url": "https://docs.uipath.com/activities/lang-ja/docs/highlight"}' +
+   ',{"id": "select-item", "name": "項目を選択", "name2": "Select Item", "nspace": "UiPath.Core.Activities.SelectItem", "url": "https://docs.uipath.com/activities/lang-ja/docs/select-item"}' +
+   ',{"id": "check", "name": "チェック", "name2": "Check", "nspace": "UiPath.Core.Activities.Check", "url": "https://docs.uipath.com/activities/lang-ja/docs/check"}' +
+   ',{"id": "take-screenshot", "name": "スクリーンショットを作成", "name2": "Take Screenshot", "nspace": "UiPath.Core.Activities.TakeScreenshot", "url": "https://docs.uipath.com/activities/lang-ja/docs/take-screenshot"}' +
+   ',{"id": "send-hotkey", "name": "ホットキーを押下", "name2": "Send Hotkey", "nspace": "UiPath.Core.Activities.SendHotkey", "url": "https://docs.uipath.com/activities/lang-ja/docs/send-hotkey"}' +
+   ',{"id": "get-attribute", "name": "属性を取得", "name2": "Get Attribute", "nspace": "UiPath.Core.Activities.GetAttribute", "url": "https://docs.uipath.com/activities/lang-ja/docs/get-attribute"}' +
+   ',{"id": "navigate-to", "name": "URL に移動", "name2": "Navigate To", "nspace": "UiPath.Core.Activities.NavigateTo", "url": "https://docs.uipath.com/activities/lang-ja/docs/navigate-to"}' +
+   ',{"id": "text-exists", "name": "テキストの存在を確認", "name2": "Text Exists", "nspace": "UiPath.Core.Activities.TextExists", "url": "https://docs.uipath.com/activities/lang-ja/docs/text-exists"}' +
+   ',{"id": "find-text", "name": "テキスト位置を探す", "name2": "Find Text Position", "nspace": "UiPath.Core.Activities.FindText", "url": "https://docs.uipath.com/activities/lang-ja/docs/find-text"}' +
+   ',{"id": "anchor-base", "name": "アンカー ベース", "name2": "Anchor Base", "nspace": "UiPath.Core.Activities.AnchorBase", "url": "https://docs.uipath.com/activities/lang-ja/docs/anchor-base"}' +
+   ',{"id": "anchor-context-aware", "name": "コンテキスト対応のアンカー", "name2": "Context Aware Anchor", "nspace": "UiPath.Core.Activities.AnchorContextAware", "url": "https://docs.uipath.com/activities/lang-ja/docs/anchor-context-aware"}' +
+   ',{"id": "element-scope", "name": "要素スコープ", "name2": "Element Scope", "nspace": "UiPath.Core.Activities.ElementScope", "url": "https://docs.uipath.com/activities/lang-ja/docs/element-scope"}' +
+   ',{"id": "ui-element-exists", "name": "要素の存在を確認", "name2": "Element Exists", "nspace": "UiPath.Core.Activities.UiElementExists", "url": "https://docs.uipath.com/activities/lang-ja/docs/ui-element-exists"}' +
+   ',{"id": "close-application", "name": "アプリケーションを閉じる", "name2": "Close Application", "nspace": "UiPath.Core.Activities.CloseApplication", "url": "https://docs.uipath.com/activities/lang-ja/docs/close-application"}' +
+']}';
+JSON.parse(json)['data'].forEach(o => {
+    //console.log(o);
+	var obj = document.getElementById(o.id);
+	if(!obj){
+		console.log("no tag. id:" + o.id);
+	}else{
+		document.getElementById(o.id).innerText = o.name;
+		document.getElementById(o.id + "-subname").textContent = o.name2;
+		document.getElementById(o.id + "-tooltip").dataset.tooltip = o.nspace + "<br>・<a href='" + o.url + "' target='_blank'>docs.uipath.com</a><br>・<a href='https://www.google.com/search?q=" + o.nspace + "' target='_blank'>google</a>";
+	}
+});
 </script>
 </html>
