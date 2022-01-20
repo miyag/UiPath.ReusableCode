@@ -180,6 +180,10 @@ $(function(){
 			<span class="csub" id="wait-image-vanish-subname"></span>
 			<a class="tooltip2" id="wait-image-vanish-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
 		</li>
+		<li><span class="cnam" id="wait-ui-element-appear"></span>
+			<span class="csub" id="wait-ui-element-appear-subname"></span>
+			<a class="tooltip2" id="wait-ui-element-appear-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
 		<li><span class="cnam" id="wait-image-appear"></span>
 			<span class="csub" id="wait-image-appear-subname"></span>
 			<a class="tooltip2" id="wait-image-appear-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
@@ -483,6 +487,7 @@ $(function(){
 #image-found:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/image-found.png) no-repeat; background-size:contain;}
 #wait-image-vanish:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/wait-image-vanish.png) no-repeat; background-size:contain;}
 #wait-image-appear:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/wait-image-appear.png) no-repeat; background-size:contain;}
+#wait-ui-element-appear:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/wait-ui-element-appear.png) no-repeat; background-size:contain;}
 #on-ui-element-appear:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/on-ui-element-appear.png) no-repeat; background-size:contain;}
 #on-ui-element-vanish:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/on-ui-element-vanish.png) no-repeat; background-size:contain;}
 #type-secure-text:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/type-secure-text.png) no-repeat; background-size:contain;}
@@ -537,6 +542,7 @@ var json = '{"data": [' +
    ',{"id": "wait-ui-element-vanish", "name": "要素の消滅を待つ", "name2": "Wait Element Vanish", "nspace": "UiPath.Core.Activities.WaitUiElementVanish", "url": "https://docs.uipath.com/activities/lang-ja/docs/wait-ui-element-vanish"}' +
    ',{"id": "wait-image-vanish", "name": "画像の消滅を待つ", "name2": "Wait Image Vanish", "nspace": "UiPath.Core.Activities.WaitImageVanish", "url": "https://docs.uipath.com/activities/lang-ja/docs/wait-image-vanish"}' +
    ',{"id": "wait-image-appear", "name": "画像を探す", "name2": "Find Image", "nspace": "UiPath.Core.Activities.WaitImageAppear", "url": "https://docs.uipath.com/activities/lang-ja/docs/wait-image-appear"}' +
+   ',{"id": "wait-ui-element-appear", "name": "要素を探す", "name2": "Find Element", "nspace": "UiPath.Core.Activities.WaitUiElementAppear", "url": "https://docs.uipath.com/activities/lang-ja/docs/wait-ui-element-appear"}' +
    ',{"id": "image-found", "name": "画像の存在を確認", "name2": "Image Exists", "nspace": "UiPath.Core.Activities.ImageFound", "url": "https://docs.uipath.com/activities/lang-ja/docs/image-found"}' +
    ',{"id": "extract-data", "name": "構造化データを抽出", "name2": "Extract Structured Data", "nspace": "UiPath.Core.Activities.ExtractData", "url": "https://docs.uipath.com/activities/lang-ja/docs/extract-data"}' +
    ',{"id": "get-full-text", "name": "フル テキストを取得", "name2": "Get Full Text", "nspace": "UiPath.Core.Activities.GetFullText", "url": "https://docs.uipath.com/activities/lang-ja/docs/get-full-text"}' +
