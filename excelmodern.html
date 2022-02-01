@@ -184,30 +184,6 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">ループ</td>
-		<td><span class="mnam" id="for-each-sheet-x"></span>
-			<span class="msub" id="for-each-sheet-x-subname"></span>
-			<a class="tooltip" id="for-each-sheet-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><ul>
-		<span class="nashi">Ｘ（対応なし）</span>
-		<li><span class="cnam" id="excel-get-workbook-sheet"></span>
-			<span class="csub" id="excel-get-workbook-sheet-subname"></span>
-			<a class="tooltip2" id="excel-get-workbook-sheet-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</li>
-		<li><span class="cnam" id="excel-get-workbook-sheets"></span>
-			<span class="csub" id="excel-get-workbook-sheets-subname"></span>
-			<a class="tooltip2" id="excel-get-workbook-sheets-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</li>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">ループ</td>
-		<td><span class="mnam" id="excel-for-each-row"></span>
-			<span class="msub" id="excel-for-each-row-subname"></span>
-			<a class="tooltip" id="excel-for-each-row-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="nashi">Ｘ（対応なし）</span></td>
-	</tr>
-	<tr>
 		<td><span class="type">書き込み</td>
 		<td><span class="mnam" id="write-range-x"></span>
 			<span class="msub" id="write-range-x-subname"></span>
@@ -341,6 +317,13 @@ $(function(){
 	</tr>
 	<tr>
 		<td><span class="type">行列操作</td>
+		<td><span class="mnam" id="excel-for-each-row"></span>
+			<span class="msub" id="excel-for-each-row-subname"></span>
+			<a class="tooltip" id="excel-for-each-row-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">行列操作</td>
 		<td><span class="mnam" id="remove-duplicates-x"></span>
 			<span class="msub" id="remove-duplicates-x-subname"></span>
 			<a class="tooltip" id="remove-duplicates-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
@@ -428,7 +411,24 @@ $(function(){
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td><span class="type">シート</td>
+		<td><span class="type">シート系</td>
+		<td><span class="mnam" id="for-each-sheet-x"></span>
+			<span class="msub" id="for-each-sheet-x-subname"></span>
+			<a class="tooltip" id="for-each-sheet-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<span class="nashi">Ｘ（対応なし）</span>
+		<li><span class="cnam" id="excel-get-workbook-sheet"></span>
+			<span class="csub" id="excel-get-workbook-sheet-subname"></span>
+			<a class="tooltip2" id="excel-get-workbook-sheet-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="excel-get-workbook-sheets"></span>
+			<span class="csub" id="excel-get-workbook-sheets-subname"></span>
+			<a class="tooltip2" id="excel-get-workbook-sheets-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">シート系</td>
 		<td><span class="mnam" id="duplicate-sheet-x"></span>
 			<span class="msub" id="duplicate-sheet-x-subname"></span>
 			<a class="tooltip" id="duplicate-sheet-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
@@ -438,56 +438,56 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">シート</td>
+		<td><span class="type">シート系</td>
 		<td><span class="mnam" id="rename-sheet-x"></span>
 			<span class="msub" id="rename-sheet-x-subname"></span>
 			<a class="tooltip" id="rename-sheet-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td><span class="type">シート</td>
+		<td><span class="type">シート系</td>
 		<td><span class="mnam" id="insert-sheet-x"></span>
 			<span class="msub" id="insert-sheet-x-subname"></span>
 			<a class="tooltip" id="insert-sheet-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td><span class="type">シート</td>
+		<td><span class="type">シート系</td>
 		<td><span class="mnam" id="delete-sheet-x"></span>
 			<span class="msub" id="delete-sheet-x-subname"></span>
 			<a class="tooltip" id="delete-sheet-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td><span class="type">シート</td>
+		<td><span class="type">シート系</td>
 		<td><span class="mnam" id="protect-sheet-x"></span>
 			<span class="msub" id="protect-sheet-x-subname"></span>
 			<a class="tooltip" id="protect-sheet-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td><span class="type">シート</td>
+		<td><span class="type">シート系</td>
 		<td><span class="mnam" id="unprotect-sheet-x"></span>
 			<span class="msub" id="unprotect-sheet-x-subname"></span>
 			<a class="tooltip" id="unprotect-sheet-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td><span class="type">グラフ</td>
+		<td><span class="type">グラフ系</td>
 		<td><span class="mnam" id="copy-chart-to-clipboard-x"></span>
 			<span class="msub" id="copy-chart-to-clipboard-x-subname"></span>
 			<a class="tooltip" id="copy-chart-to-clipboard-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td><span class="type">グラフ</td>
+		<td><span class="type">グラフ系</td>
 		<td><span class="mnam" id="insert-excel-chart-x"></span>
 			<span class="msub" id="insert-excel-chart-x-subname"></span>
 			<a class="tooltip" id="insert-excel-chart-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
-		<td><span class="type">グラフ</td>
+		<td><span class="type">グラフ系</td>
 		<td><span class="mnam" id="update-chart-x"></span>
 			<span class="msub" id="update-chart-x-subname"></span>
 			<a class="tooltip" id="update-chart-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
