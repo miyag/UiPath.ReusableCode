@@ -118,7 +118,7 @@ $(function(){
 	</thead>
 	<tbody>
 	<tr>
-		<td><span class="type">Window</td>
+		<td><span class="type">ウィンドウ</td>
 		<td><span class="mnam" id="n-application-card"></span>
 			<span class="msub" id="n-application-card-subname"></span>
 			<a class="tooltip" id="n-application-card-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
@@ -146,6 +146,10 @@ $(function(){
 		<li><span class="cnam" id="start-process"></span>
 			<span class="csub" id="start-process-subname"></span>
 			<a class="tooltip2" id="start-process-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="close-application"></span>
+			<span class="csub" id="close-application-subname"></span>
+			<a class="tooltip2" id="close-application-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
 		</li>
 			</ul>
 		</td>
@@ -192,32 +196,15 @@ $(function(){
 			<span class="csub" id="image-found-subname"></span>
 			<a class="tooltip2" id="image-found-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
 		</li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">表</td>
-		<td><span class="mnam" id="n-extract-data"></span>
-			<span class="msub" id="n-extract-data-subname"></span>
-			<a class="tooltip" id="n-extract-data-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><ul>
-		<li><span class="cnam" id="extract-data"></span>
-			<span class="csub" id="extract-data-subname"></span>
-			<a class="tooltip2" id="extract-data-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</li>
-		<li><span class="cnam" id="get-full-text"></span>
-			<span class="csub" id="get-full-text-subname"></span>
-			<a class="tooltip2" id="get-full-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</li>
-		<li><span class="cnam" id="get-visible-text"></span>
-			<span class="csub" id="get-visible-text-subname"></span>
-			<a class="tooltip2" id="get-visible-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		<li><span class="cnam" id="ui-element-exists"></span>
+			<span class="csub" id="ui-element-exists-subname"></span>
+			<a class="tooltip2" id="ui-element-exists-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
 		</li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">操作</td>
+		<td><span class="type">マウス操作</td>
 		<td><span class="mnam" id="n-click"></span>
 			<span class="msub" id="n-click-subname"></span>
 			<a class="tooltip" id="n-click-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
@@ -250,7 +237,7 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">操作</td>
+		<td><span class="type">マウス操作</td>
 		<td><span class="mnam" id="n-hover"></span>
 			<span class="msub" id="n-hover-subname"></span>
 			<a class="tooltip" id="n-hover-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
@@ -271,7 +258,44 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">操作</td>
+		<td><span class="type">マウス操作</td>
+		<td><span class="mnam" id="n-check"></span>
+			<span class="msub" id="n-check-subname"></span>
+			<a class="tooltip" id="n-check-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="check"></span>
+			<span class="csub" id="check-subname"></span>
+			<a class="tooltip2" id="check-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">マウス操作</td>
+		<td><span class="mnam" id="n-mouse-scroll"></span>
+			<span class="msub" id="n-mouse-scroll-subname"></span>
+			<a class="tooltip" id="n-mouse-scroll-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
+		<td><span class="type">マウス操作</td>
+		<td><span class="mnam" id="n-highlight"></span>
+			<span class="msub" id="n-highlight-subname"></span>
+			<a class="tooltip" id="n-highlight-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="highlight"></span>
+			<span class="csub" id="highlight-subname"></span>
+			<a class="tooltip2" id="highlight-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">マウス操作</td>
+		<td><span class="mnam" id="n-select-item"></span>
+			<span class="msub" id="n-select-item-subname"></span>
+			<a class="tooltip" id="n-select-item-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="select-item"></span>
+			<span class="csub" id="select-item-subname"></span>
+			<a class="tooltip2" id="select-item-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">キー操作</td>
 		<td><span class="mnam" id="n-type-into"></span>
 			<span class="msub" id="n-type-into-subname"></span>
 			<a class="tooltip" id="n-type-into-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
@@ -288,7 +312,17 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">操作</td>
+		<td><span class="type">キー操作</td>
+		<td><span class="mnam" id="n-keyboard-shortcuts"></span>
+			<span class="msub" id="n-keyboard-shortcuts-subname"></span>
+			<a class="tooltip" id="n-keyboard-shortcuts-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="send-hotkey"></span>
+			<span class="csub" id="send-hotkey-subname"></span>
+			<a class="tooltip2" id="send-hotkey-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">ブラウザ操作</td>
 		<td><span class="mnam" id="n-navigate-browser"></span>
 			<span class="msub" id="n-navigate-browser-subname"></span>
 			<a class="tooltip" id="n-navigate-browser-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
@@ -317,77 +351,7 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mnam" id="n-get-text"></span>
-			<span class="msub" id="n-get-text-subname"></span>
-			<a class="tooltip" id="n-get-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="cnam" id="get-value"></span>
-			<span class="csub" id="get-value-subname"></span>
-			<a class="tooltip2" id="get-value-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mnam" id="n-highlight"></span>
-			<span class="msub" id="n-highlight-subname"></span>
-			<a class="tooltip" id="n-highlight-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="cnam" id="highlight"></span>
-			<span class="csub" id="highlight-subname"></span>
-			<a class="tooltip2" id="highlight-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mnam" id="n-select-item"></span>
-			<span class="msub" id="n-select-item-subname"></span>
-			<a class="tooltip" id="n-select-item-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="cnam" id="select-item"></span>
-			<span class="csub" id="select-item-subname"></span>
-			<a class="tooltip2" id="select-item-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mnam" id="n-check"></span>
-			<span class="msub" id="n-check-subname"></span>
-			<a class="tooltip" id="n-check-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="cnam" id="check"></span>
-			<span class="csub" id="check-subname"></span>
-			<a class="tooltip2" id="check-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mnam" id="n-take-screenshot"></span>
-			<span class="msub" id="n-take-screenshot-subname"></span>
-			<a class="tooltip" id="n-take-screenshot-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="cnam" id="take-screenshot"></span>
-			<span class="csub" id="take-screenshot-subname"></span>
-			<a class="tooltip2" id="take-screenshot-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mnam" id="n-keyboard-shortcuts"></span>
-			<span class="msub" id="n-keyboard-shortcuts-subname"></span>
-			<a class="tooltip" id="n-keyboard-shortcuts-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="cnam" id="send-hotkey"></span>
-			<span class="csub" id="send-hotkey-subname"></span>
-			<a class="tooltip2" id="send-hotkey-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mnam" id="n-get-attribute"></span>
-			<span class="msub" id="n-get-attribute-subname"></span>
-			<a class="tooltip" id="n-get-attribute-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="cnam" id="get-attribute"></span>
-			<span class="csub" id="get-attribute-subname"></span>
-			<a class="tooltip2" id="get-attribute-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</td>
-	</tr>
-	<tr>
-		<td><span class="type">操作</td>
+		<td><span class="type">ブラウザ操作</td>
 		<td><span class="mnam" id="n-go-to-url"></span>
 			<span class="msub" id="n-go-to-url-subname"></span>
 			<a class="tooltip" id="n-go-to-url-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
@@ -397,11 +361,55 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">操作</td>
-		<td><span class="mnam" id="n-mouse-scroll"></span>
-			<span class="msub" id="n-mouse-scroll-subname"></span>
-			<a class="tooltip" id="n-mouse-scroll-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="nashi">Ｘ（対応なし）</span></td>
+		<td><span class="type">データ取得</td>
+		<td><span class="mnam" id="n-get-text"></span>
+			<span class="msub" id="n-get-text-subname"></span>
+			<a class="tooltip" id="n-get-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="get-value"></span>
+			<span class="csub" id="get-value-subname"></span>
+			<a class="tooltip2" id="get-value-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">データ取得</td>
+		<td><span class="mnam" id="n-extract-data"></span>
+			<span class="msub" id="n-extract-data-subname"></span>
+			<a class="tooltip" id="n-extract-data-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><ul>
+		<li><span class="cnam" id="extract-data"></span>
+			<span class="csub" id="extract-data-subname"></span>
+			<a class="tooltip2" id="extract-data-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="get-full-text"></span>
+			<span class="csub" id="get-full-text-subname"></span>
+			<a class="tooltip2" id="get-full-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+		<li><span class="cnam" id="get-visible-text"></span>
+			<span class="csub" id="get-visible-text-subname"></span>
+			<a class="tooltip2" id="get-visible-text-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">データ取得</td>
+		<td><span class="mnam" id="n-take-screenshot"></span>
+			<span class="msub" id="n-take-screenshot-subname"></span>
+			<a class="tooltip" id="n-take-screenshot-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="take-screenshot"></span>
+			<span class="csub" id="take-screenshot-subname"></span>
+			<a class="tooltip2" id="take-screenshot-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="type">データ取得</td>
+		<td><span class="mnam" id="n-get-attribute"></span>
+			<span class="msub" id="n-get-attribute-subname"></span>
+			<a class="tooltip" id="n-get-attribute-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="get-attribute"></span>
+			<span class="csub" id="get-attribute-subname"></span>
+			<a class="tooltip2" id="get-attribute-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
 	</tr>
 	<tr>
 		<td><span class="type">その他</td>
@@ -427,20 +435,12 @@ $(function(){
 			<span class="csub" id="element-scope-subname"></span>
 			<a class="tooltip2" id="element-scope-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
 		</li>
-		<li><span class="cnam" id="ui-element-exists"></span>
-			<span class="csub" id="ui-element-exists-subname"></span>
-			<a class="tooltip2" id="ui-element-exists-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</li>
-		<li><span class="cnam" id="close-application"></span>
-			<span class="csub" id="close-application-subname"></span>
-			<a class="tooltip2" id="close-application-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</li>
 			</ul>
 		</td>
 	</tr>
 	</tbody>
 </table>
-<footer class="footer"><p class="updated">updated at 2022/01/08</p></footer>
+<footer class="footer"><p class="updated">updated at 2022/02/07</p></footer>
 </body>
 <style>
 /* UiModern */
