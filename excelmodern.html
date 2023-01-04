@@ -333,13 +333,6 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td><span class="type">セル編集</td>
-		<td><span class="mnam" id="create-table-x"></span>
-			<span class="msub" id="create-table-x-subname"></span>
-			<a class="tooltip" id="create-table-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
-		<td><span class="nashi">Ｘ（対応なし）</span></td>
-	</tr>
-	<tr>
 		<td><span class="type">行列操作</td>
 		<td><span class="mnam" id="excel-for-each-row"></span>
 			<span class="msub" id="excel-for-each-row-subname"></span>
@@ -660,7 +653,6 @@ $(function(){
 #excel-for-each-row:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #delete-rows-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #insert-rows-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
-#create-table-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #remove-duplicates-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #excel-application-card:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #excel-process-scope-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
@@ -733,7 +725,6 @@ var json = '{"data": [' +
     ',{"id": "match-function-x", "name": "MATCH 関数(new)", "name2": "Match Function", "nspace": "UiPath.Excel.Activities.Business.MatchFunctionX", "url": "https://docs.uipath.com/activities/lang-ja/docs/match-function-x"}' + 
     ',{"id": "clear-range-x", "name": "シート/範囲/表をクリア", "name2": "Clear Sheet/Range/Table", "nspace": "UiPath.Excel.Activities.Business.ClearRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/clear-range-x"}' + 
     ',{"id": "format-range-x", "name": "セルを書式設定", "name2": "Format Cells", "nspace": "UiPath.Excel.Activities.Business.FormatRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/format-range-x"}' + 
-    ',{"id": "create-table-x", "name": "テーブルとして書式設定(new)", "name2": "Format As Table", "nspace": "UiPath.Excel.Activities.Business.CreateTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-table-x"}' + 
     ',{"id": "write-range-x", "name": "データテーブルをExcelに書き込み", "name2": "Write DataTable to Excel", "nspace": "UiPath.Excel.Activities.Business.WriteRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/write-range-x"}' + 
     ',{"id": "text-to-columns-x", "name": "テキストを列に分割", "name2": "Text to Columns", "nspace": "UiPath.Excel.Activities.Business.TextToColumnsX", "url": "https://docs.uipath.com/activities/lang-ja/docs/text-to-columns-x"}' + 
     ',{"id": "filter-x", "name": "フィルター", "name2": "Filter", "nspace": "UiPath.Excel.Activities.Business.FilterX", "url": "https://docs.uipath.com/activities/lang-ja/docs/filter-x"}' + 
@@ -750,7 +741,7 @@ var json = '{"data": [' +
     ',{"id": "excel-for-each-row", "name": "繰り返し(Excelの各行)", "name2": "For Each Excel Row", "nspace": "UiPath.Excel.Activities.Business.ExcelForEachRow", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-for-each-row"}' + 
     ',{"id": "delete-rows-x", "name": "行を削除", "name2": "Delete Rows", "nspace": "UiPath.Excel.Activities.Business.DeleteRowsX", "url": "https://docs.uipath.com/activities/lang-ja/docs/delete-rows-x"}' + 
     ',{"id": "insert-rows-x", "name": "行を挿入", "name2": "Insert Rows", "nspace": "UiPath.Excel.Activities.Business.InsertRowsX", "url": "https://docs.uipath.com/activities/lang-ja/docs/insert-rows-x"}' + 
-    ',{"id": "create-table-x", "name": "表として書式設定", "name2": "Format As Table", "nspace": "UiPath.Excel.Activities.Business.CreateTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-table-x"}' + 
+    ',{"id": "create-table-x", "name": "表/テーブルとして書式設定", "name2": "Format As Table", "nspace": "UiPath.Excel.Activities.Business.CreateTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-table-x"}' + 
     ',{"id": "remove-duplicates-x", "name": "重複を削除", "name2": "Remove Duplicates", "nspace": "UiPath.Excel.Activities.Business.RemoveDuplicatesX", "url": "https://docs.uipath.com/activities/lang-ja/docs/remove-duplicates-x"}' + 
     ',{"id": "excel-application-card", "name": "Excelファイルを使用", "name2": "Use Excel File", "nspace": "UiPath.Excel.Activities.Business.ExcelApplicationCard", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-application-card"}' + 
     ',{"id": "excel-process-scope-x", "name": "Excelプロセススコープ", "name2": "Excel Process Scope", "nspace": "UiPath.Excel.Activities.ExcelProcessScopeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-process-scope-x"}' + 
@@ -787,7 +778,7 @@ var json = '{"data": [' +
     ',{"id": "excel-write-range", "name": "範囲に書き込み", "name2": "Write Range", "nspace": "UiPath.Excel.Activities.ExcelWriteRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-write-range"}' + 
     ',{"id": "excel-set-range-color", "name": "範囲の色を設定", "name2": "Set Range Color", "nspace": "UiPath.Excel.Activities.ExcelSetRangeColor", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-set-range-color"}' + 
     ',{"id": "excel-delete-range", "name": "範囲を削除", "name2": "Delete Range", "nspace": "UiPath.Excel.Activities.ExcelDeleteRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-delete-range"}' + 
-    ',{"id": "excel-append-range", "name": "範囲を書き込み", "name2": "Append Range", "nspace": "UiPath.Excel.Activities.ExcelAppendRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-append-range"}' + 
+    ',{"id": "excel-append-range", "name": "範囲を書き込み/追加", "name2": "Append Range", "nspace": "UiPath.Excel.Activities.ExcelAppendRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-append-range"}' + 
     ',{"id": "excel-read-range", "name": "範囲を読み込み", "name2": "Read Range", "nspace": "UiPath.Excel.Activities.ExcelReadRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-read-range"}' + 
     ',{"id": "excel-select-range", "name": "範囲を選択", "name2": "Select Range", "nspace": "UiPath.Excel.Activities.ExcelSelectRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-select-range"}' + 
     ',{"id": "excel-read-row", "name": "行を読み込み", "name2": "Read Row", "nspace": "UiPath.Excel.Activities.ExcelReadRow", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-read-row"}' + 
