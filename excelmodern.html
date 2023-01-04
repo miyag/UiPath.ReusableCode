@@ -184,6 +184,16 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
+		<td><span class="type">読み込み</td>
+		<td><span class="mnam" id="get-cell-color-x"></span>
+			<span class="msub" id="get-cell-color-x-subname"></span>
+			<a class="tooltip" id="get-cell-color-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="excel-get-cell-color"></span>
+			<span class="csub" id="excel-get-cell-color-subname"></span>
+			<a class="tooltip2" id="excel-get-cell-color-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
 		<td><span class="type">書き込み</td>
 		<td><span class="mnam" id="write-range-x"></span>
 			<span class="msub" id="write-range-x-subname"></span>
@@ -268,6 +278,13 @@ $(function(){
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
+		<td><span class="type">範囲検索</td>
+		<td><span class="mnam" id="match-function-x"></span>
+			<span class="msub" id="match-function-x-subname"></span>
+			<a class="tooltip" id="match-function-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
 		<td><span class="type">保存出力</td>
 		<td><span class="mnam" id="save-excel-file-x"></span>
 			<span class="msub" id="save-excel-file-x-subname"></span>
@@ -314,6 +331,13 @@ $(function(){
 			<span class="csub" id="excel-set-range-color-subname"></span>
 			<a class="tooltip2" id="excel-set-range-color-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
 		</td>
+	</tr>
+	<tr>
+		<td><span class="type">セル編集</td>
+		<td><span class="mnam" id="create-table-x"></span>
+			<span class="msub" id="create-table-x-subname"></span>
+			<a class="tooltip" id="create-table-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
 	</tr>
 	<tr>
 		<td><span class="type">行列操作</td>
@@ -531,6 +555,16 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
+		<td><span class="type">VBA</td>
+		<td><span class="mnam" id="invoke-vbax"></span>
+			<span class="msub" id="invoke-vbax-subname"></span>
+			<a class="tooltip" id="invoke-vbax-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="cnam" id="invoke-vba"></span>
+			<span class="csub" id="invoke-vba-subname"></span>
+			<a class="tooltip2" id="invoke-vba-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
+		</td>
+	</tr>
+	<tr>
 		<td><span class="type">その他</td>
 		<td><span class="mnam" id="refresh-data-connections-x"></span>
 			<span class="msub" id="refresh-data-connections-x-subname"></span>
@@ -541,10 +575,6 @@ $(function(){
 		<td><span class="type">その他</td>
 		<td><span class="nashi">Ｘ（対応なし）</span></td>
 		<td><ul>
-		<li><span class="cnam" id="invoke-vba"></span>
-			<span class="csub" id="invoke-vba-subname"></span>
-			<a class="tooltip2" id="invoke-vba-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</li>
 		<li><span class="cnam" id="excel-close-workbook"></span>
 			<span class="csub" id="excel-close-workbook-subname"></span>
 			<a class="tooltip2" id="excel-close-workbook-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
@@ -556,10 +586,6 @@ $(function(){
 		<li><span class="cnam" id="excel-create-table"></span>
 			<span class="csub" id="excel-create-table-subname"></span>
 			<a class="tooltip2" id="excel-create-table-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
-		</li>
-		<li><span class="cnam" id="excel-get-cell-color"></span>
-			<span class="csub" id="excel-get-cell-color-subname"></span>
-			<a class="tooltip2" id="excel-get-cell-color-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a>
 		</li>
 		<li><span class="cnam" id="excel-select-range"></span>
 			<span class="csub" id="excel-select-range-subname"></span>
@@ -575,7 +601,7 @@ $(function(){
 	</tbody>
 </table>
 
-<footer class="footer"><p class="updated">updated at 2021/02/07</p></footer>
+<footer class="footer"><p class="updated">updated at 2023/01/04</p></footer>
 
 </body>
 <style>
@@ -584,9 +610,11 @@ $(function(){
 #insert-excel-chart-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #update-chart-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #auto-fill-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#create-table-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #write-cell-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #read-cell-value-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #read-cell-formula-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#get-cell-color-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #change-pivot-table-data-source-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #create-pivot-table-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #refresh-pivot-table-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
@@ -600,10 +628,12 @@ $(function(){
 #duplicate-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #rename-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #execute-macro-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#invoke-vbax:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #save-excel-file-as-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #for-each-sheet-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #export-excel-to-csv-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #v-lookup-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#match-function-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #clear-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #format-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #write-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
@@ -673,6 +703,7 @@ var json = '{"data": [' +
     ',{"id": "auto-fill-x", "name": "オートフィル", "name2": "Auto Fill", "nspace": "", "url": "https://docs.uipath.com/activities/lang-ja/docs/auto-fill-x"}' + 
     ',{"id": "write-cell-x", "name": "セルに書き込み", "name2": "Write Cell", "nspace": "UiPath.Excel.Activities.Business.WriteCellX", "url": "https://docs.uipath.com/activities/lang-ja/docs/write-cell-x"}' + 
     ',{"id": "read-cell-value-x", "name": "セルの値を読み込み", "name2": "Read Cell Value", "nspace": "UiPath.Excel.Activities.Business.ReadCellX", "url": "https://docs.uipath.com/activities/lang-ja/docs/read-cell-value-x"}' + 
+    ',{"id": "get-cell-color-x", "name": "セルの色を取得", "name2": "Get Cell Color", "nspace": "UiPath.Excel.Activities.GetCellColorX", "url": "https://docs.uipath.com/activities/lang-ja/docs/get-cell-color-x"}' + 
     ',{"id": "read-cell-formula-x", "name": "セルの数式を読み込み", "name2": "Read Cell Formula", "nspace": "UiPath.Excel.Activities.Business.ReadCellFormulaX", "url": "https://docs.uipath.com/activities/lang-ja/docs/read-cell-formula-x"}' + 
     ',{"id": "change-pivot-table-data-source-x", "name": "ピボットテーブルのデータソースを変更", "name2": "Change Pivot Data Source", "nspace": "UiPath.Excel.Activities.Business.ChangePivotDataSourceX", "url": "https://docs.uipath.com/activities/lang-ja/docs/change-pivot-table-data-source-x"}' + 
     ',{"id": "create-pivot-table-x", "name": "ピボットテーブルを作成", "name2": "Create Pivot Table", "nspace": "UiPath.Excel.Activities.Business.CreatePivotTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-pivot-table-x"}' + 
@@ -691,8 +722,10 @@ var json = '{"data": [' +
     ',{"id": "for-each-sheet-x", "name": "繰り返し(Excelの各シート)", "name2": "For Each Excel Sheet", "nspace": "UiPath.Excel.Activities.Business.ForEachSheetX", "url": "https://docs.uipath.com/activities/lang-ja/docs/for-each-sheet-x"}' + 
     ',{"id": "export-excel-to-csv-x", "name": "CSV にエクスポート", "name2": "Export to CSV", "nspace": "UiPath.Excel.Activities.Business.ExportExcelToCsvX", "url": "https://docs.uipath.com/activities/lang-ja/docs/export-excel-to-csv-x"}' + 
     ',{"id": "v-lookup-x", "name": "VLOOKUP", "name2": "VLookup", "nspace": "UiPath.Excel.Activities.Business.VLookupX", "url": "https://docs.uipath.com/activities/lang-ja/docs/v-lookup-x"}' + 
+    ',{"id": "match-function-x", "name": "MATCH 関数", "name2": "Match Function", "nspace": "UiPath.Excel.Activities.Business.MatchFunctionX", "url": "https://docs.uipath.com/activities/lang-ja/docs/match-function-x"}' + 
     ',{"id": "clear-range-x", "name": "シート/範囲/表をクリア", "name2": "Clear Sheet/Range/Table", "nspace": "UiPath.Excel.Activities.Business.ClearRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/clear-range-x"}' + 
     ',{"id": "format-range-x", "name": "セルを書式設定", "name2": "Format Cells", "nspace": "UiPath.Excel.Activities.Business.FormatRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/format-range-x"}' + 
+    ',{"id": "create-table-x", "name": "テーブルとして書式設定", "name2": "Format As Table", "nspace": "UiPath.Excel.Activities.Business.CreateTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-table-x"}' + 
     ',{"id": "write-range-x", "name": "データテーブルをExcelに書き込み", "name2": "Write DataTable to Excel", "nspace": "UiPath.Excel.Activities.Business.WriteRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/write-range-x"}' + 
     ',{"id": "text-to-columns-x", "name": "テキストを列に分割", "name2": "Text to Columns", "nspace": "UiPath.Excel.Activities.Business.TextToColumnsX", "url": "https://docs.uipath.com/activities/lang-ja/docs/text-to-columns-x"}' + 
     ',{"id": "filter-x", "name": "フィルター", "name2": "Filter", "nspace": "UiPath.Excel.Activities.Business.FilterX", "url": "https://docs.uipath.com/activities/lang-ja/docs/filter-x"}' + 
@@ -703,10 +736,10 @@ var json = '{"data": [' +
     ',{"id": "copy-paste-range-x", "name": "範囲をコピー/貼り付け", "name2": "Copy/Paste Range", "nspace": "UiPath.Excel.Activities.Business.CopyPasteRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/copy-paste-range-x"}' + 
     ',{"id": "fill-range-x", "name": "範囲をフィル", "name2": "Fill Range", "nspace": "UiPath.Excel.Activities.Business.CopyPasteRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/fill-range-x"}' + 
     ',{"id": "sort-x", "name": "範囲を並べ替え", "name2": "Sort Range", "nspace": "UiPath.Excel.Activities.Business.SortX", "url": "https://docs.uipath.com/activities/lang-ja/docs/sort-x"}' + 
-    ',{"id": "append-range-x", "name": "範囲を書き込み", "name2": "Append Range", "nspace": "UiPath.Excel.Activities.Business.AppendRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/append-range-x"}' + 
+    ',{"id": "append-range-x", "name": "範囲を書き込み/範囲を追加", "name2": "Append Range", "nspace": "UiPath.Excel.Activities.Business.AppendRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/append-range-x"}' + 
     ',{"id": "auto-fit-x", "name": "範囲を自動調整", "name2": "Autofit Range", "nspace": "UiPath.Excel.Activities.Business.AutoFitX", "url": "https://docs.uipath.com/activities/lang-ja/docs/auto-fit-x"}' + 
     ',{"id": "read-range-x", "name": "範囲を読み込み", "name2": "Read Range", "nspace": "UiPath.Excel.Activities.Business.ReadRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/read-range-x"}' + 
-    ',{"id": "excel-for-each-row", "name": "繰り返し(Excelの各行)", "name2": "For Each Excel Row", "nspace": "", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-for-each-row"}' + 
+    ',{"id": "excel-for-each-row", "name": "繰り返し(Excelの各行)", "name2": "For Each Excel Row", "nspace": "UiPath.Excel.Activities.Business.ExcelForEachRow", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-for-each-row"}' + 
     ',{"id": "delete-rows-x", "name": "行を削除", "name2": "Delete Rows", "nspace": "UiPath.Excel.Activities.Business.DeleteRowsX", "url": "https://docs.uipath.com/activities/lang-ja/docs/delete-rows-x"}' + 
     ',{"id": "insert-rows-x", "name": "行を挿入", "name2": "Insert Rows", "nspace": "UiPath.Excel.Activities.Business.InsertRowsX", "url": "https://docs.uipath.com/activities/lang-ja/docs/insert-rows-x"}' + 
     ',{"id": "create-table-x", "name": "表として書式設定", "name2": "Format As Table", "nspace": "UiPath.Excel.Activities.Business.CreateTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-table-x"}' + 
@@ -715,6 +748,7 @@ var json = '{"data": [' +
     ',{"id": "excel-process-scope-x", "name": "Excelプロセススコープ", "name2": "Excel Process Scope", "nspace": "UiPath.Excel.Activities.ExcelProcessScopeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-process-scope-x"}' + 
     ',{"id": "sequence-x", "name": "単一のExcelプロセススコープ", "name2": "Single Excel Process Scope", "nspace": "System.Activities.Business.SequenceX", "url": "https://docs.uipath.com/activities/lang-ja/docs/sequence-x"}' + 
     ',{"id": "invoke-vba", "name": "VBAを呼び出し", "name2": "Invoke VBA", "nspace": "UiPath.Excel.Activities.InvokeVBA", "url": "https://docs.uipath.com/activities/lang-ja/docs/invoke-vba"}' + 
+    ',{"id": "invoke-vbax", "name": "VBAを呼び出し", "name2": "Invoke VBA", "nspace": "UiPath.Excel.Activities.InvokeVBAX", "url": "https://docs.uipath.com/activities/lang-ja/docs/invoke-vbax"}' + 
     ',{"id": "execute-macro", "name": "マクロを実行", "name2": "Execute Macro", "nspace": "UiPath.Excel.Activities.ExecuteMacro", "url": "https://docs.uipath.com/activities/lang-ja/docs/execute-macro"}' + 
     ',{"id": "excel-insert-delete-columns", "name": "列を挿入/削除", "name2": "Insert/Delete Columns", "nspace": "UiPath.Excel.Activities.ExcelInsertDeleteColumns", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-insert-delete-columns"}' + 
     ',{"id": "excel-auto-fill-range", "name": "範囲をオートフィル", "name2": "Auto Fill Range", "nspace": "UiPath.Excel.Activities.ExcelAutoFillRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-auto-fill-range"}' + 
@@ -722,21 +756,22 @@ var json = '{"data": [' +
     ',{"id": "excel-look-up-range", "name": "範囲内で検索", "name2": "LookUp Range", "nspace": "UiPath.Excel.Activities.ExcelLookUpRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-look-up-range"}' + 
     ',{"id": "excel-insert-delete-rows", "name": "行を挿入/削除", "name2": "Insert/Delete Rows", "nspace": "UiPath.Excel.Activities.ExcelInsertDeleteRows", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-insert-delete-rows"}' + 
     ',{"id": "excel-remove-duplicates-range", "name": "重複行を削除", "name2": "Remove Duplicates Range", "nspace": "UiPath.Excel.Activities.ExcelRemoveDuplicatesRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-remove-duplicates-range"}' + 
-    ',{"id": "excel-create-pivot-table", "name": "ピボットテーブルを作成", "name2": "Create Pivot Table", "nspace": "https://docs.uipath.com/activities/lang-ja/docs/excel-create-pivot-table", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-create-pivot-table"}' + 
-    ',{"id": "excel-refresh-pivot-table", "name": "ピボットテーブルを更新", "name2": "Refresh Pivot Table", "nspace": "https://docs.uipath.com/activities/lang-ja/docs/excel-refresh-pivot-table", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-refresh-pivot-table"}' + 
+    ',{"id": "excel-create-pivot-table", "name": "ピボットテーブルを作成", "name2": "Create Pivot Table", "nspace": "UiPath.Excel.Activities.ExcelCreatePivotTable", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-create-pivot-table"}' + 
+    ',{"id": "excel-refresh-pivot-table", "name": "ピボットテーブルを更新", "name2": "Refresh Pivot Table", "nspace": "UiPath.Excel.Activities.ExcelRefreshPivotTable", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-refresh-pivot-table"}' + 
+    ',{"id": "filter-pivot-table-x", "name": "ピボット テーブルをフィルター", "name2": "Filter Pivot Table", "nspace": "UiPath.Excel.Activities.Business.FilterPivotTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/filter-pivot-table-x"}' + 
     ',{"id": "excel-delete-column", "name": "列を削除", "name2": "Delete Column", "nspace": "UiPath.Excel.Activities.ExcelDeleteColumn", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-delete-column"}' + 
     ',{"id": "excel-insert-column", "name": "列を挿入", "name2": "Insert Column", "nspace": "UiPath.Excel.Activities.ExcelInsertColumn", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-insert-column"}' + 
     ',{"id": "excel-get-table-range", "name": "表の範囲を取得", "name2": "Get Table Range", "nspace": "UiPath.Excel.Activities.ExcelGetTableRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-get-table-range"}' + 
     ',{"id": "excel-filter-table", "name": "表をフィルター", "name2": "Filter Table", "nspace": "UiPath.Excel.Activities.ExcelFilterTable", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-filter-table"}' + 
-    ',{"id": "excel-sort-table", "name": "表を並べ替え", "name2": "Sort Table", "nspace": "https://docs.uipath.com/activities/lang-ja/docs/excel-sort-table", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-sort-table"}' + 
-    ',{"id": "excel-create-table", "name": "表を作成", "name2": "Create Table", "nspace": "https://docs.uipath.com/activities/lang-ja/docs/excel-create-table", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-create-table"}' + 
+    ',{"id": "excel-sort-table", "name": "表を並べ替え", "name2": "Sort Table", "nspace": "UiPath.Excel.Activities.ExcelSortTable", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-sort-table"}' + 
+    ',{"id": "excel-create-table", "name": "表を作成", "name2": "Create Table", "nspace": "UiPath.Excel.Activities.ExcelCreateTable", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-create-table"}' + 
     ',{"id": "excel-application-scope", "name": "Excelアプリケーションスコープ", "name2": "Excel Application Scope", "nspace": "UiPath.Excel.Activities.ExcelApplicationScope", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-application-scope"}' + 
     ',{"id": "excel-copy-sheet", "name": "シートをコピー", "name2": "Copy Sheet", "nspace": "UiPath.Excel.Activities.ExcelCopySheet", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-copy-sheet"}' + 
     ',{"id": "excel-write-cell", "name": "セルに書き込み", "name2": "Write Cell", "nspace": "UiPath.Excel.Activities.ExcelWriteCell", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-write-cell"}' + 
     ',{"id": "excel-read-cell-formula", "name": "セルの数式を読み込み", "name2": "Read Cell Formula", "nspace": "UiPath.Excel.Activities.ExcelReadCellFormula", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-read-cell-formula"}' + 
     ',{"id": "excel-get-cell-color", "name": "セルの色を取得", "name2": "Get Cell Color", "nspace": "UiPath.Excel.Activities.ExcelGetCellColor", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-get-cell-color"}' + 
     ',{"id": "excel-read-cell", "name": "セルを読み込み", "name2": "Read Cell", "nspace": "UiPath.Excel.Activities.ExcelReadCell", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-read-cell"}' + 
-    ',{"id": "excel-get-workbook-sheet", "name": "ブックのシートを取得", "name2": "Get Workbook Sheet", "nspace": "https://docs.uipath.com/activities/lang-ja/docs/excel-get-workbook-sheet", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-get-workbook-sheet"}' + 
+    ',{"id": "excel-get-workbook-sheet", "name": "ブックのシートを取得", "name2": "Get Workbook Sheet", "nspace": "UiPath.Excel.Activities.ExcelGetWorkbookSheet", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-get-workbook-sheet"}' + 
     ',{"id": "excel-get-workbook-sheets", "name": "ブックの全シートを取得", "name2": "Get Workbook Sheets", "nspace": "UiPath.Excel.Activities.ExcelGetWorkbookSheets", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-get-workbook-sheets"}' + 
     ',{"id": "excel-save-workbook", "name": "ブックを保存", "name2": "Save Workbook", "nspace": "UiPath.Excel.Activities.ExcelSaveWorkbook", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-save-workbook"}' + 
     ',{"id": "excel-close-workbook", "name": "ブックを閉じる", "name2": "Close Workbook", "nspace": "UiPath.Excel.Activities.ExcelCloseWorkbook", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-close-workbook"}' + 
