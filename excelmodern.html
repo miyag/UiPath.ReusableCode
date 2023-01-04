@@ -545,6 +545,13 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
+		<td><span class="type">Pivot</td>
+		<td><span class="mnam" id="filter-pivot-table-x"></span>
+			<span class="msub" id="filter-pivot-table-x-subname"></span>
+			<a class="tooltip" id="filter-pivot-table-x-tooltip" href="#" data-tooltip=""><span class="tooltiplink">?</span></a></td>
+		<td><span class="nashi">Ｘ（対応なし）</span></td>
+	</tr>
+	<tr>
 		<td><span class="type">マクロ</td>
 		<td><span class="mnam" id="execute-macro-x"></span>
 			<span class="msub" id="execute-macro-x-subname"></span>
@@ -639,6 +646,7 @@ $(function(){
 #write-range-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #text-to-columns-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #filter-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
+#filter-pivot-table-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #find-replace-value-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #delete-column-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
 #insert-column-x:before{ background:url(https://miyag.github.io/UiPath.ReusableCode/images/mexcel.png) no-repeat; background-size:contain;}
@@ -703,7 +711,7 @@ var json = '{"data": [' +
     ',{"id": "auto-fill-x", "name": "オートフィル", "name2": "Auto Fill", "nspace": "", "url": "https://docs.uipath.com/activities/lang-ja/docs/auto-fill-x"}' + 
     ',{"id": "write-cell-x", "name": "セルに書き込み", "name2": "Write Cell", "nspace": "UiPath.Excel.Activities.Business.WriteCellX", "url": "https://docs.uipath.com/activities/lang-ja/docs/write-cell-x"}' + 
     ',{"id": "read-cell-value-x", "name": "セルの値を読み込み", "name2": "Read Cell Value", "nspace": "UiPath.Excel.Activities.Business.ReadCellX", "url": "https://docs.uipath.com/activities/lang-ja/docs/read-cell-value-x"}' + 
-    ',{"id": "get-cell-color-x", "name": "セルの色を取得", "name2": "Get Cell Color", "nspace": "UiPath.Excel.Activities.GetCellColorX", "url": "https://docs.uipath.com/activities/lang-ja/docs/get-cell-color-x"}' + 
+    ',{"id": "get-cell-color-x", "name": "セルの色を取得(new)", "name2": "Get Cell Color", "nspace": "UiPath.Excel.Activities.GetCellColorX", "url": "https://docs.uipath.com/activities/lang-ja/docs/get-cell-color-x"}' + 
     ',{"id": "read-cell-formula-x", "name": "セルの数式を読み込み", "name2": "Read Cell Formula", "nspace": "UiPath.Excel.Activities.Business.ReadCellFormulaX", "url": "https://docs.uipath.com/activities/lang-ja/docs/read-cell-formula-x"}' + 
     ',{"id": "change-pivot-table-data-source-x", "name": "ピボットテーブルのデータソースを変更", "name2": "Change Pivot Data Source", "nspace": "UiPath.Excel.Activities.Business.ChangePivotDataSourceX", "url": "https://docs.uipath.com/activities/lang-ja/docs/change-pivot-table-data-source-x"}' + 
     ',{"id": "create-pivot-table-x", "name": "ピボットテーブルを作成", "name2": "Create Pivot Table", "nspace": "UiPath.Excel.Activities.Business.CreatePivotTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-pivot-table-x"}' + 
@@ -722,10 +730,10 @@ var json = '{"data": [' +
     ',{"id": "for-each-sheet-x", "name": "繰り返し(Excelの各シート)", "name2": "For Each Excel Sheet", "nspace": "UiPath.Excel.Activities.Business.ForEachSheetX", "url": "https://docs.uipath.com/activities/lang-ja/docs/for-each-sheet-x"}' + 
     ',{"id": "export-excel-to-csv-x", "name": "CSV にエクスポート", "name2": "Export to CSV", "nspace": "UiPath.Excel.Activities.Business.ExportExcelToCsvX", "url": "https://docs.uipath.com/activities/lang-ja/docs/export-excel-to-csv-x"}' + 
     ',{"id": "v-lookup-x", "name": "VLOOKUP", "name2": "VLookup", "nspace": "UiPath.Excel.Activities.Business.VLookupX", "url": "https://docs.uipath.com/activities/lang-ja/docs/v-lookup-x"}' + 
-    ',{"id": "match-function-x", "name": "MATCH 関数", "name2": "Match Function", "nspace": "UiPath.Excel.Activities.Business.MatchFunctionX", "url": "https://docs.uipath.com/activities/lang-ja/docs/match-function-x"}' + 
+    ',{"id": "match-function-x", "name": "MATCH 関数(new)", "name2": "Match Function", "nspace": "UiPath.Excel.Activities.Business.MatchFunctionX", "url": "https://docs.uipath.com/activities/lang-ja/docs/match-function-x"}' + 
     ',{"id": "clear-range-x", "name": "シート/範囲/表をクリア", "name2": "Clear Sheet/Range/Table", "nspace": "UiPath.Excel.Activities.Business.ClearRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/clear-range-x"}' + 
     ',{"id": "format-range-x", "name": "セルを書式設定", "name2": "Format Cells", "nspace": "UiPath.Excel.Activities.Business.FormatRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/format-range-x"}' + 
-    ',{"id": "create-table-x", "name": "テーブルとして書式設定", "name2": "Format As Table", "nspace": "UiPath.Excel.Activities.Business.CreateTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-table-x"}' + 
+    ',{"id": "create-table-x", "name": "テーブルとして書式設定(new)", "name2": "Format As Table", "nspace": "UiPath.Excel.Activities.Business.CreateTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/create-table-x"}' + 
     ',{"id": "write-range-x", "name": "データテーブルをExcelに書き込み", "name2": "Write DataTable to Excel", "nspace": "UiPath.Excel.Activities.Business.WriteRangeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/write-range-x"}' + 
     ',{"id": "text-to-columns-x", "name": "テキストを列に分割", "name2": "Text to Columns", "nspace": "UiPath.Excel.Activities.Business.TextToColumnsX", "url": "https://docs.uipath.com/activities/lang-ja/docs/text-to-columns-x"}' + 
     ',{"id": "filter-x", "name": "フィルター", "name2": "Filter", "nspace": "UiPath.Excel.Activities.Business.FilterX", "url": "https://docs.uipath.com/activities/lang-ja/docs/filter-x"}' + 
@@ -748,7 +756,7 @@ var json = '{"data": [' +
     ',{"id": "excel-process-scope-x", "name": "Excelプロセススコープ", "name2": "Excel Process Scope", "nspace": "UiPath.Excel.Activities.ExcelProcessScopeX", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-process-scope-x"}' + 
     ',{"id": "sequence-x", "name": "単一のExcelプロセススコープ", "name2": "Single Excel Process Scope", "nspace": "System.Activities.Business.SequenceX", "url": "https://docs.uipath.com/activities/lang-ja/docs/sequence-x"}' + 
     ',{"id": "invoke-vba", "name": "VBAを呼び出し", "name2": "Invoke VBA", "nspace": "UiPath.Excel.Activities.InvokeVBA", "url": "https://docs.uipath.com/activities/lang-ja/docs/invoke-vba"}' + 
-    ',{"id": "invoke-vbax", "name": "VBAを呼び出し", "name2": "Invoke VBA", "nspace": "UiPath.Excel.Activities.InvokeVBAX", "url": "https://docs.uipath.com/activities/lang-ja/docs/invoke-vbax"}' + 
+    ',{"id": "invoke-vbax", "name": "VBAを呼び出し(new)", "name2": "Invoke VBA", "nspace": "UiPath.Excel.Activities.InvokeVBAX", "url": "https://docs.uipath.com/activities/lang-ja/docs/invoke-vbax"}' + 
     ',{"id": "execute-macro", "name": "マクロを実行", "name2": "Execute Macro", "nspace": "UiPath.Excel.Activities.ExecuteMacro", "url": "https://docs.uipath.com/activities/lang-ja/docs/execute-macro"}' + 
     ',{"id": "excel-insert-delete-columns", "name": "列を挿入/削除", "name2": "Insert/Delete Columns", "nspace": "UiPath.Excel.Activities.ExcelInsertDeleteColumns", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-insert-delete-columns"}' + 
     ',{"id": "excel-auto-fill-range", "name": "範囲をオートフィル", "name2": "Auto Fill Range", "nspace": "UiPath.Excel.Activities.ExcelAutoFillRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-auto-fill-range"}' + 
@@ -758,7 +766,7 @@ var json = '{"data": [' +
     ',{"id": "excel-remove-duplicates-range", "name": "重複行を削除", "name2": "Remove Duplicates Range", "nspace": "UiPath.Excel.Activities.ExcelRemoveDuplicatesRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-remove-duplicates-range"}' + 
     ',{"id": "excel-create-pivot-table", "name": "ピボットテーブルを作成", "name2": "Create Pivot Table", "nspace": "UiPath.Excel.Activities.ExcelCreatePivotTable", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-create-pivot-table"}' + 
     ',{"id": "excel-refresh-pivot-table", "name": "ピボットテーブルを更新", "name2": "Refresh Pivot Table", "nspace": "UiPath.Excel.Activities.ExcelRefreshPivotTable", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-refresh-pivot-table"}' + 
-    ',{"id": "filter-pivot-table-x", "name": "ピボット テーブルをフィルター", "name2": "Filter Pivot Table", "nspace": "UiPath.Excel.Activities.Business.FilterPivotTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/filter-pivot-table-x"}' + 
+    ',{"id": "filter-pivot-table-x", "name": "ピボット テーブルをフィルター(new)", "name2": "Filter Pivot Table", "nspace": "UiPath.Excel.Activities.Business.FilterPivotTableX", "url": "https://docs.uipath.com/activities/lang-ja/docs/filter-pivot-table-x"}' + 
     ',{"id": "excel-delete-column", "name": "列を削除", "name2": "Delete Column", "nspace": "UiPath.Excel.Activities.ExcelDeleteColumn", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-delete-column"}' + 
     ',{"id": "excel-insert-column", "name": "列を挿入", "name2": "Insert Column", "nspace": "UiPath.Excel.Activities.ExcelInsertColumn", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-insert-column"}' + 
     ',{"id": "excel-get-table-range", "name": "表の範囲を取得", "name2": "Get Table Range", "nspace": "UiPath.Excel.Activities.ExcelGetTableRange", "url": "https://docs.uipath.com/activities/lang-ja/docs/excel-get-table-range"}' + 
