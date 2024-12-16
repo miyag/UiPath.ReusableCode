@@ -1,0 +1,227 @@
+<html lang="ja">
+<head>
+<title>rpanews2024</title>
+<meta charset="utf-8">
+<style>
+</style>
+</head>
+<body>
+<h1>2024 UiPath関連ニュース</h1>
+<table id="tbl" border="1" style="border-collapse:collapse;">
+  <tr>
+    <th>date</th>
+    <th>media</th>
+    <th>title</th>
+  </tr>
+</table>
+<script>
+var json = '{"data": [' +
+'{"media":"週刊BCN＋","date":"2024年12月5日","url":"https://www.weeklybcn.com/journal/news/detail/20241205_207292.html","title":"米UiPath日本法人、切れ目のない自動化を提供　AIエージェント開発機能を発表"}' + 
+',{"media":"日経XTECH","date":"2024年11月13日","url":"https://xtech.nikkei.com/atcl/nxt/mag/nc/18/110500456/110500002/","title":"もうRPAと呼ばない　生成AIで限界突破"}' + 
+',{"media":"日経XTECH","date":"2024年11月11日","url":"https://xtech.nikkei.com/atcl/nxt/column/18/00001/09954/","title":"AIエージェントで「業務プロセス」自動化、SalesforceやServiceNowなど続々投入"}' + 
+',{"media":"ZDNET JAPAN","date":"2024年11月8日","url":"https://japan.zdnet.com/article/35225812/","title":"UiPath、AIを活用した製品戦略を発表--“エージェンティックオートメーション”が鍵に"}' + 
+',{"media":"TECH＋","date":"2024年11月7日","url":"https://news.mynavi.jp/techplus/article/20241107-3060402/","title":"UiPath、エージェンティックAIを活用したプラットフォーム拡張"}' + 
+',{"media":"ASCII.JP​","date":"2024年11月7日","url":"https://ascii.jp/elem/000/004/233/4233208/","title":"「請求書の不備を見つけ再送依頼」までAIが自動処理　UiPathは“エージェンティック”への進化目指す"}' + 
+',{"media":"クラウドWATCH","date":"2024年11月7日","url":"https://cloud.watch.impress.co.jp/docs/news/1637484.html","title":"UiPath、AIエージェント開発ツールなど、エージェンティックオートメーション関連製品を発表"}' + 
+',{"media":"IT LEADERS","date":"2024年11月6日","url":"https://it.impress.co.jp/articles/-/27062","title":"UiPath、RPAと協調して動くエージェントの開発ツール「Agent Builder」を発表"}' + 
+',{"media":"","date":"2024年11月6日","url":"https://www.uipath.com/ja/newsroom/uipath-inflection-ai-announce-partnership-to-bring-agentic-ai-to-security-focused-industries","title":"UiPath、Inflection AI社と戦略的パートナーシップを締結"}' + 
+',{"media":"TECH＋","date":"2024年10月23日","url":"https://news.mynavi.jp/techplus/article/20241023-3050343/","title":"UiPath PlatformがSAP Build Process Automationと統合、SAP Solution Extensionsとして販売"}' + 
+',{"media":"ENTERPRISEZINE","date":"2024年10月22日","url":"https://enterprisezine.jp/news/detail/20619","title":"UiPath、SAPユーザーの自動化を加速　SAP以外のシステムが混在する環境でも全社規模で変革可能に"}' + 
+',{"media":"クラウドWATCH","date":"2024年10月22日","url":"https://cloud.watch.impress.co.jp/docs/news/1633363.html","title":"UiPath、自社の自動化基盤とSAP Build Process Automationとの統合ソリューションを提供"}' + 
+',{"media":"ASCII.JP​","date":"2024年10月21日","url":"https://ascii.jp/elem/000/004/229/4229379/","title":"「エージェンティックAI」とは？ UiPath CEOが自動化とRPAの未来を語る"}' + 
+',{"media":"","date":"2024年10月22日","url":"https://www.uipath.com/ja/newsroom/uipath-integrated-with-sap-build-process-automation-offering","title":"UiPath、SAPテクノロジーとの統合によりSAP顧客の全社規模の自動化を加速"}' + 
+',{"media":"TECH＋","date":"2024年10月16日","url":"https://news.mynavi.jp/techplus/article/20241016-3045742/","title":"UiPath創業者が語る、自律型AIエージェントがもたらすメリットとは"}' + 
+',{"media":"クラウドWATCH","date":"2024年10月9日","url":"https://cloud.watch.impress.co.jp/docs/special/1629880.html","title":"UiPath創業者が語る、エージェンティックオートメーションと今後の自動化の世界"}' + 
+',{"media":"ZDNET JAPAN","date":"2024年10月4日","url":"https://japan.zdnet.com/article/35224510/","title":"UiPathの創業者が語る、生成AI時代における業務自動化の行方"}' + 
+',{"media":"IT LEADERS","date":"2024年10月2日","url":"https://it.impress.co.jp/articles/-/26905","title":"回答者の9割がソフトウェア自動化開発プロセスでAIを使用中/使用予定─UiPath調査"}' + 
+',{"media":"","date":"2024年10月1日","url":"https://www.uipath.com/ja/newsroom/uipath-state-of-the-automation-professional-report","title":"UiPath、自動化プロフェッショナルの実態を調査 2024年はAIと自動化の統合に積極的に取り組む年と判明"}' + 
+',{"media":"キーマンズネット","date":"2024年9月20日","url":"https://kn.itmedia.co.jp/kn/articles/2409/20/news100.html","title":"Microsoft 365 CopilotとRPAとの連携、「一体何ができるのか」？　M365ユーザー視点で“点検”"}' + 
+',{"media":"日経XTECH","date":"2024年9月18日","url":"https://xtech.nikkei.com/atcl/nxt/column/18/02942/091200002/","title":"生成AI入りのRPAが「超・自動化」ツールに進化、ローコードで開発可能に"}' + 
+',{"media":"","date":"2024年8月30日","url":"https://www.uipath.com/ja/newsroom/uipath-named-leader-in-everest-group-digital-interaction-intelligence-products-peak-matrix-report-2024","title":"UiPath、Everest Group社の「Digital Interaction Intelligence Products PEAK Matrix® Assessment 2024」でリーダーとして認定"}' + 
+',{"media":"","date":"2024年8月23日","url":"https://www.uipath.com/ja/newsroom/uipath-named-leader-gartner-magic-quadrant-report","title":"UiPath社、Gartner®社の2024年ロボティック・プロセス・オートメーションのマジック・クアドラントでリーダーの1社に位置付けられる"}' + 
+',{"media":"","date":"2024年8月19日","url":"https://www.uipath.com/ja/newsroom/uipath-ranked-no1-in-the-rpa-market-share-in-japan-for-the-seventh-consecutive-year-in-itrs-survey-report","title":"UiPath社が、ITRの調査レポートで国内RPA市場シェア1位を7年連続で獲得"}' + 
+',{"media":"ENTERPRISEZINE","date":"2024年8月2日","url":"https://enterprisezine.jp/article/detail/19900","title":"生成AIでRPAは“起死回生”となるか？　UiPathの製品トップが描く「AI-powered」の自動化"}' + 
+',{"media":"","date":"2024年8月1日","url":"https://www.uipath.com/ja/newsroom/uipath-announces-latest-autopilot-and-genai-platform-updates","title":"UiPath、組織がより良く、より速く、より包括的な自動化を構築するためのプラットフォームの追加機能を公開"}' + 
+',{"media":"週刊BCN＋","date":"2024年7月11日","url":"https://www.weeklybcn.com/journal/news/detail/20240711_205017.html","title":"米UiPath日本法人、自動化基盤をアップデート　生成AIで文書処理のプロセスを効率化"}' + 
+',{"media":"ZDNET JAPAN","date":"2024年7月5日","url":"https://japan.zdnet.com/article/35221092/","title":"「AI-Powered Business Automation Platformを提供していきたい」（UiPath カントリーマネージャーの南哲夫氏）（2ページ目）"}' + 
+',{"media":"＠IT","date":"2024年7月3日","url":"https://atmarkit.itmedia.co.jp/ait/articles/2407/03/news043.html","title":"「全社レベルの自動化」に成功している企業とそうでない企業の違いとは　UiPathがホワイトペーパーを公開"}' + 
+',{"media":"","date":"2024年7月2日","url":"https://www.uipath.com/ja/newsroom/uipath-commissioned-itr-white-paper-latest-trends-in-rpa-and-business-automation-released","title":"UiPath、ITR社への委託調査によるホワイトペーパー　「RPAと業務自動化の最新動向」を公開"}' + 
+',{"media":"","date":"2024年6月21日","url":"https://www.uipath.com/ja/newsroom/new-global-survey-finds-the-importance-for-enterprises-to-promote-adoption-and-to-train-for-workers-on-the-use-of-genai-tools","title":"UiPathの最新調査、生成AIの使用に関して　企業側の普及に向けた推進力と従業員トレーニングの重要性を明らかに"}' + 
+',{"media":"ZDNET JAPAN","date":"2024年6月20日","url":"https://japan.zdnet.com/article/35220359/","title":"UiPath、AI関連機能の日本語対応やLLMを発表"}' + 
+',{"media":"クラウドWATCH","date":"2024年6月20日","url":"https://cloud.watch.impress.co.jp/docs/news/1601647.html","title":"UiPathが新たなLLMを発表――AI搭載自動化製品のアップデートにて"}' + 
+',{"media":"TECH＋","date":"2024年6月19日","url":"https://news.mynavi.jp/techplus/article/20240619-2969027/","title":"UiPath、日本語対応したAI関連機能と新たなLLM発表"}' + 
+',{"media":"ENTERPRISEZINE","date":"2024年6月19日","url":"https://enterprisezine.jp/news/detail/19895","title":"UiPath、生成AIを活用した製品アップデートを発表　日本語の読み取り精度が向上したOCRなど"}' + 
+',{"media":"","date":"2024年6月19日","url":"https://www.uipath.com/ja/newsroom/uipath-unveils-ai-feature-in-japanese-and-new-family-of-llms-at-ai-powered-automation-summit","title":"UiPath、自社イベントAI-Powered Automation Summitに合わせ、日本語対応したAI関連機能と新たな大規模言語モデルを発表"}' + 
+',{"media":"","date":"2024年6月5日","url":"https://www.uipath.com/ja/newsroom/uipath-integrates-with-microsoft-copilot-for-microsoft-365","title":"UiPath、Microsoft Copilot for Microsoft 365との連携を発表"}' + 
+',{"media":"","date":"2024年5月23日","url":"https://www.uipath.com/ja/newsroom/fujitsu-scales-automation-enterprise-wide-with-uipath-to-meet-digital-transformation-goals","title":"富士通、UiPathを活用し全社規模の自動化を拡大し、デジタルトランスフォーメーションの目標の達成を目指す"}' + 
+',{"media":"","date":"2024年5月21日","url":"https://www.uipath.com/ja/newsroom/uipath-named-leader-in-gartner-magic-quadrant-process-mining","title":"UiPath社、Gartner®社の2024年プロセスマイニングプラットフォームのマジック・クアドラントでリーダーの1社に位置付けられる"}' + 
+',{"media":"","date":"2024年4月17日","url":"https://www.uipath.com/ja/newsroom/japan-partner-awards-2024-04-17","title":"UiPath社、2023年のJapan Partner Awards 受賞者を発表"}' + 
+',{"media":"","date":"2024年4月16日","url":"https://www.uipath.com/ja/newsroom/uipath-named-leader-for-second-time-in-everest-idp-peak-matrix","title":"UiPath、Everest Group社の「Intelligent Document Processing (IDP) Products PEAK Matrix® Assessment 2024」で2年連続リーダーとして認定"}' + 
+',{"media":"TECH＋","date":"2024年3月6日","url":"https://news.mynavi.jp/techplus/article/automation-4/","title":"住民のウェルビーイングにつながる行政の自動化とは"}' + 
+',{"media":"ZDNET JAPAN","date":"2024年3月1日","url":"https://japan.zdnet.com/article/35215893/","title":"UiPathとRobo Co-op、デジタルワーカー育成と就労支援の推進で協業"}' + 
+',{"media":"TECH＋","date":"2024年2月29日","url":"https://news.mynavi.jp/techplus/article/20240229-2894964/","title":"UiPathとRobo Co-op協業、デジタルワーカー育成と就労支援推進に向け"}' + 
+',{"media":"","date":"2024年2月28日","url":"https://www.uipath.com/ja/newsroom/uipath-and-robo-coop-collaborate-to-promote-digital-worker-training-and-employment-support","title":"デジタルワーカー育成と就労支援の推進に向けて、UiPathとRobo Co-opが協業"}' + 
+',{"media":"TECH＋","date":"2024年2月19日","url":"https://news.mynavi.jp/techplus/kikaku/20240219-2873965/","title":"全体最適のなかで求められる「個別最適」の重要性──総合情報システム「COKAS-i」の活用にUiPathが果たす役割"}' + 
+',{"media":"KEYMAN’S NET","date":"2024年2月19日","url":"https://kn.itmedia.co.jp/kn/articles/2402/19/news052.html","title":"生成AI時代、RPA活用はどう変わる？　今、見直したい業務自動化の手段"}' + 
+',{"media":"WEEKLYBCN+","date":"2024年2月13日","url":"https://www.weeklybcn.com/journal/serial/detail/20240213_202721.html","title":"企業動静　2024年2月12日付 vol.2002"}' + 
+',{"media":"TECHTARGET","date":"2024年2月6日","url":"https://techtarget.itmedia.co.jp/tt/news/2402/06/news03.html#:~:text=UiPath","title":"「ローコード／ノーコード」の真の目的とは？　会社を変える“市民開発者”たち"}' + 
+',{"media":"NIKKAN","date":"2024年2月3日","url":"https://www.nikkan.co.jp/jinjis/detail/2024-02-06/2024-02/5639","title":"UiPath株式会社　人事異動"}' + 
+',{"media":"","date":"2024年2月1日","url":"https://www.uipath.com/ja/newsroom/uipath-appoints-minami-tetsuo-to-lead-japan-operations","title":"UiPath株式会社のカントリーマネージャーに南 哲夫が就任"}' + 
+',{"media":"TECHTARGET","date":"2024年1月30日","url":"https://techtarget.itmedia.co.jp/tt/news/2401/30/news04.html#:~:text=UiPath","title":"「ローコード」には限界が……それでも“市民開発”が期待される理由"}' + 
+',{"media":"FORBES","date":"2024年1月25日","url":"https://forbesjapan.com/articles/detail/68599","title":"経営者はAIとどう向き合うべきかーーUiPathの共同CEOが語る「AI技術が形成する未来の業務フローと働き方」"}' + 
+',{"media":"ZDNET JAPAN","date":"2024年1月11日","url":"https://japan.zdnet.com/article/35213657/","title":"AIと自動化は小さく始める--的を絞ったアプローチで大きな成果を"}' + 
+',{"media":"TECH＋","date":"2024年1月9日","url":"https://news.mynavi.jp/techplus/article/automation-3/","title":"「市民開発者」による自動化の民主化"}' + 
+',{"media":"ASCII.JP​","date":"2023年12月21日","url":"https://ascii.jp/elem/000/004/176/4176063/","title":"2024年の“自動化とAI“、UiPathが考える7つのトレンド"}' + 
+',{"media":"ENTERPRISEZINE","date":"2023年12月13日","url":"https://enterprisezine.jp/news/detail/18918","title":"UiPath、2024年の自動化とAIのトレンドを7つ発表　AI+自動化のユースケース需要高まるか"}' + 
+',{"media":"TECH＋","date":"2023年12月13日","url":"https://news.mynavi.jp/techplus/article/20231212-2839294/","title":"UiPath、自動化とAIの2024年のトレンドを公開 - AI×自動化のニーズが高まる"}' + 
+',{"media":"CODEZINE","date":"2023年12月13日","url":"https://codezine.jp/article/detail/18790","title":"AI活用で企業に新たな価値が生まれると予想、UiPathが「自動化とAIのトレンド：2024年版」を発表"}' + 
+',{"media":"ZDNET JAPAN","date":"2023年12月13日","url":"https://japan.zdnet.com/article/35212644/","title":"2024年のAIと自動化--UiPathが示したトレンド"}' + 
+',{"media":"日経XTECH","date":"2023年12月13日","url":"https://xtech.nikkei.com/atcl/nxt/column/18/02666/113000004/","title":"中外製薬・日清食品がトップ起点で育成サイクル回転加速、経営層もデジタル学ぶ"}' + 
+',{"media":"TECH＋","date":"2023年12月13日","url":"https://news.mynavi.jp/techplus/article/automation-2/","title":"業務の自動化への期待と課題"}' + 
+',{"media":"ENTERPRISEZINE","date":"2023年12月13日","url":"https://enterprisezine.jp/article/detail/18766","title":"名だたるビッグテックを渡り歩く米UiPath人事トップが語る「テクノロジーと人の融合法」"}' + 
+',{"media":"クラウドWATCH","date":"2023年12月13日","url":"https://cloud.watch.impress.co.jp/docs/column/keyman/1548510.html","title":"クラウド、生成AI、オートメーションの組み合わせが、日本の企業を元気にする――、米UiPath・ディネス共同CEO"}' + 
+',{"media":"ASCII.JP​","date":"2023年12月13日","url":"https://ascii.jp/elem/000/004/170/4170080/#:~:text=UiPath","title":"デジタルビジネス実現の日本企業は24％、公務員を抜き大学生就職人気トップの企業、DevSecOpsの導入率、ほか"}' + 
+',{"media":"産経新聞（WEB）","date":"2023年12月13日","url":"https://www.sankei.com/article/20231116-QCVISEJHMRH5NCFTR7GT7Z2HZQ/","title":"生成ＡＩへの投資、６７％が「増える」２割は職場で利用　民間調査"}' + 
+',{"media":"週刊BCN＋","date":"2023年12月13日","url":"https://www.weeklybcn.com/journal/column/detail/20231108_201287.html","title":"自動化と生成AIのかけあわせ"}' + 
+',{"media":"TECH＋","date":"2023年12月13日","url":"https://news.mynavi.jp/techplus/article/automation-1/","title":"RPA隆盛の歴史と「オートメーション」の今"}' + 
+',{"media":"ZDNET","date":"2023年12月13日","url":"https://japan.zdnet.com/article/35211001/","title":"UiPathのトップが語る「業務の自動化が進めば人はどうなるか」"}' + 
+',{"media":"DIAMOND ONLINE","date":"2023年12月13日","url":"https://diamond.jp/articles/-/330772","title":"作業工数8～9割削減も。金融業の現場業務を劇的に変える「AI×自動化」プラットフォームの衝撃"}' + 
+',{"media":"","date":"2023年12月11日","url":"https://www.uipath.com/ja/newsroom/uipath-automation-and-ai-trends-report-2024","title":"UiPath、レポート「自動化とAIのトレンド：2024年版」を発表"}' + 
+',{"media":"","date":"2023年11月20日","url":"https://www.uipath.com/ja/newsroom/uipath-named-leader-in-idc-marketscape-idp","title":"UiPath、「IDC MarketScape: Worldwide IDP 2023-2024 Vendor Assessment」で「リーダー」に選出"}' + 
+',{"media":"TECHABLE","date":"2023年10月26日","url":"https://techable.jp/archives/221556","title":"インターンからCEOまで、あらゆる従業員の業務を自動化！UiPath社、自然言語で使える新たなAI機能を発表"}' + 
+',{"media":"WEEKLYBCN+","date":"2023年10月26日","url":"https://www.weeklybcn.com/journal/news/detail/20231026_201047.html","title":"米UiPath日本法人、「UiPath Autopilot」を発表　AI のサポートで業務を自動化"}' + 
+',{"media":"","date":"2023年10月26日","url":"https://www.uipath.com/ja/newsroom/uipath-relocates-japan-corporate-headquarters","title":"UiPath、日本法人本社オフィスを移転"}' + 
+',{"media":"CLOUD WATCH","date":"2023年10月24日","url":"https://cloud.watch.impress.co.jp/docs/news/1541404.html","title":"UiPath、テキスト入力した情報をもとに作業を自動化するAI機能「UiPath Autopilot」を発表"}' + 
+',{"media":"ZDNET JAPAN","date":"2023年10月24日","url":"https://japan.zdnet.com/article/35210622/","title":"UiPath、「UiPath Autopilot」発表--業務でのAI活用を実現"}' + 
+',{"media":"TECH＋","date":"2023年10月24日","url":"https://news.mynavi.jp/techplus/article/20231024-2800706/","title":"生成AI製品ブランド「UiPath Autopilot」発表、三井住友信託銀がRPAと生成AIの事例を説明"}' + 
+',{"media":"","date":"2023年10月23日","url":"https://www.uipath.com/ja/newsroom/uipath-announces-autopilot-to-make-ai-at-work-a-reality","title":"UiPath、業務でのAI活用を実現するAutopilotを発表"}' + 
+',{"media":"ENTERPRISEZINE","date":"2023年10月6日","url":"https://enterprisezine.jp/article/detail/18534","title":"ジャパンラグビー リーグワン 「リコーブラックラムズ東京」のデジタル変革の挑戦とは？"}' + 
+',{"media":"ITMEDIAエンタープライズ","date":"2023年10月4日","url":"https://www.itmedia.co.jp/enterprise/articles/2309/29/news085.html","title":"UiPathの最高製品責任者が語る　「日本企業の特徴」と「生産性アップのための3つの施策」【後編】"}' + 
+',{"media":"ITMEDIAエンタープライズ","date":"2023年10月4日","url":"https://www.itmedia.co.jp/enterprise/articles/2309/29/news082.html","title":"「ChatGPTがあればUiPathはいらない」という“暴言”に、最高製品責任者の回答は？【前編】"}' + 
+',{"media":"NIKKAN","date":"2023年10月4日","url":"https://www.nikkan.co.jp/articles/view/686726","title":"日本IBMとユーアイパス、RPA技術者育成を開始　地域ビジネス活性化"}' + 
+',{"media":"TECHABLE","date":"2023年10月4日","url":"https://techable.jp/archives/218959","title":"UiPath社、RPA（ロボットによる業務自動化）市場のリーダーの1社と位置付けられる。実行能力で最上位"}' + 
+',{"media":"NIKKEI XTECH","date":"2023年10月4日","url":"https://xtech.nikkei.com/atcl/nxt/column/18/02563/082500003/","title":"「顧客満足度調査」ソフトウエア部門一挙公開、エムオーテックスが初栄冠"}' + 
+',{"media":"NIKKEI XTECH","date":"2023年10月4日","url":"https://xtech.nikkei.com/atcl/nxt/column/18/02563/082500001/","title":"「ITコンサル／上流設計」で富士通が1位に、8部門で首位交代した顧客満足度調査"}' + 
+',{"media":"ZDNET","date":"2023年10月4日","url":"https://japan.zdnet.com/article/35209085/","title":"「業務ソフト×生成AI」はマスト--その先にある競争優位とは何か"}' + 
+',{"media":"ZDNET","date":"2023年10月4日","url":"https://japan.zdnet.com/article/35207356/","title":"RPAは生成AIに呑み込まれるのではないか--UiPathの長谷川CEOに聞いてみた"}' + 
+',{"media":"","date":"2023年9月7日","url":"https://www.uipath.com/ja/newsroom/rugby-team-ricoh-blackrams-tokyo-utilizes-uipath-to-improve-match-data-analysis-efficiency","title":"ラグビーチーム「リコーブラックラムズ東京」が UiPath Business Automation Platformを活用し 試合データ分析効率向上を実現"}' + 
+',{"media":"","date":"2023年9月1日","url":"https://www.uipath.com/ja/newsroom/uipath-announces-new-google-ai-connectors","title":"UiPath、Google Cloud Next 2023で Google AIとGoogle Workplace向け新コネクタを発表"}' + 
+',{"media":"","date":"2023年8月28日","url":"https://www.uipath.com/ja/newsroom/itr-market-view-2023-08-28","title":"UiPath社が、ITRの調査レポートで国内RPA市場シェア1位を６年連続で獲得"}' + 
+',{"media":"","date":"2023年8月21日","url":"https://www.uipath.com/ja/newsroom/nikkei-computer-customer-satisfaction-survey-20223-08-21","title":"UiPath社、「日経コンピュータ 顧客満足度調査 2023-2024」の RPAソフト／サービス部門で5年連続1位を獲得"}' + 
+',{"media":"TECH＋","date":"2023年8月7日","url":"https://news.mynavi.jp/techplus/article/20230714-2727387/","title":"UiPath長谷川CEOが製品戦略説明、SMBCグループら生成AI×RPAの事例を紹介"}' + 
+',{"media":"ZDNET","date":"2023年8月3日","url":"https://japan.zdnet.com/article/35207356/","title":"RPAは生成AIに呑み込まれるのではないか--UiPathの長谷川CEOに聞いてみた"}' + 
+',{"media":"BCN+R","date":"2023年7月25日","url":"https://www.bcnretail.com/market/detail/20230725_348416.html","title":"【記者のひとこと】自動化ツールの活用の幅を広げる"}' + 
+',{"media":"週刊BCN＋","date":"2023年7月25日","url":"https://www.weeklybcn.com/journal/column/detail/20230725_199389.html","title":"自動化ツールの活用の幅を広げる"}' + 
+',{"media":"キーマンズネット","date":"2023年7月24日","url":"https://kn.itmedia.co.jp/kn/articles/2307/24/news141.html","title":"UiPathの「自動化×生成AI」で何ができるのか？　自動化技術の進化を語る"}' + 
+',{"media":"日経新聞電子版","date":"2023年7月23日","url":"https://www.nikkei.com/article/DGXZQOCD14AMP0U3A710C2000000/","title":"生成系AIがビジネス支援　業務効率化で生産性向上へ"}' + 
+',{"media":"IT LEADERS","date":"2023年7月20日","url":"https://it.impress.co.jp/articles/-/25119","title":"プロセスやタスクに加え“コミュニケーションマイニング”へ─UiPathが示すプロセス最適化/自動化への道筋とは？"}' + 
+',{"media":"週刊BCN＋","date":"2023年7月20日","url":"https://www.weeklybcn.com/journal/news/detail/20230720_199342.html","title":"米UiPath日本法人、自動化基盤と生成AIを統合　ユースケースの創出を図る"}' + 
+',{"media":"ZDNET JAPAN","date":"2023年7月14日","url":"https://japan.zdnet.com/article/35206542/","title":"「できなかったことを実現できる」--UiPathが語る、RPA×生成AIで開く扉"}' + 
+',{"media":"ASCII.JP​","date":"2023年7月14日","url":"https://ascii.jp/elem/000/004/145/4145262/","title":"UiPathが目指す生成AI×自動化　変わる仕事、プロセス、働き方、経営"}' + 
+',{"media":"IT LEADERS","date":"2023年7月13日","url":"https://it.impress.co.jp/articles/-/25094","title":"RPA「UiPath」にAI新機能、データ転記を省力化する「Clipboard AI」と自動化処理を自然言語で自動生成する「Wingman」"}' + 
+',{"media":"","date":"2023年7月4日","url":"https://www.uipath.com/ja/newsroom/uipath-reveals-expanded-generative-ai-and-specialized-ai-offerings","title":"自動化によってAIが真の可能性を発揮：UiPath、生成AIと特化型AIの拡充を発表"}' + 
+',{"media":"","date":"2023年6月21日","url":"https://www.uipath.com/ja/newsroom/uipath-named-leader-everest-group-process-mining-report","title":"UiPath社、Everest Group社の「Process Mining – Products PEAK Matrix ® Assessment 2023」でリーダーとして認定"}' + 
+',{"media":"","date":"2023年6月19日","url":"https://www.uipath.com/ja/newsroom/uipath-issues-fiscal-year-impact-report","title":"UiPath、2023年度のインパクトレポートを発行"}' + 
+',{"media":"","date":"2023年6月9日","url":"https://www.uipath.com/ja/newsroom/uipath-named-leader-star-performer-everest-idp-matrix","title":"UiPath社、Everest Group社の「 Intelligent Document Processing (IDP) – Products PEAK Matrix ® Assessment 2023」で、リーダーおよびスター・パフォーマーとして認定"}' + 
+',{"media":"BRIDGE","date":"2023年5月26日","url":"https://thebridge.jp/2023/05/ai-powered-automation-enhances-job-fulfillment-for-nearly-60-of-workers","title":"AIを使った自動化で、労働者の6割が「仕事の満足度が改善」と回答〜UI Pathの調査"}' + 
+',{"media":"","date":"2023年5月26日","url":"https://www.uipath.com/ja/newsroom/uipath-unveils-automation-generation-report","title":"日本でのビジネスオートメーションの利用率は調査国中で最低、今後の活用に期待"}' + 
+',{"media":"ZDNET JAPAN","date":"2023年5月19日","url":"https://japan.zdnet.com/article/35204027/","title":"AIが燃え尽き症候群の防止に役立つと考える従業員は約60％--UiPath調査"}' + 
+',{"media":"キーマンズネット","date":"2023年5月17日","url":"https://kn.itmedia.co.jp/kn/articles/2305/15/news007.html","title":"RPA導入後2カ月で内製化体制を構築　富士貿易が語る中堅・中小企業のRPAの始め方"}' + 
+',{"media":"","date":"2023年5月17日","url":"https://www.uipath.com/ja/newsroom/uipath-unveils-new-ai-powered-features-in-2023-4-platform","title":"UiPath社、すべての知識労働の自動化を加速するAI搭載の新機能を含む最新版「UiPath Platform 2023.4」を提供開始"}' + 
+',{"media":"FORBS JAPAN","date":"2023年5月11日","url":"https://forbesjapan.com/articles/detail/62999","title":"RPA大手UiPath CEOが語るAIとワークプレイス・オートメーション"}' + 
+',{"media":"","date":"2023年4月27日","url":"https://www.uipath.com/ja/newsroom/uipath-to-offer-uipath-platform-as-sap-endorsed-application","title":"UiPath社、SAP認定アプリケーションとしてUiPath Automation Platformを提供することを発表"}' + 
+',{"media":"","date":"2023年4月20日","url":"https://www.uipath.com/ja/newsroom/uipath-helps-jatco-reap-the-benefits-of-enterprise-wide-automation","title":"UiPath社、ジヤトコ株式会社の全社的な業務自動化を支援"}' + 
+',{"media":"","date":"2023年4月14日","url":"https://www.uipath.com/ja/newsroom/uipath-accelerates-modernization-of-application-delivery-infrastructure-for-ntt-docomo","title":"UiPath社、テスト自動化ツールの提供により、 NTTドコモのスマホアプリ配信システムのモダナイズを支援"}' + 
+',{"media":"","date":"2023年4月11日","url":"https://www.uipath.com/ja/newsroom/japan-partner-awards-2023-04-11","title":"UiPath社、Japan Partner Awardsを発表"}' + 
+',{"media":"ITMEDIAエンタープライズ","date":"2023年3月14日","url":"https://www.itmedia.co.jp/enterprise/articles/2303/14/news044.html","title":"DX先進国の米国にも存在する「抵抗勢力」　彼らをやる気にさせる“魔法の言葉”とは"}' + 
+',{"media":"","date":"2023年3月10日","url":"https://www.uipath.com/ja/newsroom/uipath-recognized-rpa-leader-in-forrester-wave-robotic-procesautomation-report","title":"UiPath社、独立系調査会社のレポートでRPAのリーダーに選出"}' + 
+',{"media":"ITMEDIAエンタープライズ","date":"2023年3月3日","url":"https://www.itmedia.co.jp/enterprise/articles/2303/03/news055.html","title":"ボスが「問題ない」って言うならヨシ？　日本企業の自動化を阻む“属人主義の壁”"}' + 
+',{"media":"日経XTECH","date":"2023年3月1日","url":"https://xtech.nikkei.com/atcl/nxt/column/18/02426/041700002/?P=3","title":"どうするCIO、レガシー刷新とDX加速のために実践すべきこと"}' + 
+',{"media":"","date":"2023年2月24日","url":"https://www.uipath.com/ja/newsroom/uipath-helps-mitsubishi-tanabe-pharma-accelerate-business-operational-efficiency","title":"UiPath社、田辺三菱製薬における価値ある業務の創出を支援"}' + 
+',{"media":"","date":"2023年2月22日","url":"https://www.uipath.com/ja/newsroom/romanian-red-cross-automates-support-with-uipath","title":"ルーマニア赤十字社、UiPathにより ウクライナ難民支援活動のレポーティングを自動化"}' + 
+',{"media":"日経XTECH","date":"2023年2月20日","url":"https://kn.itmedia.co.jp/kn/articles/2302/17/news021.html","title":"[キーマンズネット] 足立区が保育園入所業務を自動化して残業をほぼゼロにした話"}' + 
+',{"media":"","date":"2023年1月26日","url":"https://www.uipath.com/ja/newsroom/case-study-ielove-2023-01-26","title":"UiPath社、自動化プラットフォームの提供により、いえらぶGROUPの不動産テッククラウドにおける新規サービス「RPAらくらくロボシリーズ」提供を支援"}' + 
+',{"media":"","date":"2023年1月25日","url":"https://www.youtube.com/watch?v=YhSXVsKa-ao","title":"[中外製薬]CHUGAI RPA -中外流RPAの極意-"}' + 
+',{"media":"","date":"2023年1月6日","url":"https://www.uipath.com/ja/newsroom/uipath-named-leader-in-isg-low-code-report","title":"UiPath社、2022年次世代ソリューション ― ローコード／ノーコード開発プラットフォームに関するレポートで「リーダー」に評価される"}' + 
+',{"media":"キーマンズネット","date":"2022年12月21日","url":"https://kn.itmedia.co.jp/kn/articles/2212/21/news062.html","title":"[キーマンズネット] セブン-イレブンのレガシーシステム刷新にRPAが不可欠な理由"}' + 
+',{"media":"","date":"2022年12月5日","url":"https://www.uipath.com/ja/newsroom/uipath-everest-group-peak-matrix-rpa2022","title":"UiPath社、Everest Group社の「Robotic Process Automation Products PEAK Matrix® 2022」において6年連続で「Leader」および「Star Performer」に評価される"}' + 
+',{"media":"NIKKEI STYLE","date":"2022年11月18日","url":"https://style.nikkei.com/article/DGXZQOLM169XT0W2A111C2000000?channel=ASH05045&n_cid=LMNST011","title":"[NIKKEI STYLE] 人生に作戦名をつける　自分のキャリアを取り戻す方法"}' + 
+',{"media":"TECH＋","date":"2022年11月9日","url":"https://news.mynavi.jp/techplus/article/20221109-2507947/","title":"[TECH＋] UiPath、APJにおける自動化の傾向や採用状況の調査"}' + 
+',{"media":"ZDNET JAPAN","date":"2022年11月9日","url":"https://japan.zdnet.com/article/35195764/","title":"[ZDNet Japan]「自動化は業務運用と革新の手段」--UiPath Co-CEOのエンスリン氏"}' + 
+',{"media":"日本経済新聞","date":"2022年11月8日","url":"https://www.nikkei.com/article/DGXZRSP643712_Z01C22A1000000/","title":"[Nikkei] KDDIエボルバ、「UiPath Apps」活用によるRPAロボット情報検索I/F統合の業務を実証"}' + 
+',{"media":"ENTERPRISEZINE","date":"2022年11月8日","url":"https://enterprisezine.jp/news/detail/16922","title":"[EnterpriseZine] 日本企業の62%がRPAプロジェクトをスケールアップする予定と回答 ─ UiPath発表"}' + 
+',{"media":"","date":"2022年11月8日","url":"https://www.uipath.com/ja/newsroom/automation-mindset-scale-needed-asia-pacific-2022-11-08","title":"UiPath社、最新調査の結果を発表 日本企業の5社中3社が、2025年までにRPAのスケールアップ、または全社規模の導入を完了"}' + 
+',{"media":"","date":"2022年10月27日","url":"https://www.uipath.com/ja/newsroom/case-study-mitsui-fudosan-2022-10-27","title":"UiPath社、自動化プラットフォームの提供により、三井不動産のDX推進を支援"}' + 
+',{"media":"ENTERPRISEZINE","date":"2022年10月18日","url":"https://enterprisezine.jp/article/detail/16722","title":"[EnterpriseZine] 全社プロジェクトへの“昇格”が後押し　ダイキン工業が年間10万時間の作業を自動化するまで"}' + 
+',{"media":"","date":"2022年10月13日","url":"https://www.uipath.com/ja/newsroom/uipath-automation-platform-empowers-jeras-digital-transformation","title":"UiPath社、自動化プラットフォームの提供によりJERAのDX推進を支援"}' + 
+',{"media":"","date":"2022年10月12日","url":"https://www.uipath.com/ja/newsroom/uipath-forward5-japan-event-annoucement-2022-10-11","title":"UiPath社、『UiPath FORWARD 5 Japan』を開催"}' + 
+',{"media":"","date":"2022年10月11日","url":"https://www.uipath.com/ja/newsroom/uipath-dx-book-published-2022-10-11","title":"社員を化石化させないためには？書籍第2弾『現場が主役の日本型DX』刊行のお知らせ"}' + 
+',{"media":"","date":"2022年10月7日","url":"https://www.uipath.com/ja/newsroom/uipath-recognizes-2022-global-partner-award-winners","title":"UiPath社、『FORWARD 5』において「2022 Partner Awards」受賞者を発表"}' + 
+',{"media":"","date":"2022年9月30日","url":"https://www.uipath.com/ja/newsroom/uipath-previews-new-business-automation-platform-features-at-forward-5","title":"UiPath社、UiPath Business Automation Platformの最新機能プレビューを発表アプリケーション開発、自動化ユースケースのさらなる拡張を支援"}' + 
+',{"media":"アクセンチュア","date":"2022年8月23日","url":"https://www.accenture.com/jp-ja/case-studiesnew/software-engineering/robot-for-everyone","title":"[アクセンチュア]『インテリジェント・オートメーション活用で「ロボットと協働する次世代の働き方」の実現』にて、UiPathを活用した取り組みが紹介されました"}' + 
+',{"media":"週刊BCN","date":"2022年8月23日","url":"https://www.weeklybcn.com/journal/keyperson/detail/20220822_193164.html","title":"[週刊BCN] 2022年8月22日号「KeyPerson」に代表取締役CEO長谷川のインタビューが掲載"}' + 
+',{"media":"","date":"2022年8月22日","url":"https://www.uipath.com/ja/newsroom/nikkei-computer-customer-satisfaction-survey-2022-08-22","title":"UiPath社、「日経コンピュータ　顧客満足度調査 2022-2023」のRPAソフト／サービス部門で4年連続1位を獲得"}' + 
+',{"media":"","date":"2022年8月22日","url":"https://www.uipath.com/ja/newsroom/itr-market-view-2022-08-22","title":"UiPath社が、ITRの調査レポートで国内RPA市場シェア1位を5年連続で獲得"}' + 
+',{"media":"","date":"2022年8月10日","url":"https://www.uipath.com/ja/newsroom/uipath-acquires-reinfer","title":"UiPath社、Re:infer社の買収を発表自動化にNLP（自然言語処理）を統合し、顧客との日常的なコミュニケーションを強化"}' + 
+',{"media":"","date":"2022年7月29日","url":"https://www.uipath.com/ja/newsroom/uipath-named-a-leader-in-the-2022-gartner-magic-quadrant-for-rpa","title":"UiPath社、Gartner社の2022年ロボティック・プロセス・オートメーションのマジック・クアドラントで「リーダー」に位置付けられる"}' + 
+',{"media":"","date":"2022年7月28日","url":"https://www.uipath.com/ja/newsroom/itr-rpa-report-2022-07","title":"UiPath社、ITR社への委託により「RPAの国内利用動向と業務自動化の方向性」を調査 ホワイトペーパーを公開"}' + 
+',{"media":"","date":"2022年7月27日","url":"https://www.uipath.com/ja/newsroom/uipath-partners-with-adobe-to-automate-document-workflows","title":"UiPath社、同社の自動化プラットフォームにAdobe社のデジタルドキュメント生成機能および電子サイン機能を統合"}' + 
+',{"media":"","date":"2022年7月26日","url":"https://www.uipath.com/ja/newsroom/uipath-named-a-leader-in-idc-marketscape-worldwide-cloud-testing-2022-vendor-assessment","title":"UiPath社、「IDC MarketScape: Worldwide Cloud Testing 2022 Vendor Assessment」で「リーダー」に評価される"}' + 
+',{"media":"","date":"2022年7月19日","url":"https://www.uipath.com/ja/newsroom/case-study-smtb-2022-07-19","title":"UiPath社、三井住友信託銀行における少量多品種業務の効率化をはじめ、多方面にわたる業務品質向上を支援"}' + 
+',{"media":"","date":"2022年6月28日","url":"https://www.uipath.com/ja/newsroom/uipath-enables-adachi-ward-improve-operational-efficiency-at-the-time-of-online-application-reception","title":"UiPath社、足立区のオンライン申請受付時における業務効率向上をRPAで支援"}' + 
+',{"media":"","date":"2022年6月20日","url":"https://www.uipath.com/ja/newsroom/uipath-named-a-leader-in-everest-groups-process-mining-peak-matrix","title":"UiPath社、Everest Group社のプロセスマイニングテクノロジーベンダーのPEAK Matrix®において「Leader」および「Star Performer」に評価される"}' + 
+',{"media":"","date":"2022年6月14日","url":"https://www.uipath.com/ja/newsroom/new-uipath-study-reveals-half-of-office-workers-willing-to","title":"UiPath社、オフィスワークに関する最新の調査結果を発表世界のオフィスワーカーが「大退職時代」によって直面する課題に、自動化の導入が役立つことが明らかに"}' + 
+',{"media":"","date":"2022年5月24日","url":"https://www.uipath.com/ja/newsroom/uipath-launches-next-gen-uipath-automation-cloud","title":"UiPath社、エンドツーエンドの自動化プラットフォームの最新版「UiPath 2022.4」を提供開始新たにmacOS対応ロボットやUiPath Automation Cloud™ Robots をリリース"}' + 
+',{"media":"","date":"2022年4月25日","url":"https://www.uipath.com/ja/newsroom/shinshu-university-and-uipath-sign-agreement-to-promote-business-automation","title":"信州大学とUiPath、業務自動化推進に関する協定を締結～リスキリングや医療従事者の働き方改革を通じ、長野県内における地域貢献を目指す～"}' + 
+',{"media":"","date":"2022年4月15日","url":"https://www.uipath.com/ja/newsroom/partner-awards-2022-04-15","title":"UiPath社、Partner Forward 2022を開催　Partner Awards 2021を発表"}' + 
+',{"media":"","date":"2022年4月13日","url":"https://www.uipath.com/ja/newsroom/uipath-and-geotechnologies-embark-on-industry-first-automated-process-for-creating-address-verification-services-foot-traffic-data-cloud-services","title":"ジオテクノロジーズとUiPath、AIとRPAによる業界初の住所確認サービスおよび人流データ・クラウドサービス制作プロセスの全自動化に着手"}' + 
+',{"media":"","date":"2022年3月29日","url":"https://www.uipath.com/ja/newsroom/isid-and-uipath-sign-first-collaboration-agreement-in-japan-to-build-strategic-and-comprehensive-partnership","title":"ISIDとUiPath、戦略的かつ包括的なパートナーシップの構築に向け、 新たな協業契約を国内で初めて締結"}' + 
+',{"media":"","date":"2022年3月7日","url":"https://www.uipath.com/ja/newsroom/case-study-daito-koun-2022-03-07","title":"UiPath社、通関申告業務をはじめとした大東港運の業務自動化やペーパーレス化をRPAで支援"}' + 
+',{"media":"","date":"2022年2月22日","url":"https://www.uipath.com/ja/newsroom/uipath-collaborates-with-deloitte-to-advance-industry-4-0-through-automation","title":"UiPath社、The Smart Factory @ WichitaでDeloitte社とコラボレーション 自動化によりインダストリー4.0を推進"}' + 
+',{"media":"","date":"2022年2月21日","url":"https://www.uipath.com/ja/newsroom/uipath-partners-with-coursera-to-offer-best-in-class-automation-education-courses","title":"UiPath社、Coursera社とのパートナーシップを発表 世界9,200万ユーザーへ自動化スキル習得コースを提供"}' + 
+',{"media":"","date":"2022年2月8日","url":"https://www.uipath.com/ja/newsroom/survey-reveals-businesses-are-doubling-down-on-automation","title":"UiPath社、最新の米国企業への調査結果を発表　世界的な人手不足に対応するため、企業が自動化への投資を強化している状況が明らかに"}' + 
+',{"media":"","date":"2022年1月18日","url":"https://www.uipath.com/ja/newsroom/accenture-and-uipath-join-forces-to-help-organizations-accelerate-transformation","title":"アクセンチュアとUiPath社が協業強化インテリジェントオートメーションにより、組織のトランスフォーメーションを支援"}' + 
+',{"media":"","date":"2022年1月6日","url":"https://www.uipath.com/ja/newsroom/qlik-and-uipath-launch-partnership","title":"Qlik社およびUiPath社がパートナーシップを発表　アクティブインテリジェンスとエンタープライズワークフローを統合して提供"}' + 
+',{"media":"","date":"2021年12月16日","url":"https://www.uipath.com/ja/newsroom/uipath-named-a-leader-in-the-inaugural-idc-marketscape","title":"UiPath社、IDC社初の「IDC MarketScape: Worldwide RPA Software 2021-2022」において「リーダー」に評価される"}' + 
+',{"media":"","date":"2021年12月8日","url":"https://www.uipath.com/ja/newsroom/uipath-named-a-winner-of-crn-2021-tech-innovator-award","title":"UiPath社、「CRN 2021 Tech Innovator Awards」を受賞"}' + 
+',{"media":"","date":"2021年12月1日","url":"https://www.uipath.com/ja/newsroom/21-10-product-release-2021-12-1","title":"UiPath社、エンドツーエンドの自動化プラットフォームの最新版「UiPath 2021.10」を提供開始"}' + 
+',{"media":"","date":"2021年11月25日","url":"https://www.uipath.com/ja/newsroom/uipath-issues-inaugural-environmental-social-and-governance-overviewg-overview","title":"UiPath社、年次の「環境、社会、ガバナンス（ESG）概要」を公開"}' + 
+',{"media":"","date":"2021年11月22日","url":"https://www.uipath.com/ja/newsroom/uipath-ranks-top-20-in-inc-first-annual-best-led-companies","title":"UiPath社、Inc.社初の年次「Best-Led Companies」でトップ20にランクイン"}' + 
+',{"media":"","date":"2021年11月11日","url":"https://www.uipath.com/ja/newsroom/idc-research-finds-economic-benefits-uipath-will-grow-55-billion","title":"UiPath社、最新調査レポートの結果を発表UiPath導入による経済効果が、2025年までに550億ドルへ成長することが明らかに"}' + 
+',{"media":"","date":"2021年10月28日","url":"https://www.uipath.com/ja/newsroom/case-study-ok-2021-10-28","title":"UiPath社、オーケー社のネットスーパー構築プロジェクトをテスト自動化で支援"}' + 
+',{"media":"","date":"2021年10月27日","url":"https://www.uipath.com/ja/newsroom/uipath-announces-partnership-with-snowflake","title":"UiPath社、Snowflake社とのパートナーシップを発表RPAアナリティクスをクラウドへ拡張"}' + 
+',{"media":"","date":"2021年10月14日","url":"https://www.uipath.com/ja/newsroom/uipath-helps-hokkaido-gas-automate-operations","title":"UiPath社、北海道ガスの業務自動化を支援し、年間13,000時間以上の業務効率化を実現"}' + 
+',{"media":"","date":"2021年10月13日","url":"https://www.uipath.com/ja/newsroom/uipath-everest-group-peak-matrix-rpa","title":"UiPath社、Everest Group社の「Robotic Process Automation PEAK Matrix®」において5年連続で「Leader」および「Star Performer」に評価される"}' + 
+',{"media":"","date":"2021年10月12日","url":"https://www.uipath.com/ja/newsroom/case-study-mediba-2021-10-12","title":"UiPath社、mediba社の手がけるau Webポータル運営業務の改善をAIで支援"}' + 
+',{"media":"","date":"2021年10月11日","url":"https://www.uipath.com/ja/newsroom/crowdstrike-uipath-secure-robot-led-processes","title":"UiPath社、CrowdStrike社とのパートナーシップを発表業界初となる統合により、ロボット主導プロセスのセキュリティを強化"}' + 
+',{"media":"","date":"2021年10月8日","url":"https://www.uipath.com/ja/newsroom/report-reveals-cios-role-in-demonstrating-value-of-intelligent-automation","title":"UiPath社、最新調査レポートを発表 ― 企業のCIOは、生産性の課題解消とデジタルトランスフォーメーション（DX）の促進には、自動化が不可欠であると認識"}' + 
+',{"media":"","date":"2021年10月7日","url":"https://www.uipath.com/ja/newsroom/uipath-announces-winners-of-2021-partner-awards-from-forward-iv","title":"UiPath社、『FORWARD IV』において「2021 Partner Awards」受賞パートナーを発表"}' + 
+',{"media":"","date":"2021年10月6日","url":"https://www.uipath.com/ja/newsroom/uipath-named-industry-leader-gartner-magic-quadrant-for-rpa","title":"UiPath社、2021年ガートナー®マジック・クアドラント™ロボティック・プロセス・オートメーション(RPA)部門で「リーダー」評価を獲得"}' + 
+',{"media":"","date":"2021年10月6日","url":"https://www.uipath.com/ja/newsroom/uipath-launch-new-innovation-within-enterprise-environments-forward-iv","title":"UiPath社、新たなイノベーションを発表より迅速、かつセキュアな自動化およびエンタープライズ環境とのより密接な統合を実現"}' + 
+',{"media":"","date":"2021年9月10日","url":"https://www.uipath.com/ja/newsroom/case-study-kaneka-2021-09-10","title":"UiPath社、カネカのワークカルチャー変革とDX推進をRPAで支援"}' + 
+',{"media":"","date":"2021年9月1日","url":"https://www.uipath.com/ja/newsroom/uipath-supports-keio-university-in-learning-automation-technology-for-social-implementation","title":"UiPath社、慶應義塾大学にて社会実装に向けた自動化技術習得を支援"}' + 
+',{"media":"","date":"2021年8月16日","url":"https://www.uipath.com/ja/newsroom/uipath-ranked-no.1-in-rpa-software-and-services-for-third-consecutive-year-in-nikkei-computer-customer-satisfaction-survey-2021-2022","title":"UiPath社、「日経コンピュータ　顧客満足度調査 2021-2022」の RPAソフト／サービス部門で3年連続1位を獲得"}' + 
+',{"media":"","date":"2021年8月16日","url":"https://www.uipath.com/ja/newsroom/uipath-ranked-no.1-in-japanese-rpa-market-share-for-fourth-consecutive-year-by-independent-research-firm","title":"UiPath社が、ITRの調査レポートで国内RPA市場シェア1位を4年連続で獲得"}' + 
+']}';
+
+const tbl = document.getElementById("tbl");
+
+JSON.parse(json)['data'].forEach(o => {
+	console.log(o);
+	let newRow = tbl.insertRow();
+	let newCell = newRow.insertCell();
+	let newText = document.createTextNode(o.date);
+	newCell.appendChild(newText);
+	newCell = newRow.insertCell();
+	newText = document.createTextNode(o.media);
+	newCell.appendChild(newText);
+	newCell = newRow.insertCell();
+	let a = document.createElement('a');
+	a.setAttribute('target', '_blank') 
+	a.setAttribute('href', o.url) 
+	a.innerHTML = o.title 
+	newCell.appendChild(a);
+});
+</script>
+
+</html>
